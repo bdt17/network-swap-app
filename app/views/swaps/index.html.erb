@@ -1,4 +1,64 @@
-<div>
-  <h1 class="font-bold text-4xl">Swaps#index</h1>
-  <p>Find me in app/views/swaps/index.html.erb</p>
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-black bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent mb-6">
+        Swap Tickets Dashboard
+      </h1>
+      <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+        Enterprise network device replacement workflow • Rails 8.1 automation
+      </p>
+    </div>
+
+    <% if @swap_tickets.any? %>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <% @swap_tickets.each do |ticket| %>
+          <div class="glass-card p-8 rounded-3xl hover:scale-105 transition-all duration-300 group">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-white group-hover:text-emerald-400"><%= ticket.device.mac_address %></h3>
+                <p class="text-slate-400"><%= ticket.device.model %> @ <%= ticket.device.site.name %></p>
+              </div>
+            </div>
+            <div class="space-y-3 mb-6">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Status</span>
+                <span class="font-bold text-emerald-400"><%= ticket.status.upcase %></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Created</span>
+                <span class="text-slate-300"><%= ticket.created_at.strftime("%b %d") %></span>
+              </div>
+            </div>
+            <div class="flex space-x-3">
+              <%= link_to "View Details", swap_path(ticket), class: "flex-1 glass-button bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 px-6 rounded-xl text-center hover:from-orange-600 hover:to-red-600 transition-all duration-300" %>
+              <%= link_to "Complete", "#", class: "glass-button bg-gradient-to-r from-emerald-500 to-green-500 text-white font-bold py-3 px-6 rounded-xl text-center hover:from-emerald-600 hover:to-green-600 transition-all duration-300" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center py-24">
+        <div class="text-6xl mb-8">📋</div>
+        <h2 class="text-3xl font-black text-white mb-4">No Swap Tickets</h2>
+        <p class="text-xl text-slate-400 mb-12 max-w-md mx-auto">
+          All <%= Device.eol.count %> EOL devices ready for replacement workflow
+        </p>
+        <%= link_to "Create First Swap", new_swap_path, class: "glass-button bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-600 text-white font-black py-4 px-12 rounded-2xl text-xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 inline-block" %>
+      </div>
+    <% end %>
+
+    <div class="glass-card p-8 mt-12">
+      <h3 class="text-2xl font-bold text-white mb-8 text-center">Quick Actions</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <%= link_to "New EOL Swap", new_swap_path, class: "glass-button bg-gradient-to-br from-orange-500 to-red-500 text-white font-bold py-6 px-8 rounded-xl hover:from-orange-600 hover:to-red-600 shadow-xl hover:shadow-orange-500/25 transition-all duration-300 text-center" %>
+        <%= link_to "EOL Devices", devices_path, class: "glass-button bg-gradient-to-br from-purple-500 to-indigo-600 text-white font-bold py-6 px-8 rounded-xl hover:from-purple-600 hover:to-indigo-700 shadow-xl hover:shadow-purple-500/25 transition-all duration-300 text-center" %>
+        <%= link_to "Sites Overview", sites_path, class: "glass-button bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-bold py-6 px-8 rounded-xl hover:from-emerald-600 hover:to-teal-700 shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 text-center" %>
+      </div>
+    </div>
+  </div>
 </div>

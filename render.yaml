@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: network-swap-prod
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bin/rails server -p $PORT -e production"
+    envVars:
+      - key: RAILS_MASTER_KEY
+        generateValue: true
