@@ -1,0 +1,64 @@
+<div class="text-center mb-12">
+  <h1 class="text-5xl font-black mb-4 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+    🖥️ Network Inventory Dashboard
+  </h1>
+  <p class="text-xl text-blue-200 max-w-2xl mx-auto">Enterprise Cisco/Aruba/Juniper management + EOL swap automation</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+  <div class="glass-card p-8 rounded-2xl text-center">
+    <div class="text-4xl mb-4">🖥️</div>
+    <h3 class="text-2xl font-bold mb-2">Total Devices</h3>
+    <div class="text-4xl font-black text-emerald-400"><%= Device.count %></div>
+  </div>
+  <div class="glass-card p-8 rounded-2xl text-center">
+    <div class="text-4xl mb-4">✅</div>
+    <h3 class="text-2xl font-bold mb-2">Active</h3>
+    <div class="text-4xl font-black text-emerald-400"><%= Device.active.count %></div>
+  </div>
+  <div class="glass-card p-8 rounded-2xl text-center">
+    <div class="text-4xl mb-4">⚠️</div>
+    <h3 class="text-2xl font-bold mb-2">EOL Critical</h3>
+    <div class="text-4xl font-black text-orange-400"><%= Device.where(status: 'eol').count %></div>
+  </div>
+  <div class="glass-card p-8 rounded-2xl text-center">
+    <div class="text-4xl mb-4">🏢</div>
+    <h3 class="text-2xl font-bold mb-2">Sites</h3>
+    <div class="text-4xl font-black text-blue-400"><%= Site.count %></div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div>
+    <h2 class="text-3xl font-bold mb-8">🔥 Critical EOL Devices</h2>
+    <% Device.where(status: 'eol').limit(8).each do |device| %>
+      <div class="glass-card p-6 mb-4 rounded-xl border-l-4 border-red-500">
+        <div class="flex justify-between items-center">
+          <div>
+            <h4 class="font-bold text-xl"><%= device.model %></h4>
+            <p class="text-blue-300"><%= device.mac_address %> @ <%= device.site&.name %></p>
+          </div>
+          <%= link_to "Create Swap", swaps_path, class: "bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg font-bold transition-all" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div>
+    <h2 class="text-3xl font-bold mb-8">📍 Enterprise Sites</h2>
+    <% Site.limit(6).each do |site| %>
+      <div class="glass-card p-6 mb-4 rounded-xl">
+        <div class="flex justify-between">
+          <div>
+            <h4 class="font-bold text-xl"><%= site.name %></h4>
+            <p class="text-sm text-blue-300"><%= site.address %></p>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-emerald-400"><%= Device.where(site: site).count %></div>
+            <span class="text-sm text-blue-300">devices</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
