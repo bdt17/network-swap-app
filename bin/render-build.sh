@@ -1,6 +1,11 @@
-#!/bin/bash
-bundle install
-rails assets:precompile
-rails db:migrate
-rails db:seed
-rails runner "User.create!(email: 'agent@thomasit.com', password: 'ThomasIT2026!', password_confirmation: 'ThomasIT2026!')"
+#!/usr/bin/env bash
+set -e
+
+echo "🔨 Installing gems..."
+bundle check || bundle install --without development test
+
+echo "⚡ Precompiling assets..."
+bundle exec rails assets:precompile
+bundle exec rails assets:clean
+
+echo "✅ Build complete - skipping db:prepare (production DB ready)"
