@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: network_swap_app_development
+  database: network_swap_development
 
 test:
   <<: *default
-  database: network_swap_app_test
+  database: network_swap_test
 
 production:
   <<: *default
