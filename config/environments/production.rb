@@ -9,11 +9,14 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
+  config.assets.compile = false
+  config.assets.js_compressor = nil
+  config.assets.debug_compressor = nil
 
 
 
   # Code is not reloaded between requests.
-  config.enable_reloading = false
+#  config.enable_reloading = false
 
   # Eager load code on boot for better performance and memory savings (ignored by Rake tasks).
   config.eager_load = true
