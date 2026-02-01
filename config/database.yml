@@ -12,5 +12,10 @@ test:
   database: network_swap_app_test
 
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  primary:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  queue:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+    migrations_paths: db/queue_migrate
