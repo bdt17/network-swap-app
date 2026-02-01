@@ -6,6 +6,8 @@ Rails.application.configure do
  # config.solid_queue.connects_to database: { writing: :queue, reading: :queue }
   config.active_job.queue_adapter = :async  # or :inline
 
+config.assets.css_compressor = nil
+
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
