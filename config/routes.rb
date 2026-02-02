@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  # BYPASS DEVISE COMPLETELY
-  get "/", to: "devices#index"
-  resources :devices, only: :index
-  
-  get "up" => "rails/health#show", as: :rails_health_check
+  # NUCLEAR OPTION: Rails built-in health check ONLY
+  get "/*", to: "rails/health#show"
 end
