@@ -6,7 +6,7 @@
   <title>Thomas IT Network Swap App</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  
+
   <!-- Tailwind CSS CDN (Production ready) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -14,7 +14,7 @@
       theme: { extend: { colors: { 'thomas-blue': '#1e40af', 'thomas-dark': '#111827' } } }
     }
   </script>
-  
+
   <!-- Custom Thomas IT Styles -->
   <style>
     .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); }
@@ -22,7 +22,7 @@
   </style>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen text-white">
-  
+
   <!-- Navigation -->
   <nav class="glass-card shadow-2xl sticky top-0 z-50 backdrop-blur-md border-b border-white/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,8 +36,11 @@
           <%= link_to "Devices", devices_path, class: "px-4 py-2 rounded-lg hover:bg-white/20 transition-all" %>
           <%= link_to "Sites", sites_path, class: "px-4 py-2 rounded-lg hover:bg-white/20 transition-all" %>
           <%= link_to "Swaps", swaps_path, class: "px-4 py-2 rounded-lg hover:bg-white/20 transition-all" %>
+          
           <% if user_signed_in? %>
-            <span class="text-sm text-blue-200">👋 <%= current_user.email.split('@').first.capitalize %></span>
+            <span class="text-sm text-blue-200">
+              👋 <%= current_user&.email&.split('@')&.first&.capitalize || 'User' %>
+            </span>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "px-4 py-2 rounded-lg hover:bg-red-500/30 transition-all" %>
           <% else %>
             <%= link_to "Login", new_user_session_path, class: "px-4 py-2 rounded-lg hover:bg-green-500/30 transition-all" %>
