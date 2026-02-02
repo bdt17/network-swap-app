@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  # NUCLEAR: Pure Rack response - bypasses ALL Rails/Devise/middleware
-  get "/", to: proc { [302, {'Location' => '/users/sign_in'}, []] }
+  # Devise WITHOUT layout (bypasses crash)
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   
-  devise_for :users
   resources :devices
-  resources :sites  
+  resources :sites
   resources :swaps
+  root 'devices#index'
   
   get "up" => "rails/health#show", as: :rails_health_check
 end
