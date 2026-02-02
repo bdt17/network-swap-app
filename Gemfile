@@ -1,5 +1,3 @@
 source "https://rubygems.org"
 gem "rack", "~> 3.0"
 gem "sinatra", "~> 4.0"
-gem "sinatra-contrib"
-gem "pg", "~> 1.6"
