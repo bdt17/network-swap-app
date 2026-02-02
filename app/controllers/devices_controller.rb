@@ -1,10 +1,21 @@
 class DevicesController < ApplicationController
-  before_action :authenticate_user!
-  
   def index
-    @devices = Device.all
+    render plain: "Thomas IT Network Swap LIVE - Devise temporarily disabled", status: 200
   end
 end
+
+
+
+
+
+
+#class DevicesController < ApplicationController
+ # before_action :authenticate_user!
+  
+  #def index
+   # @devices = Device.all
+ # end
+#end
 
 
 
