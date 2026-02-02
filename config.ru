@@ -1,2 +1,2 @@
 require './app.rb'
-run ThomasIT
+run ThomasIT.new
