@@ -1,6 +1,6 @@
 FROM ruby:3.3-slim
 
-# Install dependencies
+# Install system dependencies
 RUN apt-get update -qq && \
     apt-get install -y build-essential libpq-dev && \
     rm -rf /var/lib/apt/lists/*
@@ -10,13 +10,14 @@ WORKDIR /rails
 # Install gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local frozen 1 && \
-    bundle install && \
-    rm -rf ~/.bundle/ "/usr/local/bundle"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+    bundle install
 
-# Copy app
+# Copy application code
 COPY . .
 
-# Use Rack::Handler directly - NO config.ru needed
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "--port", "$PORT"]
+# Create minimal config.ru that works with rackup
+RUN echo 'require "./app.rb"; run ThomasIT' > config.ru
 
-EXPOSE $PORT
+# Expose port and run with rackup (Render passes PORT env var)
+EXPOSE ${PORT:-3000}
+CMD ["sh", "-c", "bundle exec rackup config.ru --host 0.0.0.0 --port ${PORT:-3000}"]
