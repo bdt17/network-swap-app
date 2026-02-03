@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
+require 'rack/builder'
 require './app.rb'
-run ThomasIT.run!
+
+Rack::Builder.new do
+  run ThomasIT
+end
