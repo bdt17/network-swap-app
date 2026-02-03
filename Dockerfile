@@ -1,4 +1,4 @@
-FROM ruby:3.4-slim
+FROM ruby:3.3-slim
 
 # Install dependencies
 RUN apt-get update -qq && \
@@ -7,7 +7,7 @@ RUN apt-get update -qq && \
 
 WORKDIR /rails
 
-# Bundle install (Sinatra ONLY)
+# Install gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local frozen 1 && \
     bundle install && \
@@ -16,8 +16,7 @@ RUN bundle config set --local frozen 1 && \
 # Copy app
 COPY . .
 
-# Precompile (Sinatra doesn't need bootsnap)
-EXPOSE $PORT
+# Use Rack::Handler directly - NO config.ru needed
+CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "--port", "$PORT"]
 
-# PURE Sinatra - NO Rails/Bootsnap
-CMD ["ruby", "config.ru"]
+EXPOSE $PORT
