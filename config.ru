@@ -1,6 +1,7 @@
+#!/usr/bin/env ruby
+require 'rack/builder'
 require './app.rb'
 
-run Rack::Builder.new do
-  use Rack::ShowExceptions
+Rack::Builder.new do
   run ThomasIT
 end
