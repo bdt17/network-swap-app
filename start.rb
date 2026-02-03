@@ -2,6 +2,9 @@
 require "bundler/setup"
 require "./app.rb"
 
-# Create Rack app manually - NO DSL needed
-handler = Rack::Handler::Puma
-handler.run(ThomasIT.new, Port: ENV['PORT'], Host: '0.0.0.0')
+# Pure Rack Handler - NO DSL, NO rackup needed
+Rack::Handler::Puma.run(
+  ThomasIT.new,
+  Port: (ENV['PORT'] || 3000).to_i,
+  Host: '0.0.0.0'
+)
