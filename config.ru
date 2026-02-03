@@ -2,7 +2,7 @@
 require "bundler/setup"
 require "./app.rb"
 
-Rack::Builder.new do
-  use Rack::CommonLogger
+# Start Puma directly - no rackup needed
+map "/" do
   run ThomasIT
-end
+end.run!
