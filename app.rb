@@ -3,27 +3,78 @@ require 'sinatra/base'
 
 class ThomasIT < Sinatra::Base
   set :bind, '0.0.0.0'
-  set :port, ENV['PORT'] || 3000    # ← ADD THIS LINE
-  set :environment, :production     # ← ADD THIS LINE
-  
+  set :port, ENV['PORT'] || 3000
+  set :environment, :production
+
   get '/' do
-    '<h1 style="color:#1e40af;font-size:48px">🚀 Thomas IT Network Swap</h1>
-     <p style="font-size:24px">PRODUCTION LIVE - 150+ requests served</p>
-     <a href="/dashboard" style="color:#10b981;font-size:20px;padding:10px;background:#1e40af;display:inline-block;border-radius:5px">→ ENTERPRISE DASHBOARD</a>'
+    <<~HTML
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Thomas IT Network Swap</title>
+      <link href="/css/thomas-it.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+      <header class="header">
+        <div class="container">
+          <h1>🚀 Thomas IT Network Swap</h1>
+          <p style="font-size: 1.3rem; opacity: 0.95;">PRODUCTION LIVE - 150+ requests served</p>
+        </div>
+      </header>
+      
+      <div class="container">
+        <div style="text-align: center; margin: 3rem 0;">
+          <a href="/dashboard" class="btn">📊 Enterprise Dashboard</a>
+          <a href="/api/devices" class="btn btn-secondary" style="margin-left: 1rem;">🔌 API v1</a>
+        </div>
+      </div>
+    </body>
+    </html>
+    HTML
   end
-  
+
   get '/dashboard' do
-    '<h1 style="color:#10b981;font-size:48px">📊 THOMAS IT DASHBOARD</h1>
-     <div style="background:#1e40af;padding:30px;border-radius:10px;margin:20px 0">
-       <h2 style="color:#60a5fa">Network Inventory</h2>
-       <p>✅ 47 devices online | 2 maintenance | 0 alerts</p>
-       <p>🚚 12 pharma shipments tracked | FDA 21 CFR Part 11 compliant</p>
-     </div>'
+    <<~HTML
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Thomas IT Dashboard</title>
+      <link href="/css/thomas-it.css" rel="stylesheet">
+    </head>
+    <body>
+      <header class="header">
+        <div class="container">
+          <h1>📊 THOMAS IT ENTERPRISE DASHBOARD</h1>
+        </div>
+      </header>
+      
+      <div class="container">
+        <div class="grid">
+          <div class="card">
+            <h2>🌐 Network Inventory</h2>
+            <p><span class="status-online">✅ 47 devices online</span></p>
+            <p><span class="status-maintenance">🔧 2 maintenance</span> | <span class="status-online">0 alerts</span></p>
+            <p>🚚 12 pharma shipments tracked | <strong>FDA 21 CFR Part 11 compliant</strong></p>
+          </div>
+          
+          <div class="card">
+            <h2>🔌 API Endpoints</h2>
+            <p><a href="/api/devices" class="btn">📱 GET /api/devices</a></p>
+            <p><a href="/api/shipments" class="btn btn-secondary">🚚 GET /api/shipments</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--accent-silver);">JSON responses | Production ready</p>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    HTML
   end
-  
+
   get '/up' do
     'OK - Thomas IT ENTERPRISE LIVE'
   end
+
   # PHASE 2: Network Inventory API
   get '/api/devices' do
     content_type :json
@@ -41,7 +92,4 @@ class ThomasIT < Sinatra::Base
       {id: 2, device_id: 2, temp: 4.1, location: "Tucson AZ", compliant: true, eta: "2026-02-04"}
     ].to_json
   end
-
-
-
 end
