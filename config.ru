@@ -1,2 +1,7 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
 require './app.rb'
-run ThomasIT
+
+map "/" do
+  run ThomasIT
+end
