@@ -25,4 +25,3 @@ class ThomasIT < Sinatra::Base
     'OK - Thomas IT ENTERPRISE LIVE'
   end
 end
-ThomasIT.run! if $0 == __FILE__
