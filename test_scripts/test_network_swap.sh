@@ -8,20 +8,20 @@ echo "🚀 Testing Thomas IT Production ($APP_URL)..."
 echo "Test 1-5: Root page (/)..."
 for i in {1..5}; do
   echo "Test $i..."
-  curl -s -m 30 -w "HTTP:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
+  curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
     "$APP_URL" >> test.log
 done
 
 echo "Test 6: /up healthcheck..."
-curl -s -m 30 -w "HTTP:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
+curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
   "$APP_URL/up" >> test.log
 
 echo "Test 7: /dashboard..."
-curl -s -m 30 -w "HTTP:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
+curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
   "$APP_URL/dashboard" >> test.log
 
 # Analyze results
-OK=$(grep -c "HTTP:200" test.log || echo 0)
+OK=$(grep -c "code:200" test.log || echo 0)
 AVG_TIME=$(grep "TIME:" test.log | awk '{sum+=$NF; n++} END {if(n>0) printf "%.2f", sum/n; else print "N/A"}')
 AVG_BYTES=$(grep "BYTES:" test.log | awk '{sum+=$2; n++} END {if(n>0) printf "%.0f", sum/n; else print "N/A"}')
 
