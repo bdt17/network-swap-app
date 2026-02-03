@@ -24,4 +24,24 @@ class ThomasIT < Sinatra::Base
   get '/up' do
     'OK - Thomas IT ENTERPRISE LIVE'
   end
+  # PHASE 2: Network Inventory API
+  get '/api/devices' do
+    content_type :json
+    [
+      {id: 1, mac: "00:11:22:33:44:55", ip: "10.0.1.10", status: "online", location: "Phoenix DC1"},
+      {id: 2, mac: "00:11:22:33:44:56", ip: "10.0.1.11", status: "online", location: "Phoenix DC2"},
+      {id: 3, mac: "00:11:22:33:44:57", ip: "10.0.1.12", status: "maintenance", location: "Phoenix DC1"}
+    ].to_json
+  end
+
+  get '/api/shipments' do
+    content_type :json
+    [
+      {id: 1, device_id: 1, temp: 2.3, location: "Phoenix AZ", compliant: true, eta: "2026-02-03"},
+      {id: 2, device_id: 2, temp: 4.1, location: "Tucson AZ", compliant: true, eta: "2026-02-04"}
+    ].to_json
+  end
+
+
+
 end
