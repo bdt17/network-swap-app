@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
+require "rack/handler/puma"
 require "./app.rb"
 
 Rack::Handler::Puma.run(
