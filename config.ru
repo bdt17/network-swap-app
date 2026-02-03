@@ -1,2 +1,6 @@
 require './app.rb'
-run ThomasIT
+
+run Rack::Builder.new do
+  use Rack::ShowExceptions
+  run ThomasIT
+end
