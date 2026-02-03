@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru:0
+web: bundle exec ruby start.rb
