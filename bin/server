@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require "./app.rb"
+
+# Official Rack Handler API - NO DSL issues
+Rack::Handler::Puma.run(
+  ThomasIT.new,
+  Port: ENV['PORT'] || 3000,
+  Host: '0.0.0.0'
+)
