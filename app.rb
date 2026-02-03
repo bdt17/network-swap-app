@@ -6,6 +6,35 @@ class ThomasIT < Sinatra::Base
   set :port, ENV['PORT'] || 3000
   set :environment, :production
 
+  # ✅ CSS ENDPOINT (was missing!)
+  get '/css/thomas-it.css' do
+    content_type :css
+    <<~CSS
+    :root {
+      --blue: #0984C0;
+      --silver: #AAA7B0;
+      --grey: #565759;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
+    .header { background: linear-gradient(135deg, var(--blue), #0a6aa3); color: white; padding: 2rem 0; text-align: center; box-shadow: 0 4px 20px rgba(9,132,192,0.3); }
+    .header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.5rem; font-weight: 700; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: 1px solid rgba(9,132,192,0.1); transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(9,132,192,0.2); }
+    .btn { display: inline-block; padding: 12px 24px; background: var(--blue); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+    .btn:hover { background: #0a6aa3; transform: translateY(-1px); }
+    .btn-secondary { background: var(--silver); }
+    .btn-secondary:hover { background: var(--grey); }
+    .status-online { color: #10b981; font-weight: 600; }
+    .status-maintenance { color: #f59e0b; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    CSS
+  end
+
   get '/' do
     <<~HTML
     <!DOCTYPE html>
@@ -19,10 +48,9 @@ class ThomasIT < Sinatra::Base
       <header class="header">
         <div class="container">
           <h1>🚀 Thomas IT Network Swap</h1>
-          <p style="font-size: 1.3rem; opacity: 0.95;">PRODUCTION LIVE - 150+ requests served</p>
+          <p>PRODUCTION LIVE - 150+ requests served</p>
         </div>
       </header>
-      
       <div class="container">
         <div style="text-align: center; margin: 3rem 0;">
           <a href="/dashboard" class="btn">📊 Enterprise Dashboard</a>
@@ -48,7 +76,6 @@ class ThomasIT < Sinatra::Base
           <h1>📊 THOMAS IT ENTERPRISE DASHBOARD</h1>
         </div>
       </header>
-      
       <div class="container">
         <div class="grid">
           <div class="card">
@@ -57,12 +84,10 @@ class ThomasIT < Sinatra::Base
             <p><span class="status-maintenance">🔧 2 maintenance</span> | <span class="status-online">0 alerts</span></p>
             <p>🚚 12 pharma shipments tracked | <strong>FDA 21 CFR Part 11 compliant</strong></p>
           </div>
-          
           <div class="card">
             <h2>🔌 API Endpoints</h2>
             <p><a href="/api/devices" class="btn">📱 GET /api/devices</a></p>
             <p><a href="/api/shipments" class="btn btn-secondary">🚚 GET /api/shipments</a></p>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--accent-silver);">JSON responses | Production ready</p>
           </div>
         </div>
       </div>
@@ -75,7 +100,6 @@ class ThomasIT < Sinatra::Base
     'OK - Thomas IT ENTERPRISE LIVE'
   end
 
-  # PHASE 2: Network Inventory API
   get '/api/devices' do
     content_type :json
     [
