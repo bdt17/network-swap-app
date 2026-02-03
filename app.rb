@@ -3,6 +3,8 @@ require 'sinatra/base'
 
 class ThomasIT < Sinatra::Base
   set :bind, '0.0.0.0'
+  set :port, ENV['PORT'] || 3000    # ← ADD THIS LINE
+  set :environment, :production     # ← ADD THIS LINE
   
   get '/' do
     '<h1 style="color:#1e40af;font-size:48px">🚀 Thomas IT Network Swap</h1>
