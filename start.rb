@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
-require "bundler/setup"
-require "rack/handler/puma"
-require "./app.rb"
+require 'rack'
+require 'rack/contrib/static_cache'
 
-Rack::Handler::Puma.run(
-  ThomasIT.new,
-  Port: (ENV['PORT'] || 3000).to_i,
-  Host: '0.0.0.0'
-)
+use Rack::StaticCache, public_folder: './public'
+run ->(env) { 
+  path = env['PATH_INFO']
+  if File.exist?("public#{path}")
+    [200, {'Content-Type' => 'text/html'}, [File.read("public#{path}")]]
+  else
+    [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]]
+  end
+}
