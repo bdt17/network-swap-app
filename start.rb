@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 require 'rack'
-require 'rack/contrib/static_cache'
+require 'rack/static'
 
-use Rack::StaticCache, public_folder: './public'
-run ->(env) { 
-  path = env['PATH_INFO']
-  if File.exist?("public#{path}")
-    [200, {'Content-Type' => 'text/html'}, [File.read("public#{path}")]]
-  else
+use Rack::Static, 
+  root: 'public',
+  urls: ['/js', '/css', '/swap', '/favicon.ico'],
+  index: ['index.html']
+
+map '/' do
+  run lambda { |env|
     [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]]
-  end
-}
+  }
+end
