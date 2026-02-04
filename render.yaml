@@ -1,8 +1,5 @@
 services:
   - type: web
-    name: network-swap-app
+    name: network-swap-app-final
     env: docker
     dockerfilePath: ./Dockerfile
-    envVars:
-      - key: NGINX_PORT
-        value: "10000"
