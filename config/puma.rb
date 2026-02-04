@@ -1,5 +1,6 @@
-port ENV.fetch("PORT") { 3000 }
-environment ENV.fetch("RACK_ENV") { "production" }
-workers 1
+workers 0
 threads 1, 5
-preload_app!
+environment ENV.fetch("RAILS_ENV") { "production" }
+port        ENV.fetch("PORT") { 3000 }
+worker_timeout 60
+silence_single_worker_warning true

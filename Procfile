@@ -1,1 +1,1 @@
-web: bundle exec ruby config.ru
+web: bundle exec puma -C config/puma.rb -p $PORT --workers 0
