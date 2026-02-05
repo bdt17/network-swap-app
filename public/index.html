@@ -25,6 +25,36 @@
   </select>
 </div>
   
+<div class="mb-6">
+  <h2 class="text-xl font-bold mb-4">Device Inventory</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full bg-white border border-gray-200 rounded-lg">
+      <thead>
+        <tr class="bg-gray-50">
+          <th class="px-6 py-3 text-left">Device</th>
+          <th class="px-6 py-3 text-left">Type</th>
+          <th class="px-6 py-3 text-left">Status</th>
+          <th class="px-6 py-3 text-left">EOL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t">
+          <td class="px-6 py-4">HP LaserJet P3015</td>
+          <td class="px-6 py-4">Printer</td>
+          <td class="px-6 py-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">EOL</span></td>
+          <td class="px-6 py-4">2026-03</td>
+        </tr>
+        <tr class="border-t">
+          <td class="px-6 py-4">Cisco SG350-28</td>
+          <td class="px-6 py-4">Switch</td>
+          <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span></td>
+          <td class="px-6 py-4">2028-12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
   <button id="connect-btn">Connect MetaMask</button>
   <div id="wallet-address" class="address">Not connected</div>
   
