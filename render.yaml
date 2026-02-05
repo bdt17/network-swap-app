@@ -1,16 +1,6 @@
 services:
   - type: web
-    name: network-swap
-    env: ruby  
+    name: network-swap-app
+    env: ruby
     buildCommand: bundle install
-    startCommand: bundle exec rails server -p $PORT -b 0.0.0.0
-    envVars:
-      - key: RAILS_MASTER_KEY
-        generateValue: true
-      - key: RAILS_SERVE_STATIC_FILES
-        value: true
-    plan: Professional
-
-  - type: pgsql
-    name: network-db
-    plan: professional
+    startCommand: bundle exec rails server -p $PORT -e production
