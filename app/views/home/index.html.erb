@@ -1,0 +1,29 @@
+<div class="max-w-7xl mx-auto p-6">
+  <h1 class="text-4xl font-bold text-blue-600 mb-8">THOMAS IT ENTERPRISE NETWORK SWAP</h1>
+  
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+    <% @sites.each do |site| %>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow">
+        <h3 class="text-xl font-semibold"><%= site.name %> (<%= site.zip_code %>)</h3>
+        <p class="text-gray-600"><%= site.location %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-8 rounded-xl">
+    <h2 class="text-2xl font-bold mb-4">[Connect MetaMask] ETH → USDC [Swap Tokens]</h2>
+    <div id="metamask-status" class="text-lg">Ready for Phoenix HQ printer replacement funding</div>
+  </div>
+</div>
+
+<script src="https://cdn.ethers.io/lib/ethers-6.13.2.umd.min.js"></script>
+<script>
+// MetaMask ETH→USDC swap logic here
+async function connectMetaMask() {
+  if (typeof window.ethereum !== 'undefined') {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    document.getElementById('metamask-status').innerText = 'MetaMask Connected!';
+  }
+}
+</script>
