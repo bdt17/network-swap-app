@@ -1,7 +1,7 @@
-class AISwapRecommender
+class AiSwapRecommender
   def self.recommend_swaps(device)
-    return unless device.eol_date < 90.days.from_now
-    
+    return unless device.respond_to?(:eol_date) && device.eol_date && device.eol_date < 90.days.from_now
+
     {
       model: 'Cisco Catalyst 9300',
       vendor: 'Cisco',
