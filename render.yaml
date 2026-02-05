@@ -1,7 +1,7 @@
 services:
   - type: web
     name: network-swap
-    env: ruby
+    env: ruby  
     buildCommand: bundle install
     startCommand: bundle exec rails server -p $PORT -b 0.0.0.0
     envVars:

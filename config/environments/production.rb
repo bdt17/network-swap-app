@@ -1,15 +1,16 @@
 Rails.application.configure do
+  # Core production settings
   config.cache_classes = true
   config.eager_load = true
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  config.public_file_server.enabled = false  # Propshaft handles this
-  config.assets.compile = false              # No runtime compilation
   config.force_ssl = true
-  
   config.log_level = :info
-  config.log_tags = [ :request_id ]
-  
+
+  # Propshaft (Rails 8 default) - NO assets config needed
+  config.public_file_server.enabled = true
+
+  # i18n & deprecation
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   
