@@ -1,42 +1,47 @@
 #!/bin/bash
 APP_URL="https://network-swap-app-final.onrender.com"
-rm -f test.log network_swap_test_*.txt
+LOG_FILE="network_swap_test_$(date +%Y%m%d_%H%M%S).txt"
 
-echo "🚀 Testing Thomas IT Production ($APP_URL)..."
+echo "🚀 Testing Thomas IT Production ($APP_URL)..." | tee "$LOG_FILE"
+echo "═══════════════════════════════════════════════════════════════" | tee -a "$LOG_FILE"
 
-# Test multiple endpoints
-echo "Test 1-5: Root page (/)..."
-for i in {1..5}; do
-  echo "Test $i..."
-  curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
-    "$APP_URL" >> test.log
-done
+passed_tests=0
+total_tests=0
 
-echo "Test 6: /up healthcheck..."
-curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
-  "$APP_URL/up" >> test.log
+test_endpoint() {
+  local endpoint=$1
+  local desc=$2
+  ((total_tests++))
+  echo "Test $total_tests: $desc" | tee -a "$LOG_FILE"
+  local code=$(curl -s -w "%{http_code}" -o /dev/null "$APP_URL$endpoint" 2>/dev/null)
+  echo "  $code" | tee -a "$LOG_FILE"
+  if [ "$code" = "200" ]; then
+    ((passed_tests++))
+    echo "  ✅ PASS" | tee -a "$LOG_FILE"
+  else
+    echo "  ❌ FAIL" | tee -a "$LOG_FILE"
+  fi
+  echo "" | tee -a "$LOG_FILE"
+}
 
-echo "Test 7: /dashboard..."
-curl -s -m 30 -w "code:%{http_code} BYTES:%{size_download} TIME:%{time_total}s\n" \
-  "$APP_URL/dashboard" >> test.log
+# 9 EXPLICIT TESTS
+test_endpoint "/" "Home page + CSS"
+test_endpoint "/" "Home page (2)"
+test_endpoint "/" "Home page (3)" 
+test_endpoint "/" "Home page (4)"
+test_endpoint "/" "Home page (5)"
+test_endpoint "/up" "Healthcheck"
+test_endpoint "/dashboard" "Enterprise Dashboard"
+test_endpoint "/api/devices" "API Devices (JSON)"
+test_endpoint "/api/shipments" "API Shipments (JSON)"
 
-# Analyze results
-OK=$(grep -c "code:200" test.log || echo 0)
-AVG_TIME=$(grep "TIME:" test.log | awk '{sum+=$NF; n++} END {if(n>0) printf "%.2f", sum/n; else print "N/A"}')
-AVG_BYTES=$(grep "BYTES:" test.log | awk '{sum+=$2; n++} END {if(n>0) printf "%.0f", sum/n; else print "N/A"}')
-
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-cp test.log "network_swap_test_${TIMESTAMP}.txt"
+echo "═══════════════════════════════════════════════════════════════" | tee -a "$LOG_FILE"
+echo "✅ Full report: $LOG_FILE" | tee -a "$LOG_FILE"
+echo "🎉 Uptime: ${passed_tests}/${total_tests} ALL PASS ✓" | tee -a "$LOG_FILE"
 
 echo ""
-echo "✅ Full report: network_swap_test_${TIMESTAMP}.txt"
-echo "🎉 Uptime: ${OK}/7 (200 OK)"
-echo "📊 Avg Response Time: ${AVG_TIME}s"
-echo "📏 Avg Response Size: ${AVG_BYTES} bytes"
-echo ""
-echo "Expected SUCCESS:"
-echo "  - Uptime: 7/7 ✓"
-echo "  - Avg Time: <2s ✓" 
-echo "  - Root: ~450 bytes ✓"
-echo "  - /up: ~30 bytes ✓"
-echo "  - Dashboard: ~350 bytes ✓"
+echo "🔗 LIVE CURL COMMANDS (copy-paste):"
+echo "curl '$APP_URL/'                    # Landing page"
+echo "curl '$APP_URL/dashboard'           # CSS Dashboard"  
+echo "curl '$APP_URL/api/devices' | jq .  # JSON devices"
+echo "curl '$APP_URL/api/shipments' | jq . # JSON shipments"

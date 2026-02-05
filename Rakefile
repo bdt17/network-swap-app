@@ -1,6 +1,9 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
+# Load Rails environment
 require_relative "config/application"
 
-Rails.application.load_tasks
+if defined?(Rails::Command)
+  require "rails/commands"
+else
+  require_relative "config/environment"
+  Rails.application.load_tasks
+end
