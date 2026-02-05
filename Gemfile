@@ -10,4 +10,7 @@ gem "bootsnap", require: false
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
 end
-gem "sqlite3", "1.7.3"
+#gem "sqlite3", "1.7.3"
+gem 'rspec-rails', group: :test
+gem 'rails-controller-testing', group: :test
+gem 'sqlite3', '~> 2.1'
