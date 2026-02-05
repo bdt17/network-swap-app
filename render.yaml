@@ -1,5 +1,21 @@
 services:
   - type: web
-    name: network-swap-app-final
-    env: docker
-    dockerfilePath: ./Dockerfile
+    name: network-swap
+    env: ruby
+    buildCommand: "bundle install && bundle exec rake db:migrate && bundle exec rake assets:precompile"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: RAILS_MASTER_KEY
+        generateValue: true
+      - key: REDIS_URL
+        fromDatabase:
+          name: network-db
+          property: connectionString
+      - key: GROQ_API_KEY
+        sync: false
+    plan: Professional
+    healthCheckPath: /up
+
+  - type: pgsql
+    name: network-db  
+    plan: professional
