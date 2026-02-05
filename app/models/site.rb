@@ -1,2 +1,2 @@
-class Site
-  attr_accessor :
+class Site < ApplicationRecord
+end
