@@ -1,0 +1,2 @@
+class SwapTicket < ApplicationRecord
+end
