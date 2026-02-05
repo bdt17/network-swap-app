@@ -14,3 +14,8 @@ end
 gem 'rspec-rails', group: :test
 gem 'rails-controller-testing', group: :test
 gem 'sqlite3', '~> 2.1'
+
+gem 'groq', '~> 0.2.0'
+gem 'jwt', '~> 2.8'
+gem 'httparty', '~> 0.22'
+gem 'redis', '~> 5.0'
