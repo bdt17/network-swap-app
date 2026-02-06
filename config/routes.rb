@@ -1,24 +1,17 @@
 Rails.application.routes.draw do
-  # MVP Dashboard (Phase 4)
-  root "dashboard#index"
-  get "/dashboard", to: "dashboard#index"
+  root "home#index"
   
-  # Static assets (your Tailwind public/index.html)
-  get "/inventory", to: ->(env) { [200, {"Content-Type" => "text/html"}, [File.read(Rails.root.join("public/index.html"))]] }
+  # Health + Static
+  get "health", to: ->(env) { [200, {"Content-Type" => "application/json"}, ["OK"]] }
+  get "inventory", to: ->(env) { [200, {"Content-Type" => "application/json"}, ["Inventory API LIVE"]] }
   
-  # API Endpoints (Phase 4-7)
+  # API Namespace
   namespace :api do
-    resources :devices, only: [:index, :show] do
-      get :ai_recommend, on: :member
+    resources :devices do
+      member do
+        get :ai_recommend, to: 'devices/ai_recommend#ai_recommend'
+      end
     end
-    resources :swaps, only: [:index, :create]
     resources :audit_logs, only: [:index]
   end
-  
-  # Healthcheck
-  get "/up", to: ->(w) { [200, {"Content-Type" => "text/plain"}, ["OK"]]}
-  get "/health", to: ->(w) { [200, {"Content-Type" => "text/plain"}, ["OK - Thomas IT Network Swap App"]]}
-  
-  # Phase 6 ActionCable
-  mount ActionCable.server => "/cable"
 end
