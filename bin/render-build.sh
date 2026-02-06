@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 set -e
-bundle lock
-bundle install --deployment --without development test
-echo "Rack static HTML ready"
+
+bundle config set deployment true
+bundle config set without 'development test'
+bundle install
+
+bundle exec rails db:migrate
+bundle exec rails db:seed
+
+echo "✅ Build + seeds complete!"
