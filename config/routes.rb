@@ -15,3 +15,9 @@ Rails.application.routes.draw do
     resources :audit_logs, only: [:index]
   end
 end
+
+namespace :api do
+  resources :devices, only: [:index]
+  resource :ai_recommend, only: [:show], path: 'devices/1/ai_recommend'
+  resources :audit_logs, only: [:index]
+end
