@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  address: MyText
-  timezone: MyString
+  location: MyString
 
 two:
   name: MyString
-  address: MyText
-  timezone: MyString
+  location: MyString

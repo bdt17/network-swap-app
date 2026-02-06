@@ -3,13 +3,11 @@
 one:
   device: one
   site: one
-  scheduled_for: 2026-01-29
-  status: MyString
-  notes: MyText
+  scheduled_at: 2026-02-06 00:26:18
+  status: 1
 
 two:
   device: two
   site: two
-  scheduled_for: 2026-01-29
-  status: MyString
-  notes: MyText
+  scheduled_at: 2026-02-06 00:26:18
+  status: 1
