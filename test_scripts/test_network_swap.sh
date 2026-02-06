@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_URL="https://network-swap-app-final.onrender.com"
+APP_URL="https://network-swap-app.onrender.com"
 LOG_FILE="network_swap_test_$(date +%Y%m%d_%H%M%S).txt"
 
 echo "🚀 Testing Thomas IT Production ($APP_URL)..." | tee "$LOG_FILE"
