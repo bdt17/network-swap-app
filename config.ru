@@ -1,10 +1,13 @@
 require 'rack'
-class NetworkSwapApp
+
+class StaticApp
   def self.call(env)
-    case env['PATH_INFO']
-    when '/' 
-      [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]]
-    when '/health'
+    path = env['PATH_INFO']
+    
+    if path == '/' or path == '/index.html'
+      html = File.read('public/index.html', encoding: 'utf-8')
+      [200, {'Content-Type' => 'text/html; charset=utf-8'}, [html]]
+    elsif path == '/health'
       [200, {'Content-Type' => 'text/plain'}, ['OK']]
     else
       [404, {'Content-Type' => 'text/plain'}, ['Not Found']]
@@ -12,4 +15,4 @@ class NetworkSwapApp
   end
 end
 
-run NetworkSwapApp
+run StaticApp
