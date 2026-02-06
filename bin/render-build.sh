@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-# Clear any frozen configs first
-bundle config unset frozen --local || true
-bundle config unset deployment --local || true
+mkdir -p tmp/pids
 
-# Production install
-bundle config set deployment true
-bundle config set without 'development test'
-bundle install
-
-# Database
+bundle exec rails assets:clobber
 bundle exec rails db:migrate
-bundle exec rails db:seed
+bundle exec rails db:seeds
 
-echo "✅ Build + 1000 devices seeded!"
+# Skip assets:precompile (Rails 8.1 + Tailwind fix)
+echo "✅ Assets skipped - Rails 8.1 native CSS handling"
