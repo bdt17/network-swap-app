@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-echo "Static HTML deploy ready"
+set -e
+bundle lock
+bundle install --deployment --without development test
+echo "Rack static HTML ready"
