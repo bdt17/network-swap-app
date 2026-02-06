@@ -1,5 +1,5 @@
 class AiRecommendController < ApplicationController
   def show
-    render json: {recommendation: {model: "Cisco 9300X", priority: "high"}}
+    render json: {model: "Cisco 9300X", priority: "HIGH", cost: "$4500"}
   end
 end
