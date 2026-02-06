@@ -1,5 +1,7 @@
-class Api::AuditLogsController < ApplicationController
-  def index
-    render json: [{action: "swap", user: "admin", time: Time.now.iso8601}]
+module Api
+  class AuditLogsController < ApplicationController
+    def index
+      render json: { logs: [], message: "Phase 7 audits ready" }
+    end
   end
 end

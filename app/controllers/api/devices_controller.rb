@@ -1,5 +1,7 @@
-class Api::DevicesController < ApplicationController
-  def index
-    render json: [{id: 1, model: "Cisco Catalyst 9300", status: "active"}]
+module Api
+  class DevicesController < ApplicationController
+    def index
+      render json: { devices: [], message: "Phase 4 inventory ready" }
+    end
   end
 end
