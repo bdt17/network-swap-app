@@ -5,4 +5,4 @@ bundle lock --add-platform x86_64-linux
 bundle config set without 'development test'
 bundle install
 bundle exec rails db:migrate
-echo "✅ Build complete - Thomas IT Network Swap"
+echo "✅ Thomas IT Network Swap - Build COMPLETE"

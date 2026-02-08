@@ -212,16 +212,6 @@ GEM
       io-console (~> 0.5)
     securerandom (0.4.1)
     stringio (3.2.0)
-    tailwindcss-rails (2.7.9-aarch64-linux)
-      railties (>= 7.0.0)
-    tailwindcss-rails (2.7.9-arm-linux)
-      railties (>= 7.0.0)
-    tailwindcss-rails (2.7.9-arm64-darwin)
-      railties (>= 7.0.0)
-    tailwindcss-rails (2.7.9-x86_64-darwin)
-      railties (>= 7.0.0)
-    tailwindcss-rails (2.7.9-x86_64-linux)
-      railties (>= 7.0.0)
     thor (1.5.0)
     timeout (0.6.0)
     tsort (0.2.0)
@@ -239,7 +229,6 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
@@ -255,7 +244,6 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.1.0)
   redis (~> 5.0)
-  tailwindcss-rails (~> 2.0)
 
 CHECKSUMS
   action_text-trix (2.1.16) sha256=f645a2c21821b8449fd1d6770708f4031c91a2eedf9ef476e9be93c64e703a8a
@@ -336,11 +324,6 @@ CHECKSUMS
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
-  tailwindcss-rails (2.7.9-aarch64-linux) sha256=e445c0761bcdc8fab423f35a9c6f2791ca73e46ef558a0e02601c9a2cf83dcb3
-  tailwindcss-rails (2.7.9-arm-linux) sha256=95ec559d3478b9ef42232548ebe810570266b795b08822bfc472f5e9c98630b6
-  tailwindcss-rails (2.7.9-arm64-darwin) sha256=9fd0e0f45e6695bf09c9275170d81ba47fdf6af4b7b6352d97467b7bb8e019f5
-  tailwindcss-rails (2.7.9-x86_64-darwin) sha256=55a361c43ff8a65209e6d46f4d7dd901badb3b8a26ab603991789a2e5f4f79a9
-  tailwindcss-rails (2.7.9-x86_64-linux) sha256=6ac0523506cb122e3e26bb07c2f6e150542530d0d13d8a4e8466ed7a69fbfce2
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   timeout (0.6.0) sha256=6d722ad619f96ee383a0c557ec6eb8c4ecb08af3af62098a0be5057bf00de1af
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
