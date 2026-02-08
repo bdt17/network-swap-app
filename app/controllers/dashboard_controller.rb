@@ -1,6 +1,12 @@
 class DashboardController < ApplicationController
-  def inventory
+  def index
     @devices = Device.all
-    render layout: 'application', inline: '<h1>Inventory</h1><%= @devices.count %> devices'
+    @sites = Site.all
+  end
+
+  def inventory
+    @devices = Device.where(active: true)
+    @sites = Site.all
+    render 'index'
   end
 end

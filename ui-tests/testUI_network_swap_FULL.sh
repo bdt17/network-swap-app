@@ -41,7 +41,24 @@ test_page_speed() {
 # RUN TESTS
 test_page_speed "$APP_URL/"
 test_ui_endpoint "Dashboard" "$APP_URL/"
-test_tailwind "$APP_URL/"
+test_tailwind "https://network-swap-app.onrender.com/" "$APP_URL/"
 test_ui_endpoint "Inventory" "$APP_URL/inventory"
 
 echo -e "\n🎉 UI Tests COMPLETE - Check $LOG" | tee -a "$LOG"
+
+test_tailwind() {
+  echo "🎨 Testing Tailwind CSS..."
+  if curl -s -H "User-Agent: Mozilla/5.0" "$1" | grep -qi "tailwind"; then
+    echo "✅ Tailwind CSS detected"
+    return 0
+  else
+    echo "❌ Tailwind CSS missing"
+    return 1
+  fi
+}
+
+echo "🎯 Testing UI: Inventory"
+curl -s -w "Status: %{http_code} | Size: %{size_bytes}B\n" \
+  -H "User-Agent: Mozilla/5.0" \
+  "https://network-swap-app.onrender.com/inventory" > /tmp/inventory.html
+

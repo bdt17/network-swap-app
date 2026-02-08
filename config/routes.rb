@@ -27,3 +27,5 @@ namespace :api do
 end
 get '/phase7/ai', to: 'ai#recommend'
 resources :audit_logs, only: [:index]
+  get '/inventory', to: 'dashboard#inventory', as: 'inventory'
+  root 'dashboard#index'
