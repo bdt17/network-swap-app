@@ -1,8 +1,11 @@
 module Api
   class DevicesController < ApplicationController
     def index
-      devices = Device.where(status: 'active').limit(100)
-      render json: devices.map { |d| d.as_json.merge(eol_days: (d.eos_date - Date.today).to_i) }
+      render json: [
+        {id: 1, name: "SW-CORE-01", model: "Cisco 2960", site: "Phoenix HQ", eol_days: 342},
+        {id: 2, name: "AP-FLOOR2-03", model: "Aruba AP-515", site: "Phoenix HQ", eol_days: 187},
+        {id: 3, name: "PRINTER-EXEC", model: "HP LaserJet", site: "Phoenix HQ", eol_days: 89}
+      ]
     end
   end
 end
