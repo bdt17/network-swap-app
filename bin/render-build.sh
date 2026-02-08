@@ -2,7 +2,7 @@
 set -e
 
 bundle lock --add-platform x86_64-linux
-bundle install --without development test
+bundle config set without 'development test'
+bundle install
 bundle exec rails db:migrate
-rails assets:clobber
-echo "✅ Build complete"
+echo "✅ Build complete - Thomas IT Network Swap"
