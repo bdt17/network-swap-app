@@ -1,13 +1,57 @@
-<h1>Thomas IT Network Swap Dashboard</h1>
-<div class="grid grid-cols-2 gap-4">
-  <div>Devices: <%= @devices.count %></div>
-  <div>Sites: <%= @sites.count %></div>
-</div>
-<% if @devices.any? %>
-  <h2>Active Inventory</h2>
-  <ul>
-    <% @devices.each do |device| %>
-      <li><%= device.name %> @ <%= device.site.name if device.site %></li>
-    <% end %>
-  </ul>
-<% end %>
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Thomas IT Network Swap</title>
+</head>
+<body class="bg-gray-50 p-8">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Network Swap Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-gray-900">Devices</h2>
+        <p class="text-4xl font-bold text-blue-600"><%= @devices.count %></p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-gray-900">Sites</h2>
+        <p class="text-4xl font-bold text-green-600"><%= @sites.count %></p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-gray-900">Open Swaps</h2>
+        <p class="text-4xl font-bold text-orange-600">12</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 bg-gray-50 border-b">
+        <h3 class="text-lg font-medium text-gray-900">Recent Inventory</h3>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Device</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Site</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @devices.limit(5).each do |device| %>
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4"><%= device.name %></td>
+              <td class="px-6 py-4"><%= device.site&.name || "N/A" %></td>
+              <td class="px-6 py-4">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= device.active? ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                  <%= device.active? ? 'Active' : 'EOL' %>
+                </span>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -31,6 +31,4 @@ resources :audit_logs, only: [:index]
   root 'dashboard#index'
 
 Rails.application.routes.draw do
-  root 'dashboard#index'
-  get '/inventory', to: 'dashboard#inventory', as: 'inventory'
 end
