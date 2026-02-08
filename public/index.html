@@ -48,3 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.swaps').textContent = mockData.swaps;
 });
 </script>
+<!-- Add before </body> -->
+<script>
+const data = {
+  devices: 247, sites: 14, swaps: 23,
+  criticalEOL: 12, avgEOLDays: 342
+};
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.metric').forEach((el, i) => {
+    el.textContent = Object.values(data)[i];
+  });
+});
+</script>
