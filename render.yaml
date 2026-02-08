@@ -1,10 +1,5 @@
 services:
   - type: web
     name: network-swap-app
-    env: ruby
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "echo 'Serving static files from public/' && sleep infinity"
-    envVars:
-      - key: RACK_ENV
-        value: production
-    autoDeploy: false
+    env: static
+    buildCommand: echo "Thomas IT MVP LIVE"

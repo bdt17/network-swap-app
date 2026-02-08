@@ -1,0 +1,563 @@
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206071549)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206071757)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "name" character varying, "mac_address" character varying, "site_id" bigint NOT NULL, "vendor" character varying, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (41.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "network_swap_app_development" /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (24.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "network_swap_app_test" /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (151.6ms)[0m  [1m[35mCREATE DATABASE "network_swap_app_development" ENCODING = 'unicode' /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (48.1ms)[0m  [1m[35mCREATE DATABASE "network_swap_app_test" ENCODING = 'unicode' /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" SCHEMA pg_catalog /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "audit_logs" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" bigserial primary key, "auditable_id" bigint, "auditable_type" character varying, "created_at" timestamp(6) NOT NULL, "event" character varying NOT NULL, "payload" jsonb DEFAULT '{}', "updated_at" timestamp(6) NOT NULL, "user_id" bigint) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_auditable" ON "audit_logs" ("auditable_type", "auditable_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_auditable_type_and_auditable_id" ON "audit_logs" ("auditable_type", "auditable_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_user_id" ON "audit_logs" ("user_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "devices" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "mac_address" character varying, "model" character varying, "site_id" bigint NOT NULL, "status" character varying, "updated_at" timestamp(6) NOT NULL, "warranty_expires" date) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_on_mac_address" ON "devices" ("mac_address") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "devices_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "devices_tables" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "mac_address" character varying, "model" character varying, "site_id" integer, "status" character varying, "updated_at" timestamp(6) NOT NULL, "warranty_expires" date) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_tables_on_mac_address" ON "devices_tables" ("mac_address") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sites" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "sites" ("id" bigserial primary key, "address" text, "created_at" timestamp(6) NOT NULL, "name" character varying, "timezone" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sites_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "sites_tables" ("id" bigserial primary key, "address" text, "created_at" timestamp(6) NOT NULL, "name" character varying, "timezone" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "swap_tickets" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "device_id" bigint NOT NULL, "notes" text, "scheduled_for" date, "site_id" bigint NOT NULL, "status" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "swap_tickets_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "swap_tickets_tables" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "device_id" integer, "notes" text, "scheduled_for" date, "site_id" integer, "status" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp(6), "reset_password_sent_at" timestamp(6), "reset_password_token" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "audit_logs" ADD CONSTRAINT "fk_rails_1f26bc34ae"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "devices" ADD CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD CONSTRAINT "fk_rails_c3c7535630"
+FOREIGN KEY ("device_id")
+  REFERENCES "devices" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260201184942) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-06 07:18:31.173665', '2026-02-06 07:18:31.173668') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '7ca04c1ab38989fbe4a127a7b565c68b08f1f8f4', '2026-02-06 07:18:31.177150', '2026-02-06 07:18:31.177152') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206071757)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "name" character varying, "mac_address" character varying, "site_id" bigint NOT NULL, "vendor" character varying, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (50.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "network_swap_app_development" /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (25.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "network_swap_app_test" /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (53.0ms)[0m  [1m[35mCREATE DATABASE "network_swap_app_development" ENCODING = 'unicode' /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35m (44.3ms)[0m  [1m[35mCREATE DATABASE "network_swap_app_test" ENCODING = 'unicode' /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" SCHEMA pg_catalog /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "audit_logs" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" bigserial primary key, "auditable_id" bigint, "auditable_type" character varying, "created_at" timestamp(6) NOT NULL, "event" character varying NOT NULL, "payload" jsonb DEFAULT '{}', "updated_at" timestamp(6) NOT NULL, "user_id" bigint) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_auditable" ON "audit_logs" ("auditable_type", "auditable_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_auditable_type_and_auditable_id" ON "audit_logs" ("auditable_type", "auditable_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_user_id" ON "audit_logs" ("user_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "devices" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "mac_address" character varying, "model" character varying, "site_id" bigint NOT NULL, "status" character varying, "updated_at" timestamp(6) NOT NULL, "warranty_expires" date) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_on_mac_address" ON "devices" ("mac_address") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "devices_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "devices_tables" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "mac_address" character varying, "model" character varying, "site_id" integer, "status" character varying, "updated_at" timestamp(6) NOT NULL, "warranty_expires" date) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_tables_on_mac_address" ON "devices_tables" ("mac_address") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sites" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "sites" ("id" bigserial primary key, "address" text, "created_at" timestamp(6) NOT NULL, "name" character varying, "timezone" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sites_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "sites_tables" ("id" bigserial primary key, "address" text, "created_at" timestamp(6) NOT NULL, "name" character varying, "timezone" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "swap_tickets" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "device_id" bigint NOT NULL, "notes" text, "scheduled_for" date, "site_id" bigint NOT NULL, "status" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "swap_tickets_tables" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "swap_tickets_tables" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "device_id" integer, "notes" text, "scheduled_for" date, "site_id" integer, "status" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp(6), "reset_password_sent_at" timestamp(6), "reset_password_token" character varying, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "audit_logs" ADD CONSTRAINT "fk_rails_1f26bc34ae"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "devices" ADD CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD CONSTRAINT "fk_rails_c3c7535630"
+FOREIGN KEY ("device_id")
+  REFERENCES "devices" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+ /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260201184942) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-06 07:21:58.144968', '2026-02-06 07:21:58.144972') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '7ca04c1ab38989fbe4a127a7b565c68b08f1f8f4', '2026-02-06 07:21:58.149529', '2026-02-06 07:21:58.149533') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206071757)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "name" character varying, "mac_address" character varying, "site_id" bigint NOT NULL, "vendor" character varying, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206071757)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "name" character varying, "mac_address" character varying, "site_id" bigint NOT NULL, "vendor" character varying, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-06 07:24:43.812442', '2026-02-06 07:24:43.812446') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+Migrating to CreateSwapTickets (20260206071800)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" bigserial primary key, "device_id" bigint NOT NULL, "site_id" bigint NOT NULL, "scheduled_at" timestamp(6), "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3c7535630"
+FOREIGN KEY ("device_id")
+  REFERENCES "devices" ("id")
+, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-06 07:26:29.873198', '2026-02-06 07:26:29.873201') RETURNING "key" /*application='NetworkSwapApp'*/[0m
+Migrating to CreateSites (20260206072424)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "sites" ("id" bigserial primary key, "name" character varying, "location" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260206072424') RETURNING "version" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+Migrating to CreateDevices (20260206072425)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "name" character varying, "type" integer, "mac_address" character varying, "site_id" bigint NOT NULL, "vendor" character varying, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260206072425') RETURNING "version" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+Migrating to CreateSwapTickets (20260206072618)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" bigserial primary key, "device_id" bigint NOT NULL, "site_id" bigint NOT NULL, "scheduled_at" timestamp(6), "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3c7535630"
+FOREIGN KEY ("device_id")
+  REFERENCES "devices" ("id")
+, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+) /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id") /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id") /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260206072618') RETURNING "version" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 1', 'AZ DC 1', '2026-02-06 07:26:45.323393', '2026-02-06 07:26:45.323393') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (6.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 2', 'AZ DC 2', '2026-02-06 07:26:45.328880', '2026-02-06 07:26:45.328880') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 3', 'AZ DC 3', '2026-02-06 07:26:45.337229', '2026-02-06 07:26:45.337229') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 4', 'AZ DC 4', '2026-02-06 07:26:45.341093', '2026-02-06 07:26:45.341093') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 5', 'AZ DC 5', '2026-02-06 07:26:45.344335', '2026-02-06 07:26:45.344335') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 6', 'AZ DC 6', '2026-02-06 07:26:45.347691', '2026-02-06 07:26:45.347691') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (3.8ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 7', 'AZ DC 7', '2026-02-06 07:26:45.350722', '2026-02-06 07:26:45.350722') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 8', 'AZ DC 8', '2026-02-06 07:26:45.393813', '2026-02-06 07:26:45.393813') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.3ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 9', 'AZ DC 9', '2026-02-06 07:26:45.397879', '2026-02-06 07:26:45.397879') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.6ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 10', 'AZ DC 10', '2026-02-06 07:26:45.401275', '2026-02-06 07:26:45.401275') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 11', 'AZ DC 11', '2026-02-06 07:26:45.404874', '2026-02-06 07:26:45.404874') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 12', 'AZ DC 12', '2026-02-06 07:26:45.408173', '2026-02-06 07:26:45.408173') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 13', 'AZ DC 13', '2026-02-06 07:26:45.411644', '2026-02-06 07:26:45.411644') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 14', 'AZ DC 14', '2026-02-06 07:26:45.415087', '2026-02-06 07:26:45.415087') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 15', 'AZ DC 15', '2026-02-06 07:26:45.418516', '2026-02-06 07:26:45.418516') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 16', 'AZ DC 16', '2026-02-06 07:26:45.421505', '2026-02-06 07:26:45.421505') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 17', 'AZ DC 17', '2026-02-06 07:26:45.424581', '2026-02-06 07:26:45.424581') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 18', 'AZ DC 18', '2026-02-06 07:26:45.427606', '2026-02-06 07:26:45.427606') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 19', 'AZ DC 19', '2026-02-06 07:26:45.430713', '2026-02-06 07:26:45.430713') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 20', 'AZ DC 20', '2026-02-06 07:26:45.433760', '2026-02-06 07:26:45.433760') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 21', 'AZ DC 21', '2026-02-06 07:26:45.436696', '2026-02-06 07:26:45.436696') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 22', 'AZ DC 22', '2026-02-06 07:26:45.439629', '2026-02-06 07:26:45.439629') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 23', 'AZ DC 23', '2026-02-06 07:26:45.442530', '2026-02-06 07:26:45.442530') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 24', 'AZ DC 24', '2026-02-06 07:26:45.445423', '2026-02-06 07:26:45.445423') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 25', 'AZ DC 25', '2026-02-06 07:26:45.449827', '2026-02-06 07:26:45.449827') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.8ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 26', 'AZ DC 26', '2026-02-06 07:26:45.452915', '2026-02-06 07:26:45.452915') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 27', 'AZ DC 27', '2026-02-06 07:26:45.456632', '2026-02-06 07:26:45.456632') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 28', 'AZ DC 28', '2026-02-06 07:26:45.460265', '2026-02-06 07:26:45.460265') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 29', 'AZ DC 29', '2026-02-06 07:26:45.463192', '2026-02-06 07:26:45.463192') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 30', 'AZ DC 30', '2026-02-06 07:26:45.466744', '2026-02-06 07:26:45.466744') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 31', 'AZ DC 31', '2026-02-06 07:26:45.469927', '2026-02-06 07:26:45.469927') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 32', 'AZ DC 32', '2026-02-06 07:26:45.472826', '2026-02-06 07:26:45.472826') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 33', 'AZ DC 33', '2026-02-06 07:26:45.476059', '2026-02-06 07:26:45.476059') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.3ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 34', 'AZ DC 34', '2026-02-06 07:26:45.479207', '2026-02-06 07:26:45.479207') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 35', 'AZ DC 35', '2026-02-06 07:26:45.482474', '2026-02-06 07:26:45.482474') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 36', 'AZ DC 36', '2026-02-06 07:26:45.485687', '2026-02-06 07:26:45.485687') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 37', 'AZ DC 37', '2026-02-06 07:26:45.488455', '2026-02-06 07:26:45.488455') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 38', 'AZ DC 38', '2026-02-06 07:26:45.491487', '2026-02-06 07:26:45.491487') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 39', 'AZ DC 39', '2026-02-06 07:26:45.494243', '2026-02-06 07:26:45.494243') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 40', 'AZ DC 40', '2026-02-06 07:26:45.496995', '2026-02-06 07:26:45.496995') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 41', 'AZ DC 41', '2026-02-06 07:26:45.499830', '2026-02-06 07:26:45.499830') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (2.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 42', 'AZ DC 42', '2026-02-06 07:26:45.502701', '2026-02-06 07:26:45.502701') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 43', 'AZ DC 43', '2026-02-06 07:26:45.507194', '2026-02-06 07:26:45.507194') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 44', 'AZ DC 44', '2026-02-06 07:26:45.510931', '2026-02-06 07:26:45.510931') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (2.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 45', 'AZ DC 45', '2026-02-06 07:26:45.514847', '2026-02-06 07:26:45.514847') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 46', 'AZ DC 46', '2026-02-06 07:26:45.519828', '2026-02-06 07:26:45.519828') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 47', 'AZ DC 47', '2026-02-06 07:26:45.523814', '2026-02-06 07:26:45.523814') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.4ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 48', 'AZ DC 48', '2026-02-06 07:26:45.527271', '2026-02-06 07:26:45.527271') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 49', 'AZ DC 49', '2026-02-06 07:26:45.530776', '2026-02-06 07:26:45.530776') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 50', 'AZ DC 50', '2026-02-06 07:26:45.533922', '2026-02-06 07:26:45.533922') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Load (0.2ms)[0m  [1m[34mSELECT "sites".* FROM "sites" /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='NetworkSwapApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2321489811750123945) /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='NetworkSwapApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO "$user", public /*application='NetworkSwapApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.3ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 1', 'AZ DC 1', '2026-02-06 07:28:01.618038', '2026-02-06 07:28:01.618038') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (6.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 2', 'AZ DC 2', '2026-02-06 07:28:01.623048', '2026-02-06 07:28:01.623048') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 3', 'AZ DC 3', '2026-02-06 07:28:01.631390', '2026-02-06 07:28:01.631390') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 4', 'AZ DC 4', '2026-02-06 07:28:01.635487', '2026-02-06 07:28:01.635487') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.3ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 5', 'AZ DC 5', '2026-02-06 07:28:01.639028', '2026-02-06 07:28:01.639028') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 6', 'AZ DC 6', '2026-02-06 07:28:01.642514', '2026-02-06 07:28:01.642514') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (8.6ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 7', 'AZ DC 7', '2026-02-06 07:28:01.645551', '2026-02-06 07:28:01.645551') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 8', 'AZ DC 8', '2026-02-06 07:28:01.692502', '2026-02-06 07:28:01.692502') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 9', 'AZ DC 9', '2026-02-06 07:28:01.696748', '2026-02-06 07:28:01.696748') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 10', 'AZ DC 10', '2026-02-06 07:28:01.700283', '2026-02-06 07:28:01.700283') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 11', 'AZ DC 11', '2026-02-06 07:28:01.704326', '2026-02-06 07:28:01.704326') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 12', 'AZ DC 12', '2026-02-06 07:28:01.707733', '2026-02-06 07:28:01.707733') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.6ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 13', 'AZ DC 13', '2026-02-06 07:28:01.711255', '2026-02-06 07:28:01.711255') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.5ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 14', 'AZ DC 14', '2026-02-06 07:28:01.715595', '2026-02-06 07:28:01.715595') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 15', 'AZ DC 15', '2026-02-06 07:28:01.719808', '2026-02-06 07:28:01.719808') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 16', 'AZ DC 16', '2026-02-06 07:28:01.722868', '2026-02-06 07:28:01.722868') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 17', 'AZ DC 17', '2026-02-06 07:28:01.725872', '2026-02-06 07:28:01.725872') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 18', 'AZ DC 18', '2026-02-06 07:28:01.729016', '2026-02-06 07:28:01.729016') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 19', 'AZ DC 19', '2026-02-06 07:28:01.732063', '2026-02-06 07:28:01.732063') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 20', 'AZ DC 20', '2026-02-06 07:28:01.735160', '2026-02-06 07:28:01.735160') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 21', 'AZ DC 21', '2026-02-06 07:28:01.738226', '2026-02-06 07:28:01.738226') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 22', 'AZ DC 22', '2026-02-06 07:28:01.741188', '2026-02-06 07:28:01.741188') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 23', 'AZ DC 23', '2026-02-06 07:28:01.744135', '2026-02-06 07:28:01.744135') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 24', 'AZ DC 24', '2026-02-06 07:28:01.747103', '2026-02-06 07:28:01.747103') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 25', 'AZ DC 25', '2026-02-06 07:28:01.751272', '2026-02-06 07:28:01.751272') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.7ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 26', 'AZ DC 26', '2026-02-06 07:28:01.754174', '2026-02-06 07:28:01.754174') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 27', 'AZ DC 27', '2026-02-06 07:28:01.757844', '2026-02-06 07:28:01.757844') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 28', 'AZ DC 28', '2026-02-06 07:28:01.761340', '2026-02-06 07:28:01.761340') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 29', 'AZ DC 29', '2026-02-06 07:28:01.764370', '2026-02-06 07:28:01.764370') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 30', 'AZ DC 30', '2026-02-06 07:28:01.767822', '2026-02-06 07:28:01.767822') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 31', 'AZ DC 31', '2026-02-06 07:28:01.770864', '2026-02-06 07:28:01.770864') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.3ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 32', 'AZ DC 32', '2026-02-06 07:28:01.773756', '2026-02-06 07:28:01.773756') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 33', 'AZ DC 33', '2026-02-06 07:28:01.777066', '2026-02-06 07:28:01.777066') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (0.9ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 34', 'AZ DC 34', '2026-02-06 07:28:01.780291', '2026-02-06 07:28:01.780291') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.4ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 35', 'AZ DC 35', '2026-02-06 07:28:01.783026', '2026-02-06 07:28:01.783026') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 36', 'AZ DC 36', '2026-02-06 07:28:01.786466', '2026-02-06 07:28:01.786466') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 37', 'AZ DC 37', '2026-02-06 07:28:01.789420', '2026-02-06 07:28:01.789420') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 38', 'AZ DC 38', '2026-02-06 07:28:01.792644', '2026-02-06 07:28:01.792644') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 39', 'AZ DC 39', '2026-02-06 07:28:01.795429', '2026-02-06 07:28:01.795429') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 40', 'AZ DC 40', '2026-02-06 07:28:01.798281', '2026-02-06 07:28:01.798281') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 41', 'AZ DC 41', '2026-02-06 07:28:01.801110', '2026-02-06 07:28:01.801110') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (2.4ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 42', 'AZ DC 42', '2026-02-06 07:28:01.804095', '2026-02-06 07:28:01.804095') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 43', 'AZ DC 43', '2026-02-06 07:28:01.808603', '2026-02-06 07:28:01.808603') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 44', 'AZ DC 44', '2026-02-06 07:28:01.812441', '2026-02-06 07:28:01.812441') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.8ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 45', 'AZ DC 45', '2026-02-06 07:28:01.815265', '2026-02-06 07:28:01.815265') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 46', 'AZ DC 46', '2026-02-06 07:28:01.819163', '2026-02-06 07:28:01.819163') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 47', 'AZ DC 47', '2026-02-06 07:28:01.822865', '2026-02-06 07:28:01.822865') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 48', 'AZ DC 48', '2026-02-06 07:28:01.825829', '2026-02-06 07:28:01.825829') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.1ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 49', 'AZ DC 49', '2026-02-06 07:28:01.829170', '2026-02-06 07:28:01.829170') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 50', 'AZ DC 50', '2026-02-06 07:28:01.832879', '2026-02-06 07:28:01.832879') RETURNING "id" /*application='NetworkSwapApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
+  [1m[36mSite Load (0.2ms)[0m  [1m[34mSELECT "sites".* FROM "sites" /*application='NetworkSwapApp'*/[0m
