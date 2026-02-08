@@ -19,3 +19,5 @@ Rails.application.routes.draw do
     resources :drones, only: [:index]
   end
 end
+  get 'favicon.ico', to: 'static#favicon'
+  get 'favicon.ico', to: proc { [204, {}, []] }
