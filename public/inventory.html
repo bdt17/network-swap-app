@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Network Inventory - Thomas IT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-5xl font-bold text-gray-900 mb-12 text-center">Network Inventory</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div class="bg-white p-8 rounded-2xl shadow-xl">
+        <div class="text-4xl font-bold text-blue-600">189</div>
+        <div class="text-gray-600 mt-2">Active Devices</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-xl">
+        <div class="text-4xl font-bold text-red-600">58</div>
+        <div class="text-gray-600 mt-2">EOL Devices</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-xl">
+        <div class="text-4xl font-bold text-green-600">14</div>
+        <div class="text-gray-600 mt-2">Sites</div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="bg-gradient-to-r from-gray-800 to-gray-900 px-8 py-6 text-white">
+        <h2 class="text-2xl font-bold">Complete Inventory</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">Device</th>
+              <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">Site</th>
+              <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">Type</th>
+              <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 font-mono">SW-DIST-01</td>
+              <td class="px-6 py-4">Phoenix DC</td>
+              <td class="px-6 py-4">Cisco Catalyst</td>
+              <td><span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
