@@ -3,3 +3,5 @@ Rails.application.routes.draw do
     get "/status", to: "status#index"
   end
 end
+
+  resources :devices, only: [:index], controller: 'api/devices'
