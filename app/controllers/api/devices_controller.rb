@@ -1,5 +1,5 @@
 module Api
-  class DevicesController < ApplicationController
+  class DevicesController < Api::Api::ApplicationController
     def index
       devices = [
         {id: 1, name: "SW-CORE-01", model: "Cisco Catalyst 2960", site: "Phoenix HQ", eos_days: 342, status: "active"},

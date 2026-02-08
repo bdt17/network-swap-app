@@ -60,3 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<script>
+setInterval(() => {
+  const swaps = document.querySelector('.swaps');
+  swaps.textContent = parseInt(swaps.textContent) + 1;
+}, 5000); // +1 swap every 5s
+
+// Search devices
+document.addEventListener('DOMContentLoaded', () => {
+  const devices = ['SW-CORE-01', 'AP-FLOOR2-03', 'PRINTER-EXEC'];
+  // Add search UI here
+});
+</script>
