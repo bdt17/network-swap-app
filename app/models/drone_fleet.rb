@@ -1,0 +1,2 @@
+class DroneFleet < ApplicationRecord
+end

@@ -561,3 +561,34 @@ FOREIGN KEY ("site_id")
   [1m[36mSite Create (1.0ms)[0m  [1m[32mINSERT INTO "sites" ("name", "location", "created_at", "updated_at") VALUES ('Phoenix Rack 50', 'AZ DC 50', '2026-02-06 07:28:01.832879', '2026-02-06 07:28:01.832879') RETURNING "id" /*application='NetworkSwapApp'*/[0m
   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='NetworkSwapApp'*/[0m
   [1m[36mSite Load (0.2ms)[0m  [1m[34mSELECT "sites".* FROM "sites" /*application='NetworkSwapApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-08 06:19:04.531388', '2026-02-08 06:19:04.531391') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/favicon.ico" for ::1 at 2026-02-07 23:21:58 -0700
+  
+NoMethodError (undefined method `resources' for main:Object):
+  
+config/routes.rb:11:in `<top (required)>'
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-07 23:22:00 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-02-07 23:23:05 -0700
+  
+NoMethodError (undefined method `devise_for' for #<ActionDispatch::Routing::Mapper:0x0000761c47daca80 @set=#<Rails::Engine::LazyRouteSet:0x0000761c466d7800>, @draw_paths=[#<Pathname:/home/zero-hd/.rbenv/versions/3.2.3/lib/ruby/gems/3.2.0/gems/actionview-8.1.2/config/routes>, #<Pathname:/home/zero-hd/.rbenv/versions/3.2.3/lib/ruby/gems/3.2.0/gems/actioncable-8.1.2/config/routes>, #<Pathname:/home/zero-hd/network-swap-app/config/routes>, #<Pathname:/home/zero-hd/network-swap-app/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x0000761c4801bff0 @parent=#<ActionDispatch::Routing::Mapper::Scope:0x0000761c4662b938 @parent=nil, @hash={}, @scope_level=nil>, @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:11:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/favicon.ico" for ::1 at 2026-02-07 23:23:44 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
