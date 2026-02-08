@@ -2,5 +2,9 @@ services:
   - type: web
     name: network-swap-app
     env: ruby
-    buildCommand: bundle install
-    startCommand: bundle exec rails server -p $PORT -e production
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "echo 'Serving static files from public/' && sleep infinity"
+    envVars:
+      - key: RACK_ENV
+        value: production
+    autoDeploy: false
