@@ -23,3 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('🟢 Thomas IT Network Swap - Interactive LIVE');
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  setInterval(function() {
+    // Target your exact "23 Swaps" element
+    var swapsEl = document.querySelector('div');
+    if (swapsEl && swapsEl.innerHTML.includes('23')) {
+      var num = parseInt(swapsEl.innerHTML.match(/\d+/)[0]) || 23;
+      swapsEl.innerHTML = swapsEl.innerHTML.replace(/\d+/, num + 1);
+    }
+  }, 2000);
+  
+  console.log('🟢 Live counter started');
+});
+</script>
+<script>
+document.querySelectorAll('div').forEach(el => {
+  if (el.innerHTML.includes('247')) {
+    el.style.cursor = 'pointer';
+    el.onclick = () => alert('247 Devices:\n• SW-CORE-01 (Cisco 2960)\n• AP-FLOOR2-03 (Aruba AP-515)\n• PRINTER-EXEC (HP LaserJet)');
+  }
+});
+</script>
