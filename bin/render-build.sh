@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-echo "✅ Thomas IT Network Swap - Phase 7 API Ready"
+set -e
+bundle check || bundle install --without development test
+bundle exec rails assets:precompile
+bundle exec rails db:migrate
+echo "✅ Phase 7 LIVE: $(bundle exec rails -v)"
