@@ -31,3 +31,20 @@ Thomas IT Network Swap
 </div>
 </body>
 </html>
+<script>
+const mockData = {
+  devices: 247,
+  sites: 14,
+  swaps: 23,
+  recent_eol: [
+    {name: "SW-CORE-01", days: 89, model: "Cisco 2960"},
+    {name: "AP-FLOOR2-03", days: 45, model: "Aruba AP-515"}
+  ]
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.devices').textContent = mockData.devices;
+  document.querySelector('.sites').textContent = mockData.sites;
+  document.querySelector('.swaps').textContent = mockData.swaps;
+});
+</script>
