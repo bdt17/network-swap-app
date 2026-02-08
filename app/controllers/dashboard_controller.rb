@@ -7,6 +7,5 @@ class DashboardController < ApplicationController
   def inventory
     @devices = Device.where(active: true)
     @sites = Site.all
-    render 'index'
   end
 end

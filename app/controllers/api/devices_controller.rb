@@ -1,5 +1,5 @@
 class Api::DevicesController < ApplicationController
   def index
-    render json: Device.all.as_json
+    render json: Device.all
   end
 end
