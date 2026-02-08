@@ -1,0 +1,13 @@
+<h1>Thomas IT Network Swap Dashboard</h1>
+<div class="grid grid-cols-2 gap-4">
+  <div>Devices: <%= @devices.count %></div>
+  <div>Sites: <%= @sites.count %></div>
+</div>
+<% if @devices.any? %>
+  <h2>Active Inventory</h2>
+  <ul>
+    <% @devices.each do |device| %>
+      <li><%= device.name %> @ <%= device.site.name if device.site %></li>
+    <% end %>
+  </ul>
+<% end %>

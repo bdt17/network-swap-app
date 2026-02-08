@@ -41,7 +41,7 @@ test_page_speed() {
 # RUN TESTS
 test_page_speed "$APP_URL/"
 test_ui_endpoint "Dashboard" "$APP_URL/"
-test_tailwind "https://network-swap-app.onrender.com/" "$APP_URL/"
+test_tailwind "https://network-swap-app.onrender.com/" "https://network-swap-app.onrender.com/" "$APP_URL/"
 test_ui_endpoint "Inventory" "$APP_URL/inventory"
 
 echo -e "\n🎉 UI Tests COMPLETE - Check $LOG" | tee -a "$LOG"
@@ -58,7 +58,7 @@ test_tailwind() {
 }
 
 echo "🎯 Testing UI: Inventory"
-curl -s -w "Status: %{http_code} | Size: %{size_bytes}B\n" \
+curl -s -w "Status: %{http_code} | Size: %{content_length}B\n" \
   -H "User-Agent: Mozilla/5.0" \
   "https://network-swap-app.onrender.com/inventory" > /tmp/inventory.html
 

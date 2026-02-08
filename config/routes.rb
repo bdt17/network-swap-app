@@ -29,3 +29,8 @@ get '/phase7/ai', to: 'ai#recommend'
 resources :audit_logs, only: [:index]
   get '/inventory', to: 'dashboard#inventory', as: 'inventory'
   root 'dashboard#index'
+
+Rails.application.routes.draw do
+  root 'dashboard#index'
+  get '/inventory', to: 'dashboard#inventory', as: 'inventory'
+end
