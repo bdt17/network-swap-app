@@ -14,3 +14,10 @@ module Api
     end
   end
 end
+
+  def critical_eol
+    render json: [
+      {id: 3, name: "PRINTER-EXEC", eos_days: 89, priority: "IMMEDIATE"},
+      {id: 7, name: "SW-ACCESS-02", eos_days: 45, priority: "URGENT"}
+    ]
+  end
