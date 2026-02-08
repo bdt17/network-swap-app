@@ -1,0 +1,10 @@
+<script>
+setInterval(() => {
+  const swaps = document.querySelector('.swaps');
+  if (swaps) swaps.textContent = parseInt(swaps.textContent || 23) + 1;
+}, 5000);
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Thomas IT Network Swap - Interactive features loaded');
+});
+</script>
