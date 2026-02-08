@@ -2,5 +2,4 @@
 set -e
 bundle config set without 'development test' --local
 bundle install
-bundle exec rails db:migrate
 echo "✅ Phase 7 LIVE: Rails $(bundle exec rails -v)"
