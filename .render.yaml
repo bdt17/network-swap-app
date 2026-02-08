@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: network-swap-app
+    env: static
+    branch: main
+    buildCommand: echo "Thomas IT MVP LIVE"
+    publishPath: ./public
