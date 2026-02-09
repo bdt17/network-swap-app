@@ -10,14 +10,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_08_061903) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_09_054725) do
+  create_table "audit_logs", force: :cascade do |t|
+    t.string "action", null: false
+    t.datetime "created_at", null: false
+    t.json "metadata", default: {}, null: false
+    t.integer "swap_ticket_id", null: false
+    t.datetime "timestamp", null: false
+    t.datetime "updated_at", null: false
+    t.index ["swap_ticket_id"], name: "index_audit_logs_on_swap_ticket_id"
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "hostname"
+    t.string "inventory_tag"
+    t.string "name"
+    t.string "rack_name"
+    t.integer "rack_unit"
+    t.integer "site_id", null: false
+    t.integer "status"
+    t.datetime "updated_at", null: false
+    t.string "vendor"
+    t.index ["site_id"], name: "index_devices_on_site_id"
+  end
+
   create_table "drone_fleets", force: :cascade do |t|
     t.boolean "available"
     t.integer "battery_status"
     t.datetime "created_at", null: false
+    t.text "description"
     t.string "firmware_version"
     t.string "location"
+    t.string "name"
     t.string "serial_number"
     t.datetime "updated_at", null: false
+    t.integer "vendor"
   end
+
+  create_table "drones", force: :cascade do |t|
+    t.integer "battery_level"
+    t.datetime "created_at", null: false
+    t.integer "drone_fleet_id", null: false
+    t.string "name"
+    t.boolean "online"
+    t.integer "site_id", null: false
+    t.integer "status"
+    t.datetime "updated_at", null: false
+    t.string "vendor_identifier"
+    t.index ["drone_fleet_id"], name: "index_drones_on_drone_fleet_id"
+    t.index ["site_id"], name: "index_drones_on_site_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.decimal "distance_km_from_hub"
+    t.string "name"
+    t.string "region"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "swap_tickets", force: :cascade do |t|
+    t.integer "assigned_tech_id", null: false
+    t.string "assigned_tech_type", null: false
+    t.datetime "created_at", null: false
+    t.integer "device_id", null: false
+    t.text "notes"
+    t.datetime "scheduled_at"
+    t.integer "site_id", null: false
+    t.integer "status"
+    t.datetime "updated_at", null: false
+    t.string "vendor"
+    t.index ["assigned_tech_type", "assigned_tech_id"], name: "index_swap_tickets_on_assigned_tech"
+    t.index ["device_id"], name: "index_swap_tickets_on_device_id"
+    t.index ["site_id"], name: "index_swap_tickets_on_site_id"
+  end
+
+  add_foreign_key "audit_logs", "swap_tickets"
+  add_foreign_key "devices", "sites"
+  add_foreign_key "drones", "drone_fleets"
+  add_foreign_key "drones", "sites"
+  add_foreign_key "swap_tickets", "devices"
+  add_foreign_key "swap_tickets", "sites"
 end
