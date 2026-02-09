@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tech Dashboard - Thomas IT Phase 8</title>
+  <meta name="viewport" content="width=device-width">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        'thomas-blue': '#0984C0', 'thomas-silver': '#AAA7B0',
+        'thomas-grey': '#565759', 'thomas-light': '#C0BEC6',
+        'thomas-hover': '#60BDD1'
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-thomas-blue to-thomas-hover min-h-screen text-white p-6">
+  <div class="max-w-4xl mx-auto">
+    <!-- Tech Header -->
+    <div class="text-center mb-12">
+      <div class="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
+        <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.916A5 5 0 0010 11z"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-black mb-2">📱 Tech Dashboard</h1>
+      <p class="text-thomas-light text-xl">Phoenix Site 21 • Phase 8 LIVE</p>
+    </div>
+
+    <!-- Live Stats -->
+    <div class="grid grid-cols-3 gap-6 mb-12">
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black text-yellow-300">0</div>
+        <div class="text-thomas-light text-lg mt-2">My Jobs</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black text-green-300">25</div>
+        <div class="text-thomas-light text-lg mt-2">Available</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black">3</div>
+        <div class="text-thomas-light text-lg mt-2">Completed</div>
+      </div>
+    </div>
+
+    <!-- Available Jobs -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-black mb-8 flex items-center gap-4 justify-center">🔄 Available Jobs</h2>
+      <div class="space-y-6">
+        <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300">
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex-1">
+              <h3 class="font-black text-2xl mb-2">#2001 Cisco Switch</h3>
+              <p class="text-thomas-light mb-2">Site 21 • Feb 10, 9AM</p>
+              <span class="px-6 py-3 bg-yellow-500/20 text-yellow-200 rounded-2xl font-bold text-lg">SCHEDULED</span>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-black">Cisco</div>
+            </div>
+          </div>
+          <button class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
+            🚀 CLAIM THIS JOB
+          </button>
+        </div>
+        <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300">
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex-1">
+              <h3 class="font-black text-2xl mb-2">#2002 Cisco AP</h3>
+              <p class="text-thomas-light mb-2">Site 21 • Feb 10, 11AM</p>
+              <span class="px-6 py-3 bg-yellow-500/20 text-yellow-200 rounded-2xl font-bold text-lg">SCHEDULED</span>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-black">Cisco</div>
+            </div>
+          </div>
+          <button class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
+            🚀 CLAIM THIS JOB
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <div class="text-center text-lg opacity-75 space-y-2">
+      <div>✅ Phase 8 LIVE - Mobile Ready</div>
+      <div>✅ Zero Trust Protected</div>
+      <div>✅ 25+ Jobs Available</div>
+    </div>
+  </div>
+</body>
+</html>
