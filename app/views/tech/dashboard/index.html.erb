@@ -1,0 +1,69 @@
+<div class="min-h-screen bg-gradient-to-br from-[#0984C0] to-[#60BDD1] text-white p-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.916A5 5 0 0010 11z"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-black mb-2">Tech Dashboard</h1>
+      <p class="text-[#C0BEC6]">Phoenix Site 21 • Live Operations</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black text-yellow-300"><%= @stats[:assigned] %></div>
+        <div class="text-[#C0BEC6] text-lg mt-2">My Tickets</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black text-green-300"><%= @stats[:completed] %></div>
+        <div class="text-[#C0BEC6] text-lg mt-2">Completed</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
+        <div class="text-4xl font-black"><%= @stats[:open] %></div>
+        <div class="text-[#C0BEC6] text-lg mt-2">Available</div>
+      </div>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-black mb-8 flex items-center gap-4">📱 Available Jobs</h2>
+      <% @open_tickets.each do |ticket| %>
+        <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 mb-6 border-2 border-white/30 hover:border-[#C0BEC6] hover:scale-[1.02] transition-all duration-300">
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex-1">
+              <h3 class="font-black text-2xl mb-2">#<%= ticket.id %> Cisco Switch</h3>
+              <p class="text-[#C0BEC6] mb-3">Site 21 • <%= ticket.scheduled_at.strftime('%b %d, %I:%M %p') %></p>
+              <span class="px-6 py-3 bg-yellow-500/20 text-yellow-200 rounded-2xl font-bold text-lg">SCHEDULED</span>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-black text-[#C0BEC6]">Cisco</div>
+            </div>
+          </div>
+          <%= button_to "🚀 CLAIM THIS JOB", tech_claim_ticket_path(ticket.id),
+              method: :post,
+              class: "w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 block",
+              data: { confirm: "Claim ticket ##{ticket.id}? You'll be assigned immediately." } %>
+        </div>
+      <% end %>
+    </section>
+
+    <% if @my_tickets.any? %>
+      <section>
+        <h2 class="text-3xl font-black mb-8 flex items-center gap-4">✅ My Active Jobs</h2>
+        <% @my_tickets.each do |ticket| %>
+          <div class="bg-emerald-500/20 border-2 border-emerald-400/50 rounded-3xl p-8 mb-6 backdrop-blur-xl">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-black text-2xl mb-2">#<%= ticket.id %> <%= ticket.tech_status.upcase %></h3>
+                <p class="text-[#C0BEC6] text-lg">Assigned: John Doe (Phoenix)</p>
+              </div>
+              <%= button_to "✅ COMPLETE JOB", tech_complete_ticket_path(ticket.id),
+                  method: :post,
+                  class: "bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-1 transition-all duration-300 ml-6 whitespace-nowrap" %>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>
