@@ -6,11 +6,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: {
-        'thomas-blue': '#0984C0', 'thomas-silver': '#AAA7B0',
-        'thomas-grey': '#565759', 'thomas-light': '#C0BEC6',
-        'thomas-hover': '#60BDD1'
-      }}}
+      theme: { 
+        extend: { 
+          colors: {
+            'thomas-blue': '#0984C0', 
+            'thomas-silver': '#AAA7B0',
+            'thomas-grey': '#565759', 
+            'thomas-light': '#C0BEC6',
+            'thomas-hover': '#60BDD1'
+          }
+        }
+      }
     }
   </script>
 </head>
@@ -19,15 +25,17 @@
     <h1 class="text-5xl font-black mb-6">🚀 Thomas IT Network Swap</h1>
     <p class="text-2xl mb-12 opacity-90">Phase 8 LIVE • Phoenix Site 21 • 500+ Devices</p>
     
+    <!-- CLEAN 2-COLUMN LAYOUT -->
     <div class="grid md:grid-cols-2 gap-12 mb-16">
-      <a href="/tech" class="bg-white/20 hover:bg-white/40 backdrop-blur-xl border-2 border-white/30 p-12 rounded-4xl text-2xl font-bold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-3">
-        📱 <br> Tech Dashboard <br> <span class="text-xl opacity-90 block mt-2">Claim & Complete Jobs</span>
+      <a href="/tech" class="bg-white/20 hover:bg-white/40 backdrop-blur-xl border-2 border-white/30 p-12 rounded-4xl text-2xl font-bold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-3 block p-4">
+        📱 Tech Dashboard<br><span class="text-xl opacity-90 block mt-2">Claim & Complete Jobs</span>
       </a>
       <div class="bg-white/20 backdrop-blur-xl border-2 border-white/30 p-12 rounded-4xl text-2xl font-bold">
-        📦 Bulk Swaps <br> <span class="text-xl opacity-90">Create 10 tickets instantly</span>
+        📦 Bulk Swaps<br><span class="text-xl opacity-90">Create 10 tickets instantly</span>
       </div>
     </div>
     
+    <!-- STATS GRID -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-2xl mb-12">
       <div>Devices: <span class="font-black text-3xl block">500+</span></div>
       <div>Sites: <span class="font-black text-3xl block">Phoenix 21</span></div>
@@ -35,10 +43,12 @@
       <div>Audits: <span class="font-black text-3xl block">42 logs</span></div>
     </div>
     
-    <div class="text-lg opacity-75 space-y-2">
+    <!-- STATUS LIST -->
+    <div class="text-lg opacity-75 space-y-2 text-left max-w-2xl mx-auto">
       <div>✅ Phases 4-8 LIVE</div>
       <div>✅ Zero Trust Security</div>
       <div>✅ Mobile Responsive</div>
+      <div>✅ Field Tech Ready</div>
     </div>
   </div>
 </body>
