@@ -1,124 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Thomas IT Network Swap - PHASE 4-14 LIVE 🚀</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* INLINE Tailwind - NO CDN warnings */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh; padding: 2rem; 
+  <title>Thomas IT Network Swap</title>
+  <meta name="viewport" content="width=device-width">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'thomas-blue': '#0984C0',
+            'thomas-silver': '#AAA7B0',
+            'thomas-grey': '#565759',
+            'thomas-light': '#C0BEC6', 
+            'thomas-hover': '#60BDD1'
+          }
+        }
+      }
     }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .metric-card { 
-      background: rgba(255,255,255,0.95); 
-      backdrop-filter: blur(10px); 
-      border-radius: 24px; 
-      padding: 2rem; 
-      margin: 1rem; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      transition: all 0.3s ease; 
-    }
-    .metric-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-    .metric-number { font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem; }
-    .metric-label { font-size: 1.2rem; color: #64748b; font-weight: 600; }
-    .live { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
-    h1 { font-size: clamp(2.5rem, 8vw, 5rem); background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 2rem; }
-    .status-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
-    .status-card { background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 24px; padding: 2.5rem; margin: 1rem; }
-    @media (max-width: 768px) { body { padding: 1rem; } .metric-number { font-size: 2.5rem; } }
-  </style>
+  </script>
 </head>
-<body>
-  <div class="container">
-    <!-- Header -->
-    <h1>Thomas IT Network Swap</h1>
-    
-    <!-- Live Metrics -->
-    <div class="grid">
-      <div class="metric-card">
-        <div class="metric-number text-blue-600" id="devices">503</div>
-        <div class="metric-label">Network Devices</div>
-        <div style="font-size: 0.9rem; color: #94a3b8;">Cisco • Arista • Juniper</div>
+<body class="bg-white antialiased">
+  <div class="max-w-7xl mx-auto p-8">
+    <header class="mb-12">
+      <div class="flex items-center gap-4 bg-gradient-to-r from-thomas-blue to-thomas-hover p-6 rounded-2xl text-white shadow-2xl">
+        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-4xl font-bold">Thomas IT Network Swap</h1>
+          <p class="opacity-90">Phase 5-6 • 500 Devices Live • Bulk Operations</p>
+        </div>
       </div>
-      <div class="metric-card">
-        <div class="metric-number text-emerald-600" id="sites">14</div>
-        <div class="metric-label">Enterprise Sites</div>
-        <div style="font-size: 0.9rem; color: #94a3b8;">Phoenix HQ + DCs</div>
+    </header>
+
+    <!-- Live Stats -->
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="bg-gradient-to-br from-thomas-blue/5 to-thomas-hover/5 border-2 border-thomas-blue/20 rounded-2xl p-8 text-center backdrop-blur-sm">
+        <div class="text-4xl font-black text-thomas-blue" id="devices-count">500</div>
+        <div class="text-thomas-grey font-medium mt-2">Devices</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-number text-orange-600 live" id="swaps">24</div>
-        <div class="metric-label">Swap Tickets</div>
-        <div style="font-size: 0.9rem; color: #94a3b8;">Live + Scheduled</div>
+      <div class="bg-gradient-to-br from-thomas-silver/10 border-2 border-thomas-silver/30 rounded-2xl p-8 text-center">
+        <div class="text-4xl font-black text-thomas-hover" id="sites-count">5</div>
+        <div class="text-thomas-grey font-medium mt-2">Sites</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-number text-purple-600" id="drones">3</div>
-        <div class="metric-label">Inspection Drones 🚁</div>
-        <div style="font-size: 0.9rem; color: #94a3b8;">DJI Enterprise Fleet</div>
+      <div class="bg-gradient-to-br from-thomas-grey/5 border-2 border-thomas-light/30 rounded-2xl p-8 text-center">
+        <div class="text-4xl font-black text-thomas-grey" id="tickets-count">1</div>
+        <div class="text-thomas-grey font-medium mt-2">Swap Tickets</div>
+      </div>
+      <div class="bg-gradient-to-r from-thomas-blue to-thomas-hover border-2 border-thomas-blue/50 rounded-2xl p-8 text-center text-white shadow-xl">
+        <div class="text-4xl font-black" id="audits-count">1</div>
+        <div class="font-medium">Audit Logs</div>
       </div>
     </div>
 
-    <!-- Status Cards -->
-    <div class="grid status-grid">
-      <div class="status-card">
-        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">🛫 Render Status</h3>
-        <div style="line-height: 1.8;">
-          <div><strong>Live URL:</strong> network-swap.onrender.com</div>
-          <div><strong>Phase:</strong> 4-14 Complete ✅</div>
-          <div><strong>Uptime:</strong> 99.9%</div>
+    <!-- Bulk Operations -->
+    <section class="bg-gradient-to-r from-thomas-blue via-thomas-hover to-thomas-blue p-8 rounded-3xl text-white mb-12 shadow-2xl">
+      <h2 class="text-3xl font-black mb-8 text-center">🚀 Bulk Operations</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <button id="bulk-swap" class="group bg-white/20 hover:bg-white/30 border-2 border-white/40 backdrop-blur-xl rounded-2xl px-8 py-6 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1">
+          <span class="text-2xl mb-2 block">📦</span>
+          <span>Create 10 Test Swaps</span>
+        </button>
+        <button id="alert-job" class="group bg-white/20 hover:bg-white/30 border-2 border-white/40 backdrop-blur-xl rounded-2xl px-8 py-6 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          <span class="text-2xl mb-2 block">🔔</span>
+          Test SwapAlertJob
+        </button>
+        <button id="refresh" class="group bg-white/20 hover:bg-white/30 border-2 border-white/40 backdrop-blur-xl rounded-2xl px-8 py-6 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          <span class="text-2xl mb-2 block">🔄</span>
+          Refresh Dashboard
+        </button>
+      </div>
+    </section>
+
+    <!-- Network Status Grid -->
+    <section>
+      <h2 class="text-3xl font-black text-thomas-blue mb-8">📊 Network Status</h2>
+      <div id="network-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic devices loaded here -->
+        <div class="group bg-white/80 hover:bg-white border-2 border-thomas-silver/30 hover:border-thomas-blue/50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-thomas-blue to-thomas-hover rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-black text-xl text-thomas-grey group-hover:text-thomas-blue mb-1 truncate">Cisco Switch #2001</h3>
+              <p class="text-thomas-silver text-lg mb-2">Site 21 • Phoenix AZ</p>
+              <span class="inline-flex bg-thomas-hover/20 text-thomas-hover px-4 py-2 rounded-full text-sm font-semibold border border-thomas-hover/50">🔄 Scheduled</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div><span class="text-thomas-light">Vendor:</span> Cisco</div>
+            <div><span class="text-thomas-light">Swap Date:</span> Feb 16</div>
+            <div><span class="text-thomas-light">Tech:</span> Assigned</div>
+            <div><span class="text-thomas-light">Status:</span> <span class="text-thomas-blue font-semibold">Active</span></div>
+          </div>
         </div>
       </div>
-      <div class="status-card" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
-        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">🚁 Phase 14: Drones</h3>
-        <div style="line-height: 1.8;">
-          <div><strong>Fleet:</strong> DJI Enterprise (3 units)</div>
-          <div><strong>Status:</strong> All Online ✅</div>
-          <div><strong>Next:</strong> Autonomous rack scans</div>
-        </div>
-      </div>
-      <div class="status-card" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">🔮 Phase 15+</h3>
-        <div style="line-height: 1.8; font-size: 1.1rem;">
-          <div>⏳ Time Travel Debugging</div>
-          <div>🔧 AR Glasses Overlay</div>
-          <div>🤖 AI Swap Recommender</div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 
-  <!-- PERFECTLY SAFE JavaScript - ZERO console errors -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Live swap counter (safe - checks elements exist)
-      const swapEl = document.getElementById('swaps');
-      if (swapEl) {
-        let count = 24;
-        setInterval(() => {
-          count++;
-          swapEl.textContent = count;
-          swapEl.style.transform = 'scale(1.1)';
-          setTimeout(() => swapEl.style.transform = 'scale(1)', 200);
-        }, 5000);
+    // Thomas IT Network Swap - Live Dashboard
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = {
+        bulk: document.getElementById('bulk-swap'),
+        alert: document.getElementById('alert-job'),
+        refresh: document.getElementById('refresh')
       }
-      
-      // Animate numbers on load
-      const numbers = document.querySelectorAll('.metric-number');
-      numbers.forEach(num => {
-        num.style.opacity = '0';
-        num.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-          num.style.transition = 'all 0.8s ease';
-          num.style.opacity = '1';
-          num.style.transform = 'translateY(0)';
-        }, 100);
-      });
-    });
+
+      // Bulk Swap (10 test swaps)
+      buttons.bulk?.addEventListener('click', async () => {
+        const btn = buttons.bulk
+        const original = btn.innerHTML
+        btn.innerHTML = '<span class="text-2xl mb-2 block">🚀</span><span>Creating 10 swaps...</span>'
+        btn.disabled = true
+
+        try {
+          const response = await fetch('/api/swaps/bulk_create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              swaps: Array.from({length: 10}, (_, i) => ({
+                device_id: 2001 + i,
+                site_id: 21,
+                status: 'scheduled',
+                scheduled_at: new Date(Date.now() + (i+1)*24*60*60*1000).toISOString(),
+                vendor: 'Cisco',
+                notes: `Bulk test swap #${i+1}`,
+                assigned_tech_id: 1,
+                assigned_tech_type: 'Tech'
+              }))
+            })
+          })
+          
+          if (response.ok) {
+            btn.innerHTML = '<span class="text-2xl mb-2 block">✅</span><span>10 swaps created!</span>'
+            setTimeout(() => location.reload(), 1500)
+          } else {
+            throw new Error('API needs controller')
+          }
+        } catch(e) {
+          btn.innerHTML = original + '<span class="text-xs block mt-2 text-yellow-300">API controller needed</span>'
+          console.log('Bulk swaps controller pending:', e)
+        } finally {
+          setTimeout(() => { btn.disabled = false; btn.innerHTML = original }, 3000)
+        }
+      })
+
+      // Refresh dashboard
+      buttons.refresh?.addEventListener('click', () => location.reload())
+
+      // Alert job test
+      buttons.alert?.addEventListener('click', () => {
+        fetch('/api/swaps/alert_test', { method: 'POST' })
+          .then(() => alert('🔔 SwapAlertJob queued!'))
+          .catch(() => alert('❌ Alert endpoint pending'))
+      })
+    })
   </script>
 </body>
 </html>

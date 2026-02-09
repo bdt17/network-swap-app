@@ -1,0 +1,11 @@
+:root {
+  --thomas-blue: #0984C0;
+  --thomas-silver: #AAA7B0; 
+  --thomas-grey: #565759;
+  --thomas-light: #C0BEC6;
+  --thomas-hover: #60BDD1;
+}
+* { color-scheme: light; }
+.bg-thomas-blue { background-color: var(--thomas-blue) !important; }
+.text-thomas-blue { color: var(--thomas-blue) !important; }
+.hover\\:thomas-hover:hover { background-color: var(--thomas-hover) !important; }
