@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_09_054725) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
   create_table "audit_logs", force: :cascade do |t|
     t.string "action", null: false
     t.datetime "created_at", null: false
@@ -80,11 +80,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_054725) do
     t.datetime "scheduled_at"
     t.integer "site_id", null: false
     t.integer "status"
+    t.integer "tech_id"
     t.datetime "updated_at", null: false
     t.string "vendor"
     t.index ["assigned_tech_type", "assigned_tech_id"], name: "index_swap_tickets_on_assigned_tech"
     t.index ["device_id"], name: "index_swap_tickets_on_device_id"
     t.index ["site_id"], name: "index_swap_tickets_on_site_id"
+  end
+
+  create_table "teches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "name"
+    t.string "phone"
+    t.integer "role"
+    t.integer "site_id"
+    t.string "status"
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "audit_logs", "swap_tickets"

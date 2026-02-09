@@ -15,3 +15,9 @@ Rails.application.routes.draw do
   post '/api/swaps/alert_test', to: 'api/swaps#alert_test'
   post '/api/swaps/bulk_create', to: 'api/swaps#bulk_create'
 end
+  get '/tech', to: 'tech/dashboard#index'
+  namespace :tech do
+    resources :dashboard, only: [:index]
+    post 'claim_ticket/:id', to: 'dashboard#claim_ticket', as: 'claim_ticket'
+    post 'complete_ticket/:id', to: 'dashboard#complete_ticket', as: 'complete_ticket'
+  end
