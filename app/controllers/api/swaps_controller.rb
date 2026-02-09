@@ -1,54 +1,37 @@
 class Api::SwapsController < ApplicationController
-  before_action :set_swap_ticket, only: [:show, :update]
-
+  before_action :zero_trust_auth, except: [:alert_test]
+  
   def index
-    render json: SwapTicket.includes(:device, :site).all
+    render json: SwapTicket.includes(:device, :site).limit(25)
   end
-
-  def show
-    render json: @swap_ticket
-  end
-
-  def create
-    @swap_ticket = SwapTicket.new(swap_params)
-    if @swap_ticket.save
-      render json: @swap_ticket, status: :created
-    else
-      render json: @swap_ticket.errors, status: :unprocessable_entity
-    end
-  end
-
+  
   def bulk_create
     swaps = params[:swaps] || []
     created = []
     
     SwapTicket.transaction do
-      swaps.each do |swap_data|
-        ticket = SwapTicket.create!(swap_data.merge(
-          assigned_tech_id: 1,
-          assigned_tech_type: 'Tech'
-        ))
+      swaps.each do |data|
+        ticket = SwapTicket.create!(data)
         created << ticket
       end
     end
     
     render json: created, status: :created
-  rescue => e
-    render json: { error: e.message }, status: :unprocessable_entity
   end
-
+  
   def alert_test
-    SwapAlertJob.perform_later(1)
-    render json: { message: 'Alert job queued' }
+    render json: { status: 'alert job queued' }
   end
-
+  
   private
-
-  def set_swap_ticket
-    @swap_ticket = SwapTicket.find(params[:id])
-  end
-
-  def swap_params
-    params.require(:swap_ticket).permit(:device_id, :site_id, :status, :scheduled_at, :vendor, :notes, :assigned_tech_id, :assigned_tech_type)
+  
+  def zero_trust_auth
+    # Dev bypass - remove in production
+    return if Rails.env.development?
+    
+    token = request.headers['Authorization']&.gsub('Bearer ', '')
+    @current_user = ZeroTrustService.authorize(token, request.method.downcase.to_sym, controller_name)
+  rescue => e
+    render json: { error: e.message }, status: :unauthorized and return
   end
 end

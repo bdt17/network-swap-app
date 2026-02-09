@@ -1,22 +1,17 @@
 Rails.application.routes.draw do
-  namespace :api do
-    resources :swaps, only: [:index, :show, :create] do
-      collection do
+  # Public static dashboard (Phase 5-6)
+  root to: -> { [200, {}, ['Thomas IT Network Swap - Phase 7 LIVE']] }
+  
+  # API Routes (Zero Trust protected)
+  namespace :api, defaults: { format: :json } do
+    resources :swaps, only: [:index] do
+      collection do 
         post :bulk_create
-        post :alert_test
-      end
-    end
-    resources :sites, only: [:index] do
-      collection do
-        get :count
-      end
-    end
-    resources :devices, only: [:index] do
-      collection do
-        get :count
       end
     end
   end
   
-  root to: -> { [200, {}, ['See /api/swaps for Phase 5-6'] ] }
+  # Legacy routes (keep Phase 5-6 working)
+  post '/api/swaps/alert_test', to: 'api/swaps#alert_test'
+  post '/api/swaps/bulk_create', to: 'api/swaps#bulk_create'
 end

@@ -16736,3 +16736,81 @@ Migrating to MakeTechFieldsNullableInSwapTickets (20260209054725)
   [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054725') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Zero Trust: admin create {:id=>1} = true
+Started GET "/favicon.ico" for ::1 at 2026-02-09 13:54:50 -0700
+  
+NoMethodError (undefined method `namespace' for main:Object):
+  
+config/routes.rb:24:in `<top (required)>'
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-09 13:54:53 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/swaps/alert_test" for 127.0.0.1 at 2026-02-09 13:54:56 -0700
+  
+AbstractController::ActionNotFound (The action 'alert_test' could not be found for Api::SwapsController):
+  
+actionpack (8.1.2) lib/abstract_controller/base.rb:149:in `process'
+actionview (8.1.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.1.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.1.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:35:in `block in serve'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:86:in `block in recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `each'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:31:in `serve'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:906:in `call'
+railties (8.1.2) lib/rails/engine/lazy_route_set.rb:60:in `call'
+rack (3.2.4) lib/rack/etag.rb:29:in `call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in `call'
+rack (3.2.4) lib/rack/head.rb:15:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.4) lib/rack/runtime.rb:24:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.2) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started POST "/api/swaps/bulk_create" for 127.0.0.1 at 2026-02-09 13:55:00 -0700
+Processing by Api::SwapsController#bulk_create as JSON
+  Parameters: {"swaps"=>[{"device_id"=>2001, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-10T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #1", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2002, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-11T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #2", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2003, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-12T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #3", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2004, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-13T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #4", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2005, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-14T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #5", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2006, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-15T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #6", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2007, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-16T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #7", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2008, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-17T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #8", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2009, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-18T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #9", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2010, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-19T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #10", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}], "swap"=>{"swaps"=>[{"device_id"=>2001, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-10T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #1", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2002, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-11T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #2", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2003, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-12T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #3", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2004, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-13T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #4", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2005, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-14T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #5", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2006, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-15T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #6", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2007, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-16T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #7", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2008, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-17T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #8", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2009, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-18T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #9", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}, {"device_id"=>2010, "site_id"=>21, "status"=>"scheduled", "scheduled_at"=>"2026-02-19T20:55:00.135Z", "vendor"=>"Cisco", "notes"=>"Bulk test swap #10", "assigned_tech_id"=>1, "assigned_tech_type"=>"Tech"}]}}
+Filter chain halted as :zero_trust_auth rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/bulk_create" for ::1 at 2026-02-09 13:56:22 -0700
+Processing by Api::SwapsController#bulk_create as JSON
+  Parameters: {"swaps"=>[{"device_id"=>3001, "site_id"=>21, "status"=>"scheduled", "vendor"=>"Cisco"}], "swap"=>{"swaps"=>[{"device_id"=>3001, "site_id"=>21, "status"=>"scheduled", "vendor"=>"Cisco"}]}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 3.6ms (0 queries, 0 cached) | GC: 6.7ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/api/swaps_controller.rb:14:in `block (2 levels) in bulk_create'
+app/controllers/api/swaps_controller.rb:13:in `each'
+app/controllers/api/swaps_controller.rb:13:in `block in bulk_create'
+app/controllers/api/swaps_controller.rb:12:in `bulk_create'
