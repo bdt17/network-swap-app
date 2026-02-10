@@ -1,0 +1,62 @@
+<div class="max-w-6xl mx-auto p-8 space-y-12 bg-gray-900 min-h-screen">
+  <div class="text-center">
+    <h1 class="text-6xl font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-4">
+      🚛 Dispatch Tower
+    </h1>
+    <p class="text-2xl text-gray-300">Live Network Swap Operations</p>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-12">
+    <!-- LIVE JOBS -->
+    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
+      <h2 class="text-4xl font-bold mb-8 text-cyan-400">📋 Live Jobs</h2>
+      
+      <% @jobs.each do |job| %>
+        <div class="p-6 rounded-2xl mb-6 <%= job[:tech] ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-l-4 border-green-400' : 'bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400' %>">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-3xl font-bold">#<%= job[:id] %></div>
+              <% if job[:site] %>
+                <div class="text-lg text-gray-300"><%= job[:site] %></div>
+              <% end %>
+            </div>
+            <% if job[:tech] %>
+              <div class="text-right">
+                <div class="text-xl font-semibold text-green-400"><%= job[:tech] %> → <%= job[:status] %></div>
+                <div class="w-28 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold mt-2 flex items-center justify-center">
+                  <%= job[:progress] %>% 
+                </div>
+              </div>
+            <% else %>
+              <span class="px-6 py-3 bg-green-500/20 text-green-400 rounded-full text-lg font-bold border-2 border-green-400/50">
+                Available
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- TECH STATUS -->
+    <div class="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+      <h2 class="text-4xl font-bold mb-8 text-emerald-400">👥 Tech Status</h2>
+      
+      <% @techs.each do |tech| %>
+        <div class="flex items-center justify-between p-8 rounded-3xl mb-6 <%= tech[:status] == 'Active' ? 'bg-gradient-to-r from-emerald-500/20 to-green-500/20 border border-emerald-400/30' : 'bg-gradient-to-r from-gray-500/20 to-slate-500/20 border border-gray-400/30' %>">
+          <div class="flex items-center space-x-6">
+            <div class="w-16 h-16 bg-gradient-to-br <%= tech[:status] == 'Active' ? 'from-emerald-500 to-green-500' : 'from-gray-500 to-slate-500' %> rounded-2xl flex items-center justify-center font-bold text-2xl text-white shadow-2xl">
+              <%= tech[:name].split(' ').map { |n| n[0] }.join %>
+            </div>
+            <div>
+              <div class="font-bold text-2xl"><%= tech[:name] %></div>
+              <div class="text-lg text-gray-300"><%= tech[:location] %></div>
+            </div>
+          </div>
+          <span class="text-3xl font-bold <%= tech[:status] == 'Active' ? 'text-emerald-400' : 'text-gray-400' %>">
+            <%= tech[:status] == 'Active' ? '✅ Active' : '⭕ Available' %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
