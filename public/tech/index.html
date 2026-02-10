@@ -6,95 +6,109 @@
   <title>Tech Dashboard - Thomas IT Phase 8</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .text-thomas-gold { color: #FCD34D; }
-    .text-thomas-light { color: #E2E8F0; }
+    :root {
+      --primary-blue: #0984C0;      /* Deep Ocean Blue */
+      --accent-silver: #AAA7B0;     /* Metallic Silver */
+      --mid-grey: #565759;          /* Davy's Grey */
+      --light-variant: #C0BEC6;     /* Silver Sand */
+      --lighter-blue: #60BDD1;      /* Sea Serpent */
+      --pure-white: #FFFFFF;
+    }
+    .thomas-primary { color: var(--primary-blue); }
+    .thomas-bg-primary { background-color: var(--primary-blue); }
+    .thomas-accent { color: var(--accent-silver); }
+    .thomas-grey { color: var(--mid-grey); }
+    .thomas-light { color: var(--light-variant); }
+    .thomas-hover { color: var(--lighter-blue); }
   </style>
 </head>
-<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen text-white">
+<body class="bg-gradient-to-br from-slate-900 via-blue-900/30 to-slate-900 min-h-screen">
   <div class="container mx-auto px-6 py-12">
     <!-- Header -->
     <div class="text-center mb-16">
-      <h1 class="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+      <h1 class="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--lighter-blue)] bg-clip-text text-transparent">
         🛠️ Tech Dashboard
       </h1>
-      <p class="text-thomas-light text-2xl mb-8">Phoenix Site 21 • Phase 8 LIVE</p>
+      <p class="text-2xl thomas-light mb-8">Phoenix Site 21 • Phase 8 LIVE</p>
       
-      <!-- Stats -->
+      <!-- Stats - BRANDED COLORS -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-        <div class="text-center p-6 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20">
-          <div class="text-4xl font-bold text-thomas-gold mb-2">500</div>
-          <div class="text-thomas-light">Devices</div>
+        <div class="text-center p-8 bg-[var(--primary-blue)]/10 backdrop-blur-xl rounded-3xl border-2 border-[var(--accent-silver)]/30 hover:border-[var(--primary-blue)]/60 transition-all duration-300">
+          <div class="text-5xl font-black thomas-primary mb-3">500</div>
+          <div class="thomas-grey text-lg font-semibold">Devices</div>
         </div>
-        <div class="text-center p-6 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20">
-          <div class="text-4xl font-bold text-thomas-gold mb-2">5</div>
-          <div class="text-thomas-light">Sites</div>
+        <div class="text-center p-8 bg-[var(--primary-blue)]/10 backdrop-blur-xl rounded-3xl border-2 border-[var(--accent-silver)]/30 hover:border-[var(--primary-blue)]/60">
+          <div class="text-5xl font-black thomas-primary mb-3">5</div>
+          <div class="thomas-grey text-lg font-semibold">Sites</div>
         </div>
-        <div class="text-center p-6 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20">
-          <div class="text-4xl font-bold text-thomas-gold mb-2">25</div>
-          <div class="text-thomas-light">Swap Tickets</div>
+        <div class="text-center p-8 bg-[var(--primary-blue)]/10 backdrop-blur-xl rounded-3xl border-2 border-[var(--accent-silver)]/30 hover:border-[var(--primary-blue)]/60">
+          <div class="text-5xl font-black thomas-primary mb-3">25</div>
+          <div class="thomas-grey text-lg font-semibold">Swap Tickets</div>
         </div>
-        <div class="text-center p-6 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20">
-          <div class="text-4xl font-bold text-thomas-gold mb-2">42</div>
-          <div class="text-thomas-light">Audit Logs</div>
+        <div class="text-center p-8 bg-[var(--primary-blue)]/10 backdrop-blur-xl rounded-3xl border-2 border-[var(--accent-silver)]/30 hover:border-[var(--primary-blue)]/60">
+          <div class="text-5xl font-black thomas-primary mb-3">42</div>
+          <div class="thomas-grey text-lg font-semibold">Audit Logs</div>
         </div>
       </div>
     </div>
 
-    <!-- Job Cards -->
+    <!-- Job Cards - BRANDED -->
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Job 1 -->
-        <div class="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-          <div class="flex items-start justify-between mb-6">
-            <h2 class="text-3xl font-black text-thomas-gold">#2001</h2>
-            <span class="px-4 py-2 bg-orange-500/80 rounded-2xl text-sm font-bold">SCHEDULED</span>
+        <!-- Job #2001 -->
+        <div class="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border-2 border-[var(--accent-silver)]/40 hover:border-[var(--primary-blue)]/70 hover:bg-[var(--primary-blue)]/10 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+          <div class="flex items-start justify-between mb-6 pb-4 border-b border-[var(--accent-silver)]/30">
+            <h2 class="text-4xl font-black thomas-primary">#2001</h2>
+            <span class="px-4 py-2 bg-[var(--primary-blue)]/80 rounded-2xl text-white text-sm font-bold border border-[var(--lighter-blue)]/50">SCHEDULED</span>
           </div>
-          <div class="space-y-3 mb-8">
-            <div class="flex items-center text-lg">
-              <span class="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center mr-4 text-xl font-bold">🔌</span>
+          <div class="space-y-4 mb-10">
+            <div class="flex items-center text-xl thomas-light">
+              <span class="w-12 h-12 bg-[var(--primary-blue)] rounded-2xl flex items-center justify-center mr-4 text-2xl font-bold thomas-hover">🔌</span>
               Cisco Catalyst 9300
             </div>
-            <div class="flex items-center text-lg text-thomas-light">
-              📍 Rack 3, Slot 7 • Phoenix DC21
+            <div class="flex items-center text-lg thomas-accent">
+              📍 <span class="ml-2 thomas-light">Rack 3, Slot 7 • Phoenix DC21</span>
             </div>
           </div>
-          <button class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black py-6 px-8 rounded-2xl text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl border-4 border-green-500/50 hover:border-green-400/80">
+          <button class="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--lighter-blue)] hover:from-[var(--lighter-blue)] hover:to-[var(--primary-blue)] text-white font-black py-6 px-8 rounded-3xl text-xl shadow-2xl border-4 border-[var(--primary-blue)]/50 hover:border-[var(--lighter-blue)]/80 hover:shadow-3xl transform transition-all duration-300 hover:scale-[1.05]">
             🚀 CLAIM THIS JOB
           </button>
         </div>
 
-        <!-- Job 2 -->
-        <div class="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-          <div class="flex items-start justify-between mb-6">
-            <h2 class="text-3xl font-black text-thomas-gold">#2002</h2>
-            <span class="px-4 py-2 bg-yellow-500/80 rounded-2xl text-sm font-bold">PENDING</span>
+        <!-- Job #2002 -->
+        <div class="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border-2 border-[var(--accent-silver)]/40 hover:border-[var(--primary-blue)]/70 hover:bg-[var(--primary-blue)]/10 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+          <div class="flex items-start justify-between mb-6 pb-4 border-b border-[var(--accent-silver)]/30">
+            <h2 class="text-4xl font-black thomas-primary">#2002</h2>
+            <span class="px-4 py-2 bg-amber-500/90 rounded-2xl text-white text-sm font-bold">PENDING</span>
           </div>
-          <div class="space-y-3 mb-8">
-            <div class="flex items-center text-lg">
-              <span class="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center mr-4 text-xl font-bold">📡</span>
+          <div class="space-y-4 mb-10">
+            <div class="flex items-center text-xl thomas-light">
+              <span class="w-12 h-12 bg-[var(--lighter-blue)] rounded-2xl flex items-center justify-center mr-4 text-2xl font-bold thomas-primary">📡</span>
               Aruba AP-535
             </div>
-            <div class="flex items-center text-lg text-thomas-light">
-              📍 Ceiling A12 • Floor 2
+            <div class="flex items-center text-lg thomas-accent">
+              📍 <span class="ml-2 thomas-light">Ceiling A12 • Floor 2</span>
             </div>
           </div>
-          <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black py-6 px-8 rounded-2xl text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl border-4 border-emerald-500/50 hover:border-emerald-400/80">
+          <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-black py-6 px-8 rounded-3xl text-xl shadow-2xl border-4 border-emerald-400/60 hover:border-emerald-500/80 hover:shadow-3xl transform transition-all duration-300 hover:scale-[1.05]">
             🚀 CLAIM THIS JOB
           </button>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="md:col-span-2 lg:col-span-1 bg-gradient-to-br from-purple-600/90 to-indigo-700 rounded-3xl p-8 border-2 border-purple-400/50 hover:border-purple-500/80 transition-all duration-300 hover:shadow-2xl">
-          <h3 class="text-2xl font-black mb-6 text-white">⚡ Quick Actions</h3>
+        <!-- Quick Actions - BRANDED -->
+        <div class="md:col-span-2 lg:col-span-1 bg-gradient-to-br from-[var(--primary-blue)]/90 via-[var(--lighter-blue)]/70 to-[var(--primary-blue)]/90 rounded-3xl p-8 border-4 border-[var(--accent-silver)]/50 hover:border-[var(--lighter-blue)]/80 shadow-2xl hover:shadow-3xl transition-all duration-500">
+          <h3 class="text-3xl font-black text-white mb-8 flex items-center">
+            ⚡ <span class="ml-3">Quick Actions</span>
+          </h3>
           <div class="space-y-4">
-            <a href="#" class="block w-full bg-white/20 backdrop-blur-lg rounded-2xl p-6 text-center font-bold text-lg hover:bg-white/30 transition-all duration-200">
+            <a href="#" class="block w-full bg-white/20 backdrop-blur-lg border-2 border-[var(--accent-silver)]/40 rounded-2xl p-8 text-center font-bold text-xl thomas-light hover:bg-white/30 hover:border-[var(--primary-blue)]/60 hover:text-[var(--primary-blue)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-[1.02]">
               📦 Create 10 Swaps
             </a>
-            <a href="/dispatch" class="block w-full bg-orange-500/90 rounded-2xl p-6 text-center font-bold text-lg hover:bg-orange-600/90 transition-all duration-200">
+            <a href="/dispatch" class="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 rounded-2xl p-8 text-center font-black text-xl text-white shadow-2xl hover:shadow-3xl border-2 border-orange-400/60 hover:border-orange-500/80 transition-all duration-300 transform hover:scale-[1.02]">
               🎛️ Dispatch Tower
             </a>
-            <div class="p-4 bg-white/10 rounded-2xl text-center">
-              <button class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold py-3 px-6 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-200">
+            <div class="p-6 bg-white/10 backdrop-blur-xl rounded-2xl border-2 border-[var(--accent-silver)]/40 text-center shadow-xl">
+              <button class="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--lighter-blue)] text-white font-bold py-4 px-8 rounded-2xl hover:from-[var(--lighter-blue)] hover:to-[var(--primary-blue)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-[1.05] border-2 border-[var(--primary-blue)]/50">
                 🔄 Refresh Live
               </button>
             </div>
@@ -104,9 +118,9 @@
     </div>
 
     <!-- Footer -->
-    <div class="text-center mt-20 pt-12 border-t-2 border-white/20">
-      <div class="text-xl text-thomas-light mb-4">✅ Phases 4-14 LIVE</div>
-      <div class="text-sm text-white/70">Zero Trust Security • Mobile Responsive • Field Tech Ready</div>
+    <div class="text-center mt-24 pt-12 border-t-2 border-[var(--accent-silver)]/40">
+      <div class="text-2xl thomas-light mb-6 font-semibold">✅ Phases 4-14 LIVE</div>
+      <div class="text-lg thomas-accent">Zero Trust Security • Mobile Responsive • Field Tech Ready • Phoenix Site 21</div>
     </div>
   </div>
 </body>
