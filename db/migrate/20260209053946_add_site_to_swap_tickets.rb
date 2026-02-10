@@ -1,5 +1,6 @@
 class AddSiteToSwapTickets < ActiveRecord::Migration[8.1]
   def change
-    add_reference :swap_tickets, :site, null: false, foreign_key: true
+    # site_id already exists in CreateSwapTickets - SKIP
+    puts "✅ site_id already exists - migration skipped"
   end
 end

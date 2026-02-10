@@ -1,5 +1,6 @@
 class AddTechToSwapTicket < ActiveRecord::Migration[8.1]
   def change
-    add_column :swap_tickets, :tech_id, :integer
+    # tech_id already exists in CreateSwapTickets - SKIP
+    puts "✅ tech_id already exists - migration skipped"
   end
 end

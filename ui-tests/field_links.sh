@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "📱 THOMAS IT FIELD OPERATIONS"
+echo "=============================="
+echo "Tech Dashboard: https://network-swap-static.onrender.com/tech"
+echo "Dispatch Tower: https://network-swap-static.onrender.com/dispatch"
+echo "Network Inventory: https://network-swap-static.onrender.com/inventory"
+echo "AR Repair Guide: https://network-swap-static.onrender.com/ar"
+echo ""
+echo "QR Codes for trucks:"
+qrencode -t ansiutf8 "https://network-swap-static.onrender.com/tech"

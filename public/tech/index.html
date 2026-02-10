@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="https://cdn.tailwindcss.com"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Dashboard - Thomas IT Phase 8</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./tailwind.min.js"></script>
   <style>
     :root {
       --primary-blue: #0984C0;
@@ -67,14 +67,14 @@
             </div>
           </div>
           <button class="w-full bg-gradient-to-r from-[#0984C0] to-[#60BDD1] hover:from-[#60BDD1] hover:to-[#0984C0] text-white font-black py-6 px-8 rounded-3xl text-xl shadow-2xl border-4 border-[#0984C0]/50 hover:border-[#60BDD1]/80 hover:shadow-3xl transform transition-all duration-300 hover:scale-[1.05] text-glow">
-            🚀 CLAIM THIS JOB
+            🚀 <button onclick="claimJob(2001)" class="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 mx-auto block w-full max-w-md">🚀 CLAIM THIS JOB</button>
           </button>
         </div>
 
-        <!-- Job #2002 -->
+        <!-- Job #2001 -->
         <div class="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/40 hover:border-[#0984C0]/80 hover:bg-white/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
           <div class="flex items-start justify-between mb-6 pb-4 border-b border-white/30">
-            <h2 class="text-4xl font-black text-thomas-gold drop-shadow-lg">#2002</h2>
+            <h2 class="text-4xl font-black text-thomas-gold drop-shadow-lg">#2001</h2>
             <span class="px-4 py-2 bg-amber-500/90 backdrop-blur-sm rounded-2xl text-white text-sm font-bold shadow-lg">PENDING</span>
           </div>
           <div class="space-y-4 mb-10">
@@ -87,7 +87,7 @@
             </div>
           </div>
           <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-black py-6 px-8 rounded-3xl text-xl shadow-2xl border-4 border-emerald-400/60 hover:border-emerald-500/80 hover:shadow-3xl transform transition-all duration-300 hover:scale-[1.05] text-glow">
-            🚀 CLAIM THIS JOB
+            🚀 <button onclick="claimJob(2001)" class="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 mx-auto block w-full max-w-md">🚀 CLAIM THIS JOB</button>
           </button>
         </div>
 
@@ -123,3 +123,4 @@
   </div>
 </body>
 </html>
+

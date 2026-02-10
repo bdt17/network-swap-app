@@ -1,6 +1,6 @@
-class MakeTechFieldsNullableInSwapTickets < ActiveRecord::Migration[8.1]
+class AddCodeToSites < ActiveRecord::Migration[8.1]
   def change
-    change_column_null :swap_tickets, :assigned_tech_id, true
-    change_column_null :swap_tickets, :assigned_tech_type, true
+    add_column :sites, :code, :string, null: false, default: 'PHX21'
+    Site.update_all(code: 'PHX21') rescue nil
   end
 end

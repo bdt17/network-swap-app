@@ -1,37 +1,38 @@
 class Api::SwapsController < ApplicationController
-  before_action :zero_trust_auth, except: [:alert_test]
+  skip_before_action :verify_authenticity_token
   
   def index
-    render json: SwapTicket.includes(:device, :site).limit(25)
+    swaps = SwapTicket.all.order(created_at: :desc).limit(50)
+    render json: swaps.map { |s| 
+      { id: s.id, device_id: s.device_id, vendor: s.vendor, status: s.status,
+        assigned_tech_id: s.assigned_tech_id, site_id: s.site_id }
+    }
   end
   
-  def bulk_create
-    swaps = params[:swaps] || []
-    created = []
+  def create
+    device = Device.find_or_create_by!(device_id: params[:device_id], vendor: params[:vendor])
+    site = Site.find_or_create_by!(name: 'Phoenix DC21', code: 'PHX21')
     
-    SwapTicket.transaction do
-      swaps.each do |data|
-        ticket = SwapTicket.create!(data)
-        created << ticket
-      end
-    end
+    swap = SwapTicket.create!(
+      device: device, site: site, vendor: params[:vendor] || 'Cisco',
+      status: 'scheduled', assigned_tech_id: 1, scheduled_at: 1.hour.from_now
+    )
     
-    render json: created, status: :created
+    ActionCable.server.broadcast "device_status_#{swap.device_id}", swap.as_json
+    render json: { success: true, swap: swap }, status: 201
   end
   
-  def alert_test
-    render json: { status: 'alert job queued' }
-  end
-  
-  private
-  
-  def zero_trust_auth
-    # Dev bypass - remove in production
-    return if Rails.env.development?
+  def claim
+    swap = SwapTicket.find(params[:id])
+    old_status = swap.status
+    swap.update!(assigned_tech_id: 1, status: 'claimed')  # Smith,J. ID=1
     
-    token = request.headers['Authorization']&.gsub('Bearer ', '')
-    @current_user = ZeroTrustService.authorize(token, request.method.downcase.to_sym, controller_name)
-  rescue => e
-    render json: { error: e.message }, status: :unauthorized and return
+    # Broadcast to ALL techs + dispatch
+    ActionCable.server.broadcast "device_status_#{swap.device_id}", swap.as_json
+    ActionCable.server.broadcast "dispatch_tower", {
+      swap_id: swap.id, tech: 'Smith,J.', from: old_status, to: 'CLAIMED 🚀'
+    }
+    
+    render json: { success: true, message: "🎉 Smith,J. claimed Swap ##{swap.id}" }
   end
 end

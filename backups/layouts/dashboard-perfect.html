@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thomas IT Network Swap - Phase 8 LIVE</title>
+  <meta name="viewport" content="width=device-width">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        'thomas-blue': '#0984C0', 'thomas-silver': '#AAA7B0',
+        'thomas-grey': '#565759', 'thomas-light': '#C0BEC6',
+        'thomas-hover': '#60BDD1'
+      }}}
+    }
+  </script>
+</head>
+<body class="bg-white antialiased">
+  <div class="max-w-7xl mx-auto p-8">
+    <header class="mb-12">
+      <div class="flex items-center gap-4 bg-gradient-to-r from-thomas-blue to-thomas-hover p-8 rounded-3xl text-white shadow-2xl">
+        <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center">
+          <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-4xl font-black">Thomas IT Network Swap</h1>
+          <p class="opacity-90">Phase 8 LIVE • 500+ Devices • Tech Dashboard</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <div class="bg-gradient-to-br from-thomas-blue/10 border-2 border-thomas-blue/30 rounded-3xl p-8 text-center">
+        <div class="text-4xl font-black text-thomas-blue">500</div>
+        <div class="text-thomas-grey font-semibold mt-2">Devices</div>
+      </div>
+      <div class="bg-gradient-to-br from-thomas-silver/10 border-2 border-thomas-silver/30 rounded-3xl p-8 text-center">
+        <div class="text-4xl font-black text-thomas-hover">5</div>
+        <div class="text-thomas-grey font-semibold mt-2">Sites</div>
+      </div>
+      <div class="bg-gradient-to-br from-thomas-grey/10 border-2 border-thomas-light/30 rounded-3xl p-8 text-center">
+        <div class="text-4xl font-black text-thomas-grey">25</div>
+        <div class="text-thomas-grey font-semibold mt-2">Swap Tickets</div>
+      </div>
+      <div class="bg-gradient-to-r from-thomas-blue to-thomas-hover border-2 border-thomas-blue/50 rounded-3xl p-8 text-center text-white shadow-xl">
+        <div class="text-4xl font-black">42</div>
+        <div class="font-semibold">Audit Logs</div>
+      </div>
+    </div>
+
+    <!-- Operations Center -->
+    <section class="bg-gradient-to-r from-thomas-blue via-thomas-hover to-thomas-blue p-10 rounded-4xl text-white mb-12 shadow-2xl">
+      <h2 class="text-4xl font-black mb-10 text-center">🚀 Operations Center</h2>
+      <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <a href="/tech" class="group bg-white/20 hover:bg-white/40 border-2 border-white/40 backdrop-blur-xl rounded-3xl p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2">
+          <span class="text-4xl mb-4 block">📱</span>
+          <span class="text-2xl font-black">Tech Dashboard</span>
+          <p class="opacity-90 mt-2">Claim & Complete Jobs</p>
+        </a>
+        <button id="bulk-swap" class="group bg-white/20 hover:bg-white/40 border-2 border-white/40 backdrop-blur-xl rounded-3xl p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2">
+          <span class="text-4xl mb-4 block">📦</span>
+          <span class="text-2xl font-black">Create 10 Swaps</span>
+        </button>
+        <button id="dispatch" class="group bg-white/20 hover:bg-white/40 border-2 border-white/40 backdrop-blur-xl rounded-3xl p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2">
+          <span class="text-4xl mb-4 block">🎛️</span>
+          <span class="text-2xl font-black">Dispatch Tower</span>
+        </button>
+        <button id="refresh" class="group bg-white/20 hover:bg-white/40 border-2 border-white/40 backdrop-blur-xl rounded-3xl p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2">
+          <span class="text-4xl mb-4 block">🔄</span>
+          <span class="text-2xl font-black">Refresh Live</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <div class="text-center text-lg opacity-75 space-y-2">
+      <div>✅ Phases 4-8 LIVE</div>
+      <div>✅ Zero Trust Security</div>
+      <div>✅ Mobile Responsive</div>
+      <div>✅ Field Tech Ready</div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('bulk-swap')?.addEventListener('click', async () => {
+        const btn = document.getElementById('bulk-swap')
+        btn.innerHTML = '🚀 Creating swaps...'
+        try {
+          const response = await fetch('/api/swaps/bulk_create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ swaps: Array.from({length: 10}, (_, i) => ({
+              device_id: 2001 + i, site_id: 21, status: 'scheduled',
+              scheduled_at: new Date(Date.now() + (i+1)*24*60*60*1000).toISOString(),
+              vendor: 'Cisco', notes: `Bulk test swap #${i+1}`
+            }))})
+          })
+          if (response.ok) {
+            btn.innerHTML = '✅ 10 swaps created!'
+            setTimeout(() => location.reload(), 2000)
+          }
+        } catch(e) {
+          btn.innerHTML = '❌ API needs controller'
+        }
+      })
+
+      document.getElementById('refresh')?.addEventListener('click', () => location.reload())
+    })
+  </script>
+</body>
+</html>

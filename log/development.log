@@ -16834,3 +16834,1212 @@ Migrating to AddTechStatusToSwapTicket (20260209230657)
   [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Started GET "/favicon.ico" for ::1 at 2026-02-09 16:15:42 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-09 16:15:44 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 2000], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.2ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSwapTicket Create (0.3ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("assigned_tech_id", "assigned_tech_type", "created_at", "device_id", "scheduled_at", "status", "updated_at", "site_id", "vendor", "notes", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["assigned_tech_id", nil], ["assigned_tech_type", nil], ["created_at", "2026-02-10 03:34:39.950239"], ["device_id", 2001], ["scheduled_at", "2026-02-12 04:34:39.944577"], ["status", 1], ["updated_at", "2026-02-10 03:34:39.950239"], ["site_id", 21], ["vendor", "Cisco"], ["notes", "Test swap 1"], ["tech_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Started GET "/api/swaps" for ::1 at 2026-02-09 20:35:02 -0700
+  
+NoMethodError (undefined method `namespace' for main:Object):
+  
+config/routes.rb:23:in `<top (required)>'
+Started POST "/api/swaps/bulk_create" for ::1 at 2026-02-09 20:35:02 -0700
+Processing by Api::SwapsController#bulk_create as JSON
+  Parameters: {"swaps"=>[{"device_id"=>2005, "status"=>"scheduled", "scheduled_at"=>"2026-02-10T09:00:00Z", "vendor"=>"Cisco"}], "swap"=>{"swaps"=>[{"device_id"=>2005, "status"=>"scheduled", "scheduled_at"=>"2026-02-10T09:00:00Z", "vendor"=>"Cisco"}]}}
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 3.6ms (0 queries, 0 cached) | GC: 6.7ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/api/swaps_controller.rb:19:in `block in bulk_create'
+app/controllers/api/swaps_controller.rb:18:in `map'
+app/controllers/api/swaps_controller.rb:18:in `bulk_create'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to FixSwapTicketMigration (20260210033412)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260210033412') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT OR IGNORE INTO schema_migrations (version) VALUES ("20260209230657")[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 4000], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Started GET "/api/swaps" for ::1 at 2026-02-09 20:38:49 -0700
+Processing by Api::SwapsController#index as */*
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" ORDER BY "swap_tickets"."id" ASC LIMIT ?[0m  [["LIMIT", 25]]
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 3.3ms (1 query, 0 cached) | GC: 7.7ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-09 20:38:49 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>"5001", "vendor"=>"Cisco"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'tech_status' for SwapTicket.)
+Caused by: NoMethodError (undefined method `tech_status=' for #<SwapTicket id: nil, assigned_tech_id: nil, assigned_tech_type: nil, created_at: nil, device_id: 5001, scheduled_at: nil, status: "scheduled", updated_at: nil, site_id: 21, vendor: "Cisco", notes: "API swap", tech_id: nil>)
+
+Information for: ActiveModel::UnknownAttributeError (unknown attribute 'tech_status' for SwapTicket.):
+  
+app/controllers/api/swaps_controller.rb:14:in `create'
+
+Information for cause: NoMethodError (undefined method `tech_status=' for #<SwapTicket id: nil, assigned_tech_id: nil, assigned_tech_type: nil, created_at: nil, device_id: 5001, scheduled_at: nil, status: "scheduled", updated_at: nil, site_id: 21, vendor: "Cisco", notes: "API swap", tech_id: nil>):
+  
+app/controllers/api/swaps_controller.rb:14:in `create'
+Started GET "/api/swaps" for ::1 at 2026-02-09 20:39:44 -0700
+Processing by Api::SwapsController#index as */*
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."site_id" = ? LIMIT ?[0m  [["site_id", 21], ["LIMIT", 25]]
+Completed 200 OK in 56ms (Views: 0.2ms | ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 8.2ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-09 20:39:44 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>5001, "vendor"=>"Aruba", "swap"=>{"device_id"=>5001, "vendor"=>"Aruba"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 5001], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 422 Unprocessable Content in 23ms (ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 1.4ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Device must exist, Scheduled at can't be blank):
+  
+app/controllers/api/swaps_controller.rb:21:in `create'
+Started POST "/api/swaps/bulk_create" for ::1 at 2026-02-09 20:39:44 -0700
+Processing by Api::SwapsController#bulk_create as */*
+  Parameters: {"swaps"=>[{"device_id"=>5002, "vendor"=>"Juniper"}], "swap"=>{"swaps"=>[{"device_id"=>5002, "vendor"=>"Juniper"}]}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.3ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 5002], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 422 Unprocessable Content in 4ms (ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Device must exist, Scheduled at can't be blank):
+  
+app/controllers/api/swaps_controller.rb:28:in `block in bulk_create'
+app/controllers/api/swaps_controller.rb:27:in `each'
+app/controllers/api/swaps_controller.rb:27:in `bulk_create'
+Started GET "/api/swaps" for ::1 at 2026-02-09 20:40:39 -0700
+Processing by Api::SwapsController#index as */*
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."site_id" = ? LIMIT ?[0m  [["site_id", 21], ["LIMIT", 25]]
+Completed 200 OK in 53ms (Views: 0.2ms | ActiveRecord: 3.2ms (1 query, 0 cached) | GC: 8.4ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-09 20:40:40 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>5001, "vendor"=>"Aruba", "swap"=>{"device_id"=>5001, "vendor"=>"Aruba"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("assigned_tech_id", "assigned_tech_type", "created_at", "device_id", "scheduled_at", "status", "updated_at", "site_id", "vendor", "notes", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["assigned_tech_id", nil], ["assigned_tech_type", nil], ["created_at", "2026-02-10 03:40:40.081381"], ["device_id", 5001], ["scheduled_at", "2026-02-12 03:40:40.080735"], ["status", 1], ["updated_at", "2026-02-10 03:40:40.081381"], ["site_id", 21], ["vendor", "Aruba"], ["notes", nil], ["tech_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+app/controllers/api/swaps_controller.rb:20:in `create'
+Started POST "/api/swaps/bulk_create" for ::1 at 2026-02-09 20:40:40 -0700
+Processing by Api::SwapsController#bulk_create as */*
+  Parameters: {"swaps"=>[{"device_id"=>5002, "vendor"=>"Juniper"}], "swap"=>{"swaps"=>[{"device_id"=>5002, "vendor"=>"Juniper"}]}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("assigned_tech_id", "assigned_tech_type", "created_at", "device_id", "scheduled_at", "status", "updated_at", "site_id", "vendor", "notes", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["assigned_tech_id", nil], ["assigned_tech_type", nil], ["created_at", "2026-02-10 03:40:40.093850"], ["device_id", 5002], ["scheduled_at", "2026-02-12 03:40:40.093648"], ["status", 1], ["updated_at", "2026-02-10 03:40:40.093850"], ["site_id", 21], ["vendor", "Juniper"], ["notes", nil], ["tech_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+app/controllers/api/swaps_controller.rb:34:in `block in bulk_create'
+app/controllers/api/swaps_controller.rb:27:in `each'
+app/controllers/api/swaps_controller.rb:27:in `bulk_create'
+Started GET "/favicon.ico" for ::1 at 2026-02-10 12:12:21 -0700
+  
+NoMethodError (undefined method `mount' for main:Object):
+  
+config/routes.rb:6:in `<top (required)>'
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-10 12:12:23 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-10 12:12:39 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/sites" for 127.0.0.1 at 2026-02-10 12:13:32 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/sites"):
+  
+Started GET "/swaps" for 127.0.0.1 at 2026-02-10 12:13:32 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/swaps"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-02-10 12:13:32 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_in"):
+  
+Started GET "/devices" for 127.0.0.1 at 2026-02-10 12:13:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/devices"):
+  
+Started GET "/users/sign_in" for ::1 at 2026-02-10 12:13:41 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_in"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-02-10 12:13:41 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-02-10 12:17:52 -0700
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2026-02-10 12:18:33 -0700
+Started POST "/api/swaps" for ::1 at 2026-02-10 12:20:47 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "vendor"=>"Juniper", "swap"=>{"device_id"=>6001, "vendor"=>"Juniper"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("assigned_tech_id", "assigned_tech_type", "created_at", "device_id", "scheduled_at", "status", "updated_at", "site_id", "vendor", "notes", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["assigned_tech_id", nil], ["assigned_tech_type", nil], ["created_at", "2026-02-10 19:20:47.996499"], ["device_id", 6001], ["scheduled_at", "2026-02-12 19:20:47.995821"], ["status", 1], ["updated_at", "2026-02-10 19:20:47.996499"], ["site_id", 21], ["vendor", "Juniper"], ["notes", nil], ["tech_id", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 4.0ms (1 query, 0 cached) | GC: 5.4ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.assigned_tech_id):
+  
+app/controllers/api/swaps_controller.rb:20:in `create'
+Started POST "/api/swaps" for ::1 at 2026-02-10 12:21:30 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "vendor"=>"Juniper", "swap"=>{"device_id"=>6001, "vendor"=>"Juniper"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 6001], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 422 Unprocessable Content in 30ms (Views: 0.1ms | ActiveRecord: 2.4ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (2.5ms)[0m  [1m[31mDELETE FROM schema_migrations[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:24:28.563468', '2026-02-10 19:24:28.563471') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:24:52.863346', '2026-02-10 19:24:52.863350') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:25:46.127030', '2026-02-10 19:25:46.127033') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:26:19.256938', '2026-02-10 19:26:19.256940') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:28:06.570998', '2026-02-10 19:28:06.571000') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSwapTickets (20260209053930)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053930') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aswap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aswap_tickets_on_device_id" ON "aswap_tickets" ("device_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aswap_tickets_on_site_id" ON "aswap_tickets" ("site_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "aswap_tickets" ("id","device_id","vendor","status","assigned_tech_id","site_id","scheduled_at","tech_status","tech_id","notes","created_at","updated_at")
+                     SELECT "id","device_id","vendor","status","assigned_tech_id","site_id","scheduled_at","tech_status","tech_id","notes","created_at","updated_at" FROM "swap_tickets"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "swap_tickets"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:28:33.481355', '2026-02-10 19:28:33.481357') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSwapTickets (20260209053930)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053930') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053946') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddVendorNotesToSwapTickets (20260209054115)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "vendor" varchar[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:29:01.285441', '2026-02-10 19:29:01.285443') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSwapTickets (20260209053930)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053930') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053946') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddVendorNotesToSwapTickets (20260209054115)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054115') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to MakeTechFieldsNullableInSwapTickets (20260209054725)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054725') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateTeches (20260209225818)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "teches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "site_id" integer, "role" integer, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209225818') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddTechToSwapTicket (20260209225827)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_id" integer[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:29:24.669890', '2026-02-10 19:29:24.669891') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSwapTickets (20260209053930)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053930') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053946') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddVendorNotesToSwapTickets (20260209054115)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054115') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to MakeTechFieldsNullableInSwapTickets (20260209054725)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054725') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateTeches (20260209225818)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "teches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "site_id" integer, "role" integer, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209225818') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddTechToSwapTicket (20260209225827)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209225827') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "swap_tickets" ADD "tech_status" varchar[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-10 19:29:49.778710', '2026-02-10 19:29:49.778712') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDroneFleets (20260208061903)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "serial_number" varchar, "firmware_version" varchar, "battery_status" integer, "location" varchar, "available" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260208061903') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDevices (20260209043140)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hostname" varchar, "inventory_tag" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "vendor" varchar, "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043140') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSites (20260209043149)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" text, "region" varchar, "distance_km_from_hub" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209043149') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateDrones (20260209044745)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "drone_fleet_id" integer NOT NULL, "site_id" integer NOT NULL, "name" varchar, "vendor_identifier" varchar, "status" integer, "online" boolean, "battery_level" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209044745') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddNameVendorToDroneFleets (20260209045217)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "name" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "vendor" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "drone_fleets" ADD "description" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045217') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixDronesTable (20260209045224)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209045224') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateAuditLogs (20260209052655)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "swap_ticket_id" integer NOT NULL, "action" varchar NOT NULL, "timestamp" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209052655') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateSwapTickets (20260209053930)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "device_id" integer NOT NULL, "vendor" varchar NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "site_id" integer NOT NULL, "scheduled_at" datetime(6) NOT NULL, "tech_status" varchar, "tech_id" integer, "notes" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053930') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddSiteToSwapTickets (20260209053946)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209053946') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddVendorNotesToSwapTickets (20260209054115)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054115') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to MakeTechFieldsNullableInSwapTickets (20260209054725)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209054725') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to CreateTeches (20260209225818)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "teches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "site_id" integer, "role" integer, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209225818') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddTechToSwapTicket (20260209225827)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209225827') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddTechStatusToSwapTicket (20260209230657)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260209230657') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to FixSwapTicketMigration (20260210033412)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260210033412') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Migrating to AddCodeToSites (20260210192246)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "sites" ADD "code" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260210192246') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."name" = ? LIMIT ?[0m  [["name", "Phoenix DC21"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSite Create (0.2ms)[0m  [1m[32mINSERT INTO "sites" ("name", "address", "region", "distance_km_from_hub", "created_at", "updated_at", "code") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Phoenix DC21"], ["address", nil], ["region", nil], ["distance_km_from_hub", nil], ["created_at", "2026-02-10 19:30:18.438379"], ["updated_at", "2026-02-10 19:30:18.438379"], ["code", "PHX21"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mDevice Load (0.2ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?[0m  [["device_id", 6001], ["vendor", "Juniper"], ["LIMIT", 1]]
+Started POST "/api/swaps" for ::1 at 2026-02-10 12:30:21 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "vendor"=>"Juniper", "swap"=>{"device_id"=>6001, "vendor"=>"Juniper"}}
+  [1m[36mDevice Load (0.3ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?[0m  [["device_id", 6001], ["vendor", "Juniper"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 3.3ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: devices.device_id:
+SELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?
+                                        ^)
+Caused by: SQLite3::SQLException (no such column: devices.device_id:
+SELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?
+                                        ^)
+
+Information for: ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: devices.device_id:
+SELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?
+                                        ^):
+  
+
+Information for cause: SQLite3::SQLException (no such column: devices.device_id:
+SELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?
+                                        ^):
+  
+app/controllers/api/swaps_controller.rb:22:in `create'
+Started POST "/api/swaps/1/claim" for ::1 at 2026-02-10 12:36:37 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/1/claim"):
+  
+Started POST "/api/swaps/1/claim" for ::1 at 2026-02-10 12:38:20 -0700
+  
+NoMethodError (undefined method `namespace' for main:Object):
+  
+config/routes.rb:1:in `<top (required)>'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:38:25 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/2001/claim"):
+  
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:38:27 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/2001/claim"):
+  
+Started POST "/api/swaps/1/claim" for ::1 at 2026-02-10 12:39:38 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"1", "swap"=>{}}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 38ms (ActiveRecord: 3.2ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="1"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."name" = ? AND "sites"."code" = ? LIMIT ?[0m  [["name", "Phoenix DC21"], ["code", "PHX21"], ["LIMIT", 1]]
+  [1m[36mDevice Load (0.2ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."device_id" = ? AND "devices"."vendor" = ? LIMIT ?[0m  [["device_id", 6001], ["vendor", "Cisco Catalyst 9300"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviceIdToDevices (20260210194104)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "devices" ADD "device_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_on_device_id" ON "devices" ("device_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260210194104') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "sites" WHERE "sites"."name" = ? LIMIT ?[0m  [["name", "Phoenix DC21"], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" ORDER BY "sites"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 6001], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[35m (1.7ms)[0m  [1m[32m  INSERT OR IGNORE INTO sites (id, name, code, created_at, updated_at) 
+  VALUES (1, 'Phoenix DC21', 'PHX21', '2026-02-10 19:43:50 UTC', '2026-02-10 19:43:50 UTC');
+  
+  INSERT OR IGNORE INTO devices (id, vendor, device_id, created_at, updated_at) 
+  VALUES (6001, 'Cisco Catalyst 9300', 6001, '2026-02-10 19:43:50 UTC', '2026-02-10 19:43:50 UTC'),
+         (6002, 'Aruba AP-535', 6002, '2026-02-10 19:43:50 UTC', '2026-02-10 19:43:50 UTC');
+  
+  INSERT OR IGNORE INTO swap_tickets (id, device_id, site_id, vendor, status, assigned_tech_id, scheduled_at, created_at, updated_at)
+  VALUES (2001, 6001, 1, 'Cisco Catalyst 9300', 'scheduled', 0, '2026-02-11 19:43:50 UTC', '2026-02-10 19:43:50 UTC', '2026-02-10 19:43:50 UTC'),
+         (2002, 6002, 1, 'Aruba AP-535', 'pending', 0, '2026-02-12 19:43:50 UTC', '2026-02-10 19:43:50 UTC', '2026-02-10 19:43:50 UTC');
+[0m
+  [1m[36mSwapTicket Pluck (0.2ms)[0m  [1m[34mSELECT "swap_tickets"."id", "swap_tickets"."status" FROM "swap_tickets" WHERE "swap_tickets"."id" IN (?, ?)[0m  [["id", 2001], ["id", 2002]]
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:44:00 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 38ms (ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:44:51 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:44:52 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.4ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:46:52 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 38ms (ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:46:53 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-10 12:46:56 -0700
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-10 12:49:33 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mDevice Load (0.3ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."device_id" IS NULL AND "devices"."vendor" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 422 Unprocessable Content in 21ms (ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Site must exist):
+  
+app/controllers/api/swaps_controller.rb:13:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-10 12:49:33 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+  [1m[36mSite Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDevice Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 6001], ["LIMIT", 1]]
+  [1m[36mSwapTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mDevice Load (0.3ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."id" = ? LIMIT ?[0m  [["id", 6001], ["LIMIT", 1]]
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites" WHERE "sites"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:50:08 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001", "swap"=>{}}
+  [1m[36mSwapTicket Load (0.6ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 49ms (ActiveRecord: 6.3ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-10 12:50:08 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mDevice Load (0.1ms)[0m  [1m[34mSELECT "devices".* FROM "devices" WHERE "devices"."device_id" IS NULL AND "devices"."vendor" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 422 Unprocessable Content in 16ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Site must exist):
+  
+app/controllers/api/swaps_controller.rb:13:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-10 12:50:08 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find SwapTicket with 'id'="2001"):
+  
+app/controllers/api/swaps_controller.rb:26:in `claim'
+  [1m[35m (1.7ms)[0m  [1m[32m
+INSERT OR IGNORE INTO sites (id, name, code, created_at, updated_at) 
+VALUES (1, 'Phoenix DC21', 'PHX21', '2026-02-10 19:50:44 UTC', '2026-02-10 19:50:44 UTC')
+[0m
+  [1m[35m (0.7ms)[0m  [1m[32m
+INSERT OR IGNORE INTO devices (id, vendor, device_id, created_at, updated_at) 
+VALUES (6001, 'Cisco Catalyst 9300', 6001, '2026-02-10 19:50:44 UTC', '2026-02-10 19:50:44 UTC')
+[0m
+  [1m[35m (0.1ms)[0m  [1m[32m
+INSERT OR IGNORE INTO swap_tickets (id, device_id, site_id, vendor, status, assigned_tech_id, scheduled_at, created_at, updated_at)
+VALUES (2001, 6001, 1, 'Cisco Catalyst 9300', 'scheduled', 0, '2026-02-11 19:50:44 UTC', '2026-02-10 19:50:44 UTC', '2026-02-10 19:50:44 UTC')
+[0m
+  [1m[36mSwapTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-10 12:50:52 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001", "swap"=>{}}
+  [1m[36mSwapTicket Load (0.3ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ArgumentError ('claimed' is not a valid status):
+  
+app/controllers/api/swaps_controller.rb:28:in `claim'

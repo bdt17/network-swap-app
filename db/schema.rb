@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_10_194104) do
   create_table "audit_logs", force: :cascade do |t|
     t.string "action", null: false
     t.datetime "created_at", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
 
   create_table "devices", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.integer "device_id"
     t.string "hostname"
     t.string "inventory_tag"
     t.string "name"
@@ -32,6 +33,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
     t.integer "status"
     t.datetime "updated_at", null: false
     t.string "vendor"
+    t.index ["device_id"], name: "index_devices_on_device_id", unique: true
     t.index ["site_id"], name: "index_devices_on_site_id"
   end
 
@@ -64,6 +66,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
 
   create_table "sites", force: :cascade do |t|
     t.text "address"
+    t.string "code"
     t.datetime "created_at", null: false
     t.decimal "distance_km_from_hub"
     t.string "name"
@@ -72,19 +75,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
   end
 
   create_table "swap_tickets", force: :cascade do |t|
-    t.integer "assigned_tech_id", null: false
-    t.string "assigned_tech_type", null: false
+    t.integer "assigned_tech_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.integer "device_id", null: false
     t.text "notes"
-    t.datetime "scheduled_at"
+    t.datetime "scheduled_at", null: false
     t.integer "site_id", null: false
-    t.integer "status"
+    t.string "status", default: "scheduled", null: false
     t.integer "tech_id"
+    t.string "tech_status"
     t.datetime "updated_at", null: false
-    t.string "vendor"
-    t.index ["assigned_tech_type", "assigned_tech_id"], name: "index_swap_tickets_on_assigned_tech"
-    t.index ["device_id"], name: "index_swap_tickets_on_device_id"
+    t.string "vendor", null: false
+    t.index ["device_id"], name: "index_swap_tickets_on_device_id", unique: true
     t.index ["site_id"], name: "index_swap_tickets_on_site_id"
   end
 
@@ -103,6 +105,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_225827) do
   add_foreign_key "devices", "sites"
   add_foreign_key "drones", "drone_fleets"
   add_foreign_key "drones", "sites"
-  add_foreign_key "swap_tickets", "devices"
   add_foreign_key "swap_tickets", "sites"
 end

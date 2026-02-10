@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
-  # Public dashboard
-  root to: -> { [200, {}, ['Thomas IT Network Swap Phase 8 LIVE']] }
+  mount ActionCable.server => '/cable'
   
-  # Phase 8 Tech Dashboard
-  get '/tech', to: 'tech/dashboard#index'
-  post '/tech/claim/:id', to: 'tech/dashboard#claim_ticket', as: 'tech_claim_ticket'
-  post '/tech/complete/:id', to: 'tech/dashboard#complete_ticket', as: 'tech_complete_ticket'
+  root to: redirect('/tech')
   
-  # Phase 7 API (Zero Trust)
-  namespace :api, defaults: { format: :json } do
-    resources :swaps, only: [:index] do
-      collection { post :bulk_create }
-    end
+  # Static pages
+  get '/tech', to: redirect('/tech/index.html')
+  get '/dispatch', to: redirect('/dispatch/index.html')
+  get '/enterprise', to: redirect('/enterprise/index.html')
+  get '/eol_swaps', to: redirect('/eol_swaps/index.html')
+  
+  # API - CORRECT NAMESPACE
+  namespace :api do
+    get 'swaps', to: 'swaps#index'
+    post 'swaps', to: 'swaps#create'
+    post 'swaps/:id/claim', to: 'swaps#claim'  # ✅ FIXED ROUTE
   end
   
-  # Legacy Phase 5-6
-  post '/api/swaps/bulk_create', to: 'api/swaps#bulk_create'
+  get '*path', to: proc { [404, {}, ['Not Found']] }
 end

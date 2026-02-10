@@ -1,36 +1,25 @@
 #!/usr/bin/env ruby
-require 'net/http'
-require 'nokogiri'
-require 'colorize'
+require "net/http"
+require "uri"
 
 BASE_URL = "http://localhost:3000"
-ALL_PAGES = {
-  "🏢 Enterprise Sites" => "/sites",
-  "🔄 EOL Swaps" => "/swaps", 
-  "🔐 Agent Login" => "/users/sign_in",
-  "🖥️  Dashboard" => "/",
-  "📱 Device Inventory" => "/devices"
-}
+TEST_PAGES = ["/tech", "/enterprise", "/eol_swaps", "/dashboard", "/inventory"]
 
-puts "🧪 THOMAS IT NETWORK SWAP - COMPLETE APP TEST".bold.cyan
-puts "=" * 70
+puts "🧪 THOMAS IT LOCAL TEST\n#{'='*70}"
+live = 0
 
-success = 0
-ALL_PAGES.each do |name, path|
-  uri = URI("#{BASE_URL}#{path}")
-  resp = Net::HTTP.get_response(uri)
-  
-  puts " #{name.ljust(25)} #{resp.code}#{ ' PROTECTED' if resp.code == '302'} (#{resp.body.length/1000.0.round(1)}KB)"
-  
-  if resp.code == '200' || resp.code == '302'
-    success += 1
+TEST_PAGES.each do |path|
+  begin
+    uri = URI("#{BASE_URL}#{path}")
+    response = Net::HTTP.get_response(uri)
+    size = response.body.length / 1024.0
+    puts " #{path.ljust(25)} #{response.code.ljust(3)} (#{"%.1f" % size}KB)"
+    live += 1 if response.code == "200"
+  rescue => e
+    puts " #{path.ljust(25)} ERROR #{e.message}"
   end
 end
 
-puts "\n" + "=" * 70
-puts "🎉 #{success}/5 PAGES LIVE ✓".bold.green
-puts "🔒 302 redirects = Devise auth ✓ (Login first)".bold.yellow
-puts "\n🚀 MANUAL TEST:"
-puts "1. http://localhost:3000/users/sign_in"
-puts "2. agent@thomasit.com / ThomasIT2026!"
-puts "3. Login → ALL 5 pages unlocked!".bold.cyan
+puts "#{'='*70}"
+puts "🎉 #{live}/#{TEST_PAGES.length} PAGES LIVE ✓"
+puts "\n🚀 LIVE: http://localhost:3000/tech"
