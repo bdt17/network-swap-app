@@ -16,7 +16,6 @@
 </head>
 <body class="bg-gradient-to-br from-thomas-blue to-thomas-hover min-h-screen text-white p-6">
   <div class="max-w-4xl mx-auto">
-    <!-- Tech Header -->
     <div class="text-center mb-12">
       <div class="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
         <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 20 20">
@@ -27,27 +26,25 @@
       <p class="text-thomas-light text-xl">Phoenix Site 21 • Phase 8 LIVE</p>
     </div>
 
-    <!-- Live Stats -->
     <div class="grid grid-cols-3 gap-6 mb-12">
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
-        <div class="text-4xl font-black text-yellow-300">0</div>
+        <div class="text-4xl font-black text-yellow-300" id="myJobs">0</div>
         <div class="text-thomas-light text-lg mt-2">My Jobs</div>
       </div>
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
-        <div class="text-4xl font-black text-green-300">25</div>
+        <div class="text-4xl font-black text-green-300" id="availableJobs">25</div>
         <div class="text-thomas-light text-lg mt-2">Available</div>
       </div>
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/20">
-        <div class="text-4xl font-black">3</div>
+        <div class="text-4xl font-black" id="completedJobs">3</div>
         <div class="text-thomas-light text-lg mt-2">Completed</div>
       </div>
     </div>
 
-    <!-- Available Jobs -->
     <section class="mb-12">
       <h2 class="text-3xl font-black mb-8 flex items-center gap-4 justify-center">🔄 Available Jobs</h2>
-      <div class="space-y-6">
-        <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300">
+      <div id="jobsList" class="space-y-6">
+        <div class="job-card bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300" data-job="2001">
           <div class="flex items-start justify-between mb-6">
             <div class="flex-1">
               <h3 class="font-black text-2xl mb-2">#2001 Cisco Switch</h3>
@@ -58,11 +55,11 @@
               <div class="text-3xl font-black">Cisco</div>
             </div>
           </div>
-          <button class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
+          <button class="claim-btn w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
             🚀 CLAIM THIS JOB
           </button>
         </div>
-        <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300">
+        <div class="job-card bg-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 hover:border-thomas-light hover:scale-[1.02] transition-all duration-300" data-job="2002">
           <div class="flex items-start justify-between mb-6">
             <div class="flex-1">
               <h3 class="font-black text-2xl mb-2">#2002 Cisco AP</h3>
@@ -73,19 +70,50 @@
               <div class="text-3xl font-black">Cisco</div>
             </div>
           </div>
-          <button class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
+          <button class="claim-btn w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-black font-black text-xl px-12 py-5 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500">
             🚀 CLAIM THIS JOB
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Status -->
     <div class="text-center text-lg opacity-75 space-y-2">
       <div>✅ Phase 8 LIVE - Mobile Ready</div>
       <div>✅ Zero Trust Protected</div>
       <div>✅ 25+ Jobs Available</div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let myJobs = 0;
+      
+      document.querySelectorAll('.claim-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const card = this.closest('.job-card');
+          const jobId = card.dataset.job;
+          
+          // Visual feedback
+          this.innerHTML = '✅ JOB CLAIMED!';
+          this.classList.remove('from-yellow-400', 'to-yellow-500');
+          this.classList.add('from-green-400', 'to-green-500', 'text-white');
+          
+          // Update counters
+          myJobs++;
+          document.getElementById('myJobs').textContent = myJobs;
+          document.getElementById('availableJobs').textContent = 25 - myJobs;
+          
+          // Move to my jobs (visual)
+          card.querySelector('span').textContent = 'CLAIMED';
+          card.querySelector('span').className = 'px-6 py-3 bg-green-500/20 text-green-200 rounded-2xl font-bold text-lg';
+          
+          // Success message
+          setTimeout(() => {
+            alert(`🎉 Job #${jobId} claimed successfully!\nPhoenix Site 21 • Ready for swap.`);
+          }, 500);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
