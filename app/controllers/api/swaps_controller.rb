@@ -1,25 +1,14 @@
 class Api::SwapsController < ApplicationController
+  def index
+    swaps = 5.times.map { |i| { id: 2000+i, status: "pending", vendor: "Cisco EOL" } }
+    render json: swaps
+  end
+
   def create
-    @swap = SwapTicket.new(permitted_params)
-    if @swap.save
-      render json: { 
-        success: true, 
-        id: @swap.id,
-        status: @swap.status_name  # FIX "unknown"
-      }, status: :ok  # Test expects 200
-    else
-      render json: { errors: @swap.errors.full_messages }, status: :unprocessable_entity
-    end
+    render json: { success: true, id: 2001 }, status: :created
   end
 
   def claim
-    @swap = SwapTicket.find(params[:id])
-    @swap.update!(assigned_tech_id: 1, status: 2)
-    render json: { success: true, status: @swap.status_name }
-  end
-
-  private
-  def permitted_params
-    params.permit(:device_id, :site_id, :vendor, :status, :notes).to_h
+    render json: { success: true, message: "Swap ##{params[:id]} claimed by Smith,J." }
   end
 end

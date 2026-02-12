@@ -18542,3 +18542,256 @@ Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:42:48 -0700
   
 ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
   
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:49:09 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.9ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770871753], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:49:09.873571"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:49:09.873699"], ["updated_at", "2026-02-12 02:49:09.873699"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 20ms (Views: 0.8ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 12.1ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:49:09 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.3ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-11 19:55:47 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-11 19:55:55 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-11 19:55:56 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-11 19:55:56 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:56:11 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"swap"=>{}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x0000700022dcc4f8>, params: {"controller"=>"api/swaps", "action"=>"create", "swap"=>{}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770872228], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:56:11.412891"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:56:11.413082"], ["updated_at", "2026-02-12 02:56:11.413082"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 52ms (Views: 0.5ms | ActiveRecord: 5.4ms (1 query, 0 cached) | GC: 9.6ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:56:11 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001", "swap"=>{}}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:58:06 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>9999, "site_id"=>21, "swap"=>{"device_id"=>9999, "site_id"=>21}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007c7a8538e2e0>, params: {"device_id"=>9999, "site_id"=>21, "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>9999, "site_id"=>21}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 9999], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 21], ["scheduled_at", "2026-02-13 02:58:06.647995"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:58:06.648230"], ["updated_at", "2026-02-12 02:58:06.648230"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 7.6ms (1 query, 0 cached) | GC: 7.6ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed)
+Caused by: SQLite3::ConstraintException (FOREIGN KEY constraint failed)
+
+Information for: ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed):
+  
+
+Information for cause: SQLite3::ConstraintException (FOREIGN KEY constraint failed):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:58:06 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"device_id"=>9999, "site_id"=>21, "id"=>"2001", "swap"=>{"device_id"=>9999, "site_id"=>21}}
+  [1m[36mSwapTicket Load (0.3ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2002/claim" for 127.0.0.1 at 2026-02-11 19:58:06 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"device_id"=>9999, "site_id"=>21, "id"=>"2002", "swap"=>{"device_id"=>9999, "site_id"=>21}}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2002], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Update (0.2ms)[0m  [1m[33mUPDATE "swap_tickets" SET "status" = ?, "updated_at" = ? WHERE "swap_tickets"."id" = ?[0m  [["status", "2"], ["updated_at", "2026-02-12 02:58:06.667978"], ["id", 2002]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/health" for 127.0.0.1 at 2026-02-11 19:58:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/health"):
+  
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:58:06 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>9999, "site_id"=>21, "swap"=>{"device_id"=>9999, "site_id"=>21}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007c7a85d68720>, params: {"device_id"=>9999, "site_id"=>21, "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>9999, "site_id"=>21}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 9999], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 21], ["scheduled_at", "2026-02-13 02:58:06.677603"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:58:06.677727"], ["updated_at", "2026-02-12 02:58:06.677727"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed)
+Caused by: SQLite3::ConstraintException (FOREIGN KEY constraint failed)
+
+Information for: ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed):
+  
+
+Information for cause: SQLite3::ConstraintException (FOREIGN KEY constraint failed):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:59:05 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007bb6134c1d60>, params: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.7ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 6001], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:59:05.618542"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:59:05.618790"], ["updated_at", "2026-02-12 02:59:05.618790"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 5.9ms (1 query, 0 cached) | GC: 9.4ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id)
+Caused by: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id)
+
+Information for: ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id):
+  
+
+Information for cause: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:59:18 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007bb613477440>, params: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.9ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 6001], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:59:18.740004"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:59:18.740589"], ["updated_at", "2026-02-12 02:59:18.740589"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id)
+Caused by: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id)
+
+Information for: ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id):
+  
+
+Information for cause: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 20:00:09 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+  [1m[36mSwapTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "swap_tickets" WHERE "swap_tickets"."device_id" = ? LIMIT ?[0m  [["device_id", 6001], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.5ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770869792], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 03:00:10.011839"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 03:00:10.012046"], ["updated_at", "2026-02-12 03:00:10.012046"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 61ms (Views: 0.8ms | ActiveRecord: 5.0ms (2 queries, 0 cached) | GC: 8.5ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 20:00:10 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "id"=>"2001", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2002/claim" for 127.0.0.1 at 2026-02-11 20:00:10 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "id"=>"2002", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2002], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 23:13:28 -0700
+  
+NoMethodError (undefined method `root' for main:Object):
+  
+config/routes.rb:16:in `<top (required)>'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:16:07 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.8ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 23:19:18 -0700
+  
+NoMethodError (undefined method `api' for #<ActionDispatch::Routing::Mapper:0x000072bf24103168 @set=#<Rails::Engine::LazyRouteSet:0x000072bf24c22080>, @draw_paths=[#<Pathname:/home/zero-hd/.rbenv/versions/3.2.3/lib/ruby/gems/3.2.0/gems/actionview-8.1.2/config/routes>, #<Pathname:/home/zero-hd/.rbenv/versions/3.2.3/lib/ruby/gems/3.2.0/gems/actioncable-8.1.2/config/routes>, #<Pathname:/home/zero-hd/network-swap-app/config/routes>, #<Pathname:/home/zero-hd/network-swap-app/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x000072bf24071fb0 @parent=#<ActionDispatch::Routing::Mapper::Scope:0x000072bf24bd59d8 @parent=nil, @hash={}, @scope_level=nil>, @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:9:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:19:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:20:45 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 23:20:46 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+Completed 201 Created in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:30:27 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 23:30:43 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+Completed 201 Created in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-11 23:31:27 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+Completed 201 Created in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:31:27 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:31:27 -0700
+Processing by Api::SwapsController#index as */*
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-11 23:32:01 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+Completed 201 Created in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:32:01 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:32:01 -0700
+Processing by Api::SwapsController#index as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+

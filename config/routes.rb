@@ -6,11 +6,9 @@ Rails.application.routes.draw do
   get 'inventory', to: 'pages#inventory'
   root to: 'pages#tech'
 
-  namespace :api do
-    post '/swaps', to: 'swaps#create'
-    post '/swaps/:id/claim', to: 'swaps#claim'
-  end
+  # API Routes
+  get '/api/swaps', to: 'api/swaps#index'
+  post '/api/swaps', to: 'api/swaps#create'
+  post '/api/swaps/:id/claim', to: 'api/swaps#claim'
+  get '/health', to: ->(env) { [200, {'Content-Type' => 'application/json'}, ['{"status":"ok"}']] }
 end
-
-# Root MUST hit Rails (not static)
-root 'pages#tech'
