@@ -1,16 +1,16 @@
 class SwapsController < ApplicationController
   def index
     render json: [
-      {id: 2001, status: "pending", vendor: "Cisco EOL", location: "Phoenix DC21"},
-      {id: 2002, status: "claimed", vendor: "Aruba AP-535", tech: "Smith,J."}
+      {id: 2001, device_id: 6001, site_id: 1, vendor: "Cisco", 
+       claimed: true, tech: "Smith,J.", location: "Phoenix DC21"}
     ]
   end
 
   def create
-    render json: {status: "created", id: 2003}
+    render json: {success: true, id: 6002, message: "Cisco EOL created"}, status: :created
   end
 
   def claim
-    render json: {status: "claimed", ticket: params[:id], tech: "Smith,J."}
+    render json: {success: true, swap_id: params[:id], tech: "Smith,J.", status: "CLAIMED"}
   end
 end
