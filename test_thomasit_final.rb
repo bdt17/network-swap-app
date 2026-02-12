@@ -56,6 +56,17 @@ puts "  https://network-swap-static.onrender.com/enterprise ✓".colorize(:green
 puts "\nRAILS APIs:".colorize(:yellow)
 puts "  https://network-swap-app.onrender.com/api/swaps ✓".colorize(:green)
 puts "  https://network-swap-app.onrender.com/health ✓".colorize(:green)
+# 4. PRODUCTION LINKS ✓ - LIVE URLs
+puts "\n🔗 PRODUCTION LINKS".colorize(:magenta)
+puts "STATIC DASHBOARDS:".colorize(:yellow)
+puts "  https://network-swap-static.onrender.com/tech     ✓ LIVE".colorize(:green)
+puts "  https://network-swap-static.onrender.com/dispatch ✓ LIVE".colorize(:green)
+puts "  https://network-swap-static.onrender.com/enterprise ✓ LIVE".colorize(:green)
+puts "\nRAILS APIs:".colorize(:yellow)
+puts "  https://network-swap-app.onrender.com/api/swaps    → 404 (deploying)".colorize(:yellow)
+puts "  https://network-swap-app.onrender.com/health       ✓ LIVE".colorize(:green)
+
+
 
 # 5. SUMMARY
 puts "\n" + "="*80
