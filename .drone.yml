@@ -1,0 +1,36 @@
+kind: pipeline
+type: docker
+name: thomas-it-network-swap
+
+steps:
+  - name: test
+    image: ruby:3.2.3
+    commands:
+      - bundle install
+      - bundle exec rails db:migrate RAILS_ENV=test
+      - bundle exec rails test
+      - bundle exec rspec
+
+  - name: lint
+    image: ruby:3.2.3
+    commands:
+      - bundle install
+      - bundle exec rubocop
+      - bundle exec standardrb
+
+  - name: deploy-render
+    image: appleboy/drone-render
+    settings:
+      render_url: https://api.render.com
+      render_token:
+        from_secret: render_token
+      service_id:
+        from_secret: render_service_id
+    when:
+      branch: main
+      event: push
+
+trigger:
+  branch: main
+  event:
+    - push
