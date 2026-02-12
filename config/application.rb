@@ -21,5 +21,3 @@ module NetworkSwapApp
   end
 end
 ENV['RESTART_ON_DEPLOY'] = 'true'
-config.require_master_key = false
-config.require_master_key = false
