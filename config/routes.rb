@@ -11,3 +11,6 @@ Rails.application.routes.draw do
     post '/swaps/:id/claim', to: 'swaps#claim'
   end
 end
+
+# Root MUST hit Rails (not static)
+root 'pages#tech'
