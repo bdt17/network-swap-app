@@ -1,18 +1,13 @@
 Rails.application.configure do
-  # Skip credentials completely
-  config.require_master_key = false
-  
-  # Essential production settings
+  # Core production settings
   config.eager_load = true
   config.force_ssl = true
   config.log_level = :info
   config.cache_classes = true
   
-  # Skip asset pipeline (Propshaft)
-  config.assets.compile = false
+  # Rails 8.1 Propshaft - NO assets config needed
+  config.require_master_key = false
   
-  # Disable encrypted config
-  config.active_record.encryption.primary_key = nil
-  config.active_record.encryption.deterministic_key = nil
-  config.active_record.encryption.key_derivation_salt = nil
+  # Skip migrations (no DB yet)
+  config.active_record.schema_format = :sql
 end
