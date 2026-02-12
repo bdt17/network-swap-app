@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  @apply bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900;
+}
+
+.dispatch-container {
+  @apply max-w-6xl mx-auto p-8 space-y-8;
+}
+
+.job-card {
+  @apply bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-2xl hover:shadow-purple-500/25 transition-all duration-300;
+}
+
+.tech-status {
+  @apply bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10;
+}

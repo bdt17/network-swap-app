@@ -1,0 +1,11 @@
+🚛 THOMAS IT FIELD DEPLOYMENT - Feb 11, 9AM
+============================================
+
+👷 SMITH, J. PROCEDURE:
+1. Open: https://network-swap-static.onrender.com/tech
+2. Find: #2001 Cisco Phoenix DC21 Rack 3 → CLAIM 👆
+3. Drive: Phoenix DC21 (45min from shop)
+4. Swap: Rack 3 Slot 7 → COMPLETE  
+5. Dispatch auto-updates: "Smith,J. → 100% COMPLETE"
+
+📞 CALL: Dispatch Tower if issues

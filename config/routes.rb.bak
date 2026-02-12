@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: {format: :json} do
-    get :status, to: "status#index"
-    resources :devices do
-      collection do
-        get :critical
-      end
-    end
+  mount ActionCable.server => '/cable'
+  
+  root to: redirect('/tech')
+  
+  # Static pages
+  get '/tech', to: redirect('/tech/index.html')
+  get '/dispatch', to: redirect('/dispatch/index.html')
+  get '/enterprise', to: redirect('/enterprise/index.html')
+  get '/eol_swaps', to: redirect('/eol_swaps/index.html')
+  
+  # API - CORRECT NAMESPACE
+  namespace :api do
+    get 'swaps', to: 'swaps#index'
+    post 'swaps', to: 'swaps#create'
+    post 'swaps/:id/claim', to: 'swaps#claim'  # ✅ FIXED ROUTE
   end
+  
+  get '*path', to: proc { [404, {}, ['Not Found']] }
 end
-    resources :swaps, only: [:index, :create]
+get '/dispatch', to: 'dispatch#index'
+get '/dispatch', to: 'dispatch#index'

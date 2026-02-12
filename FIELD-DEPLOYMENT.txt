@@ -1,0 +1,14 @@
+🚛 THOMAS IT FIELD DEPLOYMENT - Feb 11, 9AM
+============================================
+
+👷 SMITH,J. (Tech ID: 4)
+📱 JOB #2001: Cisco → Phoenix DC21 Rack 3 Slot 7
+
+PROCEDURE:
+1. 9:00AM → https://network-swap-app.onrender.com/tech
+2. 9:01AM → Find #2001 → CLICK \"CLAIM THIS JOB\"
+3. 9:02AM → Button grays out → Dispatch updates
+4. 9:45AM → Phoenix DC21 (45min drive)  
+5. 10:00AM → Rack 3 Slot 7 → SWAP COMPLETE
+
+📞 CALL DISPATCH if issues
