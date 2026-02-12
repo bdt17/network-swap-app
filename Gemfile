@@ -10,3 +10,4 @@ gem "rspec-rails"
 gem "factory_bot_rails"
 gem 'jwt', '~> 2.8'
 gem 'rake'
+gem 'rake', group: :development
