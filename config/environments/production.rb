@@ -14,3 +14,4 @@ config.public_file_server.headers = {
 }
 Rails.application.config.force_ssl = true
 config.assets.compile = true
+config.assets.compile = true

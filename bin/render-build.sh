@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
-bundle config set without 'development test' --local
+bundle lock --add-platform x86_64-linux
 bundle install
-echo "✅ Phase 7 LIVE: Rails $(bundle exec rails -v)"
+bundle exec rake db:migrate
+bundle exec rake assets:precompile
