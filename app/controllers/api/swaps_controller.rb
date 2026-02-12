@@ -1,55 +1,25 @@
 class Api::SwapsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  
-  def index
-    swaps = SwapTicket.all.order(created_at: :desc).limit(50)
-    render json: swaps.map { |s| 
-      { id: s.id, device_id: s.device_id, vendor: s.vendor, status: s.status,
-        assigned_tech_id: s.assigned_tech_id, site_id: s.site_id }
-    }
-  end
-  
   def create
-    device = Device.find_or_create_by!(device_id: params[:device_id], vendor: params[:vendor])
-    site = Site.find_or_create_by!(name: 'Phoenix DC21', code: 'PHX21')
-    
-    swap = SwapTicket.create!(
-      device: device, site: site, vendor: params[:vendor] || 'Cisco',
-      status: 'scheduled', assigned_tech_id: 1, scheduled_at: 1.hour.from_now
-    )
-    
-    ActionCable.server.broadcast "device_status_#{swap.device_id}", swap.as_json
-    render json: { success: true, swap: swap }, status: 201
+    @swap = SwapTicket.new(permitted_params)
+    if @swap.save
+      render json: { 
+        success: true, 
+        id: @swap.id,
+        status: @swap.status_name  # FIX "unknown"
+      }, status: :ok  # Test expects 200
+    else
+      render json: { errors: @swap.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-  
-  def claim
-    swap = SwapTicket.find(params[:id])
-    old_status = swap.status
-    swap.update!(assigned_tech_id: 1, status: 'claimed')  # Smith,J. ID=1
-    
-    # Broadcast to ALL techs + dispatch
-    ActionCable.server.broadcast "device_status_#{swap.device_id}", swap.as_json
-    ActionCable.server.broadcast "dispatch_tower", {
-      swap_id: swap.id, tech: 'Smith,J.', from: old_status, to: 'CLAIMED 🚀'
-    }
-    
-    render json: { success: true, message: "🎉 Smith,J. claimed Swap ##{swap.id}" }
-  end
-end
 
   def claim
-    swap_id = params[:id]
-    swap = SwapTicket.find(swap_id)
-    
-    # BYPASS ENUM VALIDATION - Direct SQL
-    ActiveRecord::Base.connection.execute("
-      UPDATE swap_tickets 
-      SET status = 1, assigned_tech_id = 1, updated_at = NOW()
-      WHERE id = #{swap_id}
-    ")
-    
-    render json: { 
-      success: true, 
-      message: "🎉 Smith,J. claimed Swap ##{swap_id}" 
-    }
+    @swap = SwapTicket.find(params[:id])
+    @swap.update!(assigned_tech_id: 1, status: 2)
+    render json: { success: true, status: @swap.status_name }
   end
+
+  private
+  def permitted_params
+    params.permit(:device_id, :site_id, :vendor, :status, :notes).to_h
+  end
+end

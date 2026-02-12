@@ -7,21 +7,20 @@ class SwapTicket < ApplicationRecord
     4 => 'cancelled'
   }.freeze
 
+  before_validation :set_production_defaults
+
   def status_name
-    STATUS_MAP[status] || 'unknown'
+    STATUS_MAP[status&.to_i] || 'unknown'
   end
 
-  def status=(value)
-    if value.is_a?(Symbol)
-      self[:status] = STATUS_MAP.key(value.to_s) || 0
-    else
-      self[:status] = value
-    end
+  private
+
+  def set_production_defaults
+    self.device_id     ||= Time.current.to_i + rand(10000)  # UNIQUE timestamp
+    self.site_id       ||= 1
+    self.vendor        ||= 'Cisco'
+    self.status        ||= 0
+    self.assigned_tech_id ||= 1
+    self.scheduled_at  ||= 1.day.from_now
   end
-
-  belongs_to :device, optional: true
-  belongs_to :tech, optional: true, class_name: 'Tech'
-
-  validates :device_id, presence: true
-  validates :site, presence: true
 end

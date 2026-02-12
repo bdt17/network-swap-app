@@ -18215,3 +18215,330 @@ Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.6ms (1 query, 0 cac
 NoMethodError (undefined method `site' for #<SwapTicket assigned_tech_id: 1, status: "claimed", id: 2001, device_id: 6001, vendor: "Cisco Catalyst 9300", site_id: 1, scheduled_at: "2026-02-11 19:50:44.000000000 +0000", tech_status: nil, tech_id: nil, notes: nil, created_at: "2026-02-10 19:50:44.000000000 +0000", updated_at: "2026-02-10 19:50:44.000000000 +0000">):
   
 app/controllers/api/swaps_controller.rb:28:in `claim'
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:35:35 -0700
+Processing by Api::SwapsController#create as */*
+Completed 400 Bad Request in 26ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: swap):
+  
+app/controllers/api/swaps_controller.rb:19:in `swap_params'
+app/controllers/api/swaps_controller.rb:3:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:35:35 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 5.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `site' for #<SwapTicket assigned_tech_id: 1, status: "2", id: 2001, device_id: 6001, vendor: "Cisco Catalyst 9300", site_id: 1, scheduled_at: "2026-02-11 19:50:44.000000000 +0000", tech_status: nil, tech_id: nil, notes: nil, created_at: "2026-02-10 19:50:44.000000000 +0000", updated_at: "2026-02-10 19:50:44.000000000 +0000">):
+  
+app/controllers/api/swaps_controller.rb:13:in `claim'
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:36:02 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>2003, "site_id"=>21, "status"=>"pending", "swap"=>{"device_id"=>2003, "site_id"=>21, "status"=>"pending"}}
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 2.0ms (0 queries, 0 cached) | GC: 12.6ms)
+
+
+  
+NoMethodError (undefined method `site' for #<SwapTicket id: nil, device_id: 2003, vendor: nil, status: "pending", assigned_tech_id: 1, site_id: 21, scheduled_at: nil, tech_status: nil, tech_id: nil, notes: nil, created_at: nil, updated_at: nil>):
+  
+app/controllers/api/swaps_controller.rb:7:in `create'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:36:02 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `site' for #<SwapTicket assigned_tech_id: 1, status: "2", id: 2001, device_id: 6001, vendor: "Cisco Catalyst 9300", site_id: 1, scheduled_at: "2026-02-11 19:50:44.000000000 +0000", tech_status: nil, tech_id: nil, notes: nil, created_at: "2026-02-10 19:50:44.000000000 +0000", updated_at: "2026-02-10 19:50:44.000000000 +0000">):
+  
+app/controllers/api/swaps_controller.rb:18:in `claim'
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:36:54 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>2003, "site_id"=>21, "status"=>0, "swap"=>{"device_id"=>2003, "site_id"=>21, "status"=>0}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x0000792fa508abf8>, params: {"device_id"=>2003, "site_id"=>21, "status"=>0, "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>2003, "site_id"=>21, "status"=>0}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 2003], ["vendor", nil], ["status", "0"], ["assigned_tech_id", 1], ["site_id", 21], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:36:54.524383"], ["updated_at", "2026-02-12 02:36:54.524383"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.1ms (1 query, 0 cached) | GC: 1.6ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:36:54 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Update (0.2ms)[0m  [1m[33mUPDATE "swap_tickets" SET "status" = ?, "assigned_tech_id" = ?, "updated_at" = ? WHERE "swap_tickets"."id" = ?[0m  [["status", "2"], ["assigned_tech_id", 1], ["updated_at", "2026-02-12 02:36:54.538239"], ["id", 2001]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:37:03 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (1.2ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", nil], ["vendor", nil], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", nil], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:37:03.233508"], ["updated_at", "2026-02-12 02:37:03.233508"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.device_id)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.device_id)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.device_id):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.device_id):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:37:03 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:37:35 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>2003, "site_id"=>21, "status"=>0, "swap"=>{"device_id"=>2003, "site_id"=>21, "status"=>0}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x0000792fa5153f30>, params: {"device_id"=>2003, "site_id"=>21, "status"=>0, "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>2003, "site_id"=>21, "status"=>0}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.5ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 2003], ["vendor", nil], ["status", "0"], ["assigned_tech_id", 1], ["site_id", 21], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:37:35.073721"], ["updated_at", "2026-02-12 02:37:35.073721"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:37:35 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:37:42 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (1.8ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 0], ["vendor", nil], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:37:42.596076"], ["updated_at", "2026-02-12 02:37:42.596076"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.vendor):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.vendor):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:37:42 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:38:14 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>2003, "site_id"=>21, "swap"=>{"device_id"=>2003, "site_id"=>21}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x0000792fa4f03528>, params: {"device_id"=>2003, "site_id"=>21, "controller"=>"api/swaps", "action"=>"create", "swap"=>{"device_id"=>2003, "site_id"=>21}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 2003], ["vendor", "Unknown"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 21], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:38:14.446563"], ["updated_at", "2026-02-12 02:38:14.446563"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.scheduled_at)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.scheduled_at)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.scheduled_at):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.scheduled_at):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:38:14 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:38:18 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (2.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 0], ["vendor", "Unknown"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", nil], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:38:18.935024"], ["updated_at", "2026-02-12 02:38:18.935024"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.scheduled_at)
+Caused by: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.scheduled_at)
+
+Information for: ActiveRecord::NotNullViolation (SQLite3::ConstraintException: NOT NULL constraint failed: swap_tickets.scheduled_at):
+  
+
+Information for cause: SQLite3::ConstraintException (NOT NULL constraint failed: swap_tickets.scheduled_at):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:38:18 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:38:48 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"swap"=>{}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x0000792fa2bb1d68>, params: {"controller"=>"api/swaps", "action"=>"create", "swap"=>{}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.3ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 0], ["vendor", "Unknown"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-12 02:38:48.246635"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:38:48.246730"], ["updated_at", "2026-02-12 02:38:48.246730"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 3.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:38:48 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:38:53 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (1.6ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 0], ["vendor", "Unknown"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-12 02:38:53.037031"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:38:53.037113"], ["updated_at", "2026-02-12 02:38:53.037113"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id)
+Caused by: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id)
+
+Information for: ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: swap_tickets.device_id):
+  
+
+Information for cause: SQLite3::ConstraintException (UNIQUE constraint failed: swap_tickets.device_id):
+  
+app/controllers/api/swaps_controller.rb:4:in `create'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:38:53 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:38:59 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:41:02 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"{}"=>nil}
+[31mUnpermitted parameter: :{}. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007d3f07667a88>, params: {"{}"=>nil, "controller"=>"api/swaps", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.5ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770873009], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:41:03.117822"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:41:03.118005"], ["updated_at", "2026-02-12 02:41:03.118005"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 201 Created in 62ms (Views: 0.2ms | ActiveRecord: 9.7ms (1 query, 0 cached) | GC: 12.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:41:03 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:41:03 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.4ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770873059], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:41:03.284520"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:41:03.284621"], ["updated_at", "2026-02-12 02:41:03.284621"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 201 Created in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:41:03 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:41:08 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
+Started POST "/api/swaps" for ::1 at 2026-02-11 19:42:03 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"swap"=>{}}
+[31mUnpermitted parameter: :swap. Context: { controller: Api::SwapsController, action: create, request: #<ActionDispatch::Request:0x00007d3f0826b370>, params: {"controller"=>"api/swaps", "action"=>"create", "swap"=>{}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (1.2ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770866377], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:42:03.217927"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:42:03.218331"], ["updated_at", "2026-02-12 02:42:03.218331"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 4.8ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:42:03 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.2ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-11 19:42:03 -0700
+Processing by Api::SwapsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mSwapTicket Create (0.3ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("device_id", "vendor", "status", "assigned_tech_id", "site_id", "scheduled_at", "tech_status", "tech_id", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["device_id", 1770869038], ["vendor", "Cisco"], ["status", "scheduled"], ["assigned_tech_id", 1], ["site_id", 1], ["scheduled_at", "2026-02-13 02:42:03.383017"], ["tech_status", nil], ["tech_id", nil], ["notes", nil], ["created_at", "2026-02-12 02:42:03.383323"], ["updated_at", "2026-02-12 02:42:03.383323"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-11 19:42:03 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+  [1m[36mSwapTicket Load (0.1ms)[0m  [1m[34mSELECT "swap_tickets".* FROM "swap_tickets" WHERE "swap_tickets"."id" = ? LIMIT ?[0m  [["id", 2001], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:42:07 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:42:45 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
+Started GET "/api/swaps/2001/claim" for ::1 at 2026-02-11 19:42:48 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps/2001/claim"):
+  
