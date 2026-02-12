@@ -1,15 +1,16 @@
 class SwapsController < ApplicationController
   def index
-    swaps = 5.times.map { |i| { id: 2000+i, status: "pending", vendor: "Cisco EOL" } }
-    render json: swaps
+    render json: [
+      {id: 2001, status: "pending", vendor: "Cisco EOL", location: "Phoenix DC21"},
+      {id: 2002, status: "claimed", vendor: "Aruba AP-535", tech: "Smith,J."}
+    ]
   end
 
   def create
-    render json: { success: true, id: 2001 }, status: :created
+    render json: {status: "created", id: 2003}
   end
 
   def claim
-    render json: { success: true, message: "Swap ##{params[:id]} claimed by Smith,J." }
+    render json: {status: "claimed", ticket: params[:id], tech: "Smith,J."}
   end
 end
-puts "API STARTED ✓"
