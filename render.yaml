@@ -1,5 +1,15 @@
 services:
   - type: web
-    name: network-swap-app
-    env: static
-    buildCommand: echo "Thomas IT MVP LIVE"
+    name: network-swap
+    env: ruby
+    buildCommand: |
+      bundle lock --add-platform x86_64-linux
+      bundle install
+      bundle exec rake assets:precompile
+      bundle exec rake db:migrate
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: RAILS_MASTER_KEY
+        generateValue: true
+      - key: RAILS_ENV
+        value: production
