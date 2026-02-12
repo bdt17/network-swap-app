@@ -18795,3 +18795,73 @@ Processing by Api::SwapsController#index as */*
 Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/swaps" for ::1 at 2026-02-11 23:35:25 -0700
+Processing by Api::SwapsController#create as */*
+  Parameters: {"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco", "swap"=>{"device_id"=>6001, "site_id"=>1, "vendor"=>"Cisco"}}
+Completed 201 Created in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:35:25 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:35:25 -0700
+Processing by Api::SwapsController#index as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:37:14 -0700
+Processing by Api::SwapsController#index as */*
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:37:51 -0700
+  
+Zeitwerk::NameError (expected file /home/zero-hd/network-swap-app/app/controllers/swaps_controller.rb to define constant SwapsController, but didn't):
+  
+zeitwerk (2.7.4) lib/zeitwerk/loader/callbacks.rb:31:in `on_file_autoloaded'
+zeitwerk (2.7.4) lib/zeitwerk/core_ext/kernel.rb:27:in `require'
+activesupport (8.1.2) lib/active_support/inflector/methods.rb:290:in `const_get'
+activesupport (8.1.2) lib/active_support/inflector/methods.rb:290:in `constantize'
+activesupport (8.1.2) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (8.1.2) lib/action_dispatch/http/request.rb:98:in `controller_class_for'
+actionpack (8.1.2) lib/action_dispatch/request/utils.rb:108:in `action_encoding_template'
+actionpack (8.1.2) lib/action_dispatch/request/utils.rb:102:in `encode'
+actionpack (8.1.2) lib/action_dispatch/request/utils.rb:47:in `set_binary_encoding'
+actionpack (8.1.2) lib/action_dispatch/http/parameters.rb:70:in `path_parameters='
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:32:in `block in serve'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:86:in `block in recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `each'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:31:in `serve'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:906:in `call'
+railties (8.1.2) lib/rails/engine/lazy_route_set.rb:60:in `call'
+rack (3.2.4) lib/rack/etag.rb:29:in `call'
+rack (3.2.4) lib/rack/conditional_get.rb:31:in `call'
+rack (3.2.4) lib/rack/head.rb:15:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.4) lib/rack/runtime.rb:24:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.2) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'

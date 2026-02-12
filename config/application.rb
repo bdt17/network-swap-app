@@ -20,3 +20,4 @@ module NetworkSwapApp
     config.public_file_server.enabled = true
   end
 end
+ENV['RESTART_ON_DEPLOY'] = 'true'

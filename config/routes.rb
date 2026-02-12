@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get 'inventory', to: 'pages#inventory'
   root to: 'pages#tech'
 
-  # API Routes
-  get '/api/swaps', to: 'api/swaps#index'
-  post '/api/swaps', to: 'api/swaps#create'
-  post '/api/swaps/:id/claim', to: 'api/swaps#claim'
-  get '/health', to: ->(env) { [200, {'Content-Type' => 'application/json'}, ['{"status":"ok"}']] }
+  # FLAT API (no namespace = Render works)
+  get '/api/swaps', to: 'swaps#index'
+  post '/api/swaps', to: 'swaps#create'
+  post '/api/swaps/:id/claim', to: 'swaps#claim'
+  get '/health', to: ->(env) { [200, {'Content-Type' => 'application/json'}, ['{"status":"ok","swaps":5}']] }
 end
