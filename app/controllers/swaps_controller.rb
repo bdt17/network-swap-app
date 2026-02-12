@@ -1,4 +1,4 @@
-class Api::SwapsController < ApplicationController
+class SwapsController < ApplicationController
   def index
     swaps = 5.times.map { |i| { id: 2000+i, status: "pending", vendor: "Cisco EOL" } }
     render json: swaps
@@ -9,7 +9,7 @@ class Api::SwapsController < ApplicationController
   end
 
   def claim
-    SmsService.claim_notification(params[:id], "Smith,J.") if Rails.env.production?
     render json: { success: true, message: "Swap ##{params[:id]} claimed by Smith,J." }
   end
 end
+puts "API STARTED ✓"

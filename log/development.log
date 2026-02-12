@@ -18865,3 +18865,14 @@ puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
 puma (7.2.0) lib/puma/server.rb:503:in `process_client'
 puma (7.2.0) lib/puma/server.rb:262:in `block in run'
 puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started GET "/api/swaps" for ::1 at 2026-02-11 23:38:42 -0700
+Processing by SwapsController#index as */*
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for ::1 at 2026-02-11 23:38:42 -0700
+Processing by SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 7.0ms)
+
+
