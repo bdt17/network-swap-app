@@ -1,0 +1,21 @@
+.dashboard {
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1a73e8;
+  font-size: 2.5rem;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Network Swap App</title>
+  <script src="https://cdn.ethers.io/lib/ethers-6.11.1.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/wallet.js" defer></script>
+  <script src="/js/swap.js" defer></script>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; }
+    input, button { padding: 10px; margin: 5px; width: 100%; box-sizing: border-box; }
+    button { background: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:disabled { background: #ccc; }
+    .address { background: #f0f0f0; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Network Swap App</h1>
+  
+  <button id="connect-btn">Connect MetaMask</button>
+  <div id="wallet-address" class="address">Not connected</div>
+  
+  <h3>Swap Tokens</h3>
+  <input id="from-token" placeholder="From Token (ETH: 0xEeee...)" value="0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE">
+  <input id="to-token" placeholder="To Token (USDC: 0xA0b8...)" value="0xA0b86a33Ec641E4E4E4E4E4E4E4E4E4E4E4E4E4">
+  <input id="amount" placeholder="Amount (e.g. 0.1)" value="0.001">
+  
+  <button id="swap-btn">Swap Tokens</button>
+  <div id="quote-output"></div>
+</body>
+</html>
