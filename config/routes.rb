@@ -1,17 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  
-  get 'dashboard', to: 'dashboard#index'
-  get 'tech', to: 'dashboard#index'
-  
-  namespace :api do
-    resources :devices, only: [:index]
-    resources :swaps, only: [:index] do
-      collection do
-        post :claim
-      end
-    end
-  end
+  devise_for :users   # ← THIS WAS MISSING!
   
   root 'dashboard#index'
+  get 'tech', to: 'dashboard#index'
 end

@@ -19419,3 +19419,47 @@ puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
 puma (7.2.0) lib/puma/server.rb:503:in `process_client'
 puma (7.2.0) lib/puma/server.rb:262:in `block in run'
 puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2026-02-14 16:23:16 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-14 16:23:25 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2026-02-14 16:26:29 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-02-14 16:29:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_in"):
+  
+Started GET "/users/sign_in" for ::1 at 2026-02-14 16:29:53 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb
+  Rendered devise/sessions/new.html.erb (Duration: 9.3ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 16.7ms | ActiveRecord: 6.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2026-02-14 16:29:56 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"brett.thomas29.97@gmail.com", "password"=>"Cy2Mh@Z7QzrH"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "brett.thomas29.97@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"user"=>{"email"=>"brett.thomas29.97@gmail.com", "password"=>"Cy2Mh@Z7QzrH"}, "commit"=>"Sign In"}
+  Rendering devise/sessions/new.html.erb
+  Rendered devise/sessions/new.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 220ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-02-14 16:31:30 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb
+  Rendered devise/sessions/new.html.erb (Duration: 13.6ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 21.2ms | ActiveRecord: 5.9ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
