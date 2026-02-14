@@ -18876,3 +18876,351 @@ Processing by SwapsController#claim as */*
 Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 7.0ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDevice Delete All (0.1ms)[0m  [1m[31mDELETE FROM "devices"[0m
+  [1m[36mSite Delete All (0.4ms)[0m  [1m[31mDELETE FROM "sites"[0m
+Started POST "/api/swaps" for 127.0.0.1 at 2026-02-14 14:31:47 -0700
+Processing by Api::SwapsController#create as */*
+Completed 201 Created in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 14:31:47 -0700
+Processing by Api::SwapsController#claim as */*
+  Parameters: {"id"=>"2001"}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20260214213445)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260214213445') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tech@thomasit.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tech@thomasit.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "tech@thomasit.com"], ["encrypted_password", "$2a$12$24wJbN4H5hGySB4pd/c1heBUxjqDUcyVMhJQSGFDvJMmABNuGoNCe"], ["reset_password_token", nil], ["reset_password_sent_at", nil], ["remember_created_at", nil], ["created_at", "2026-02-14 21:36:47.636465"], ["updated_at", "2026-02-14 21:36:47.636465"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mUser Delete All (1.0ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tech@thomasit.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "tech@thomasit.com"], ["encrypted_password", "$2a$12$CflN4ofqgB87vWA.Z2Y1aObfkg95ouITjtWD4f3eaaEXJT7L/UWD6"], ["reset_password_token", nil], ["reset_password_sent_at", nil], ["remember_created_at", nil], ["created_at", "2026-02-14 21:37:54.904414"], ["updated_at", "2026-02-14 21:37:54.904414"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 14:39:52 -0700
+  
+NoMethodError (undefined method `devise_for' for main:Object):
+  
+config/routes.rb:1:in `<top (required)>'
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 14:40:55 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/2001/claim"):
+  
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 14:40:55 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 14:40:55 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users/sign_in"):
+  
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 14:41:20 -0700
+  
+NoMethodError (undefined method `devise_for' for main:Object):
+  
+config/routes.rb:1:in `<top (required)>'
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 14:41:20 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 14:41:20 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users/sign_in"):
+  
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 14:42:02 -0700
+  
+SyntaxError (/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash
+namespace :api do\n  resources :swaps\nend
+                 ^
+):
+  
+config/routes.rb:24: syntax error, unexpected backslash
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 14:42:02 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 14:42:02 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users/sign_in"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for 127.0.0.1 at 2026-02-14 14:42:39 -0700
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash\nnamespace :api do\\n  resources :swaps\\nend\n                 ^\n">)
+Caused by: SyntaxError (/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash
+namespace :api do\n  resources :swaps\nend
+                 ^
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash\nnamespace :api do\\n  resources :swaps\\nend\n                 ^\n">):
+  
+activesupport (8.1.2) lib/active_support/error_reporter.rb:235:in `report'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:36:in `rescue in call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:32:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.4) lib/rack/runtime.rb:24:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.2) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'
+
+Information for cause: SyntaxError (/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash
+namespace :api do\n  resources :swaps\nend
+                 ^
+):
+  
+config/routes.rb:24: syntax error, unexpected backslash
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-14 14:42:43 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 14:42:54 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/2001/claim"):
+  
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 14:42:54 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 14:42:54 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users/sign_in"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-02-14 14:43:43 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20260214214554)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20260214214554)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "audit_logs"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "swap_ticket_id" integer NOT NULL, "timestamp" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "devices"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer, "hostname" varchar, "inventory_tag" varchar, "name" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_on_device_id" ON "devices" ("device_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "drone_fleets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "drone_fleets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "available" boolean, "battery_status" integer, "created_at" datetime(6) NOT NULL, "description" text, "firmware_version" varchar, "location" varchar, "name" varchar, "serial_number" varchar, "updated_at" datetime(6) NOT NULL, "vendor" integer)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "drones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_level" integer, "created_at" datetime(6) NOT NULL, "drone_fleet_id" integer NOT NULL, "name" varchar, "online" boolean, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor_identifier" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sites"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sites" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "address" text, "code" varchar, "created_at" datetime(6) NOT NULL, "distance_km_from_hub" decimal, "name" varchar, "region" varchar, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "swap_tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer NOT NULL, "notes" text, "scheduled_at" datetime(6) NOT NULL, "site_id" integer NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "tech_id" integer, "tech_status" varchar, "updated_at" datetime(6) NOT NULL, "vendor" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "teches"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "teches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "email" varchar, "name" varchar, "phone" varchar, "role" integer, "site_id" integer, "status" varchar, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "remember_created_at" datetime(6), "reset_password_sent_at" datetime(6), "reset_password_token" varchar, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aaudit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "swap_ticket_id" integer NOT NULL, "timestamp" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aaudit_logs_on_swap_ticket_id" ON "aaudit_logs" ("swap_ticket_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aaudit_logs" ("id","action","created_at","metadata","swap_ticket_id","timestamp","updated_at")
+                     SELECT "id","action","created_at","metadata","swap_ticket_id","timestamp","updated_at" FROM "audit_logs"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "audit_logs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "audit_logs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "metadata" json DEFAULT '{}' NOT NULL, "swap_ticket_id" integer NOT NULL, "timestamp" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_0f72088b5b"
+FOREIGN KEY ("swap_ticket_id")
+  REFERENCES "swap_tickets" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_audit_logs_on_swap_ticket_id" ON "audit_logs" ("swap_ticket_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "audit_logs" ("id","action","created_at","metadata","swap_ticket_id","timestamp","updated_at")
+                     SELECT "id","action","created_at","metadata","swap_ticket_id","timestamp","updated_at" FROM "aaudit_logs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aaudit_logs"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adevices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer, "hostname" varchar, "inventory_tag" varchar, "name" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adevices_on_site_id" ON "adevices" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_adevices_on_device_id" ON "adevices" ("device_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "adevices" ("id","created_at","device_id","hostname","inventory_tag","name","rack_name","rack_unit","site_id","status","updated_at","vendor")
+                     SELECT "id","created_at","device_id","hostname","inventory_tag","name","rack_name","rack_unit","site_id","status","updated_at","vendor" FROM "devices"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "devices"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "devices" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer, "hostname" varchar, "inventory_tag" varchar, "name" varchar, "rack_name" varchar, "rack_unit" integer, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor" varchar, CONSTRAINT "fk_rails_244482c7d4"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_devices_on_device_id" ON "devices" ("device_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_devices_on_site_id" ON "devices" ("site_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "devices" ("id","created_at","device_id","hostname","inventory_tag","name","rack_name","rack_unit","site_id","status","updated_at","vendor")
+                     SELECT "id","created_at","device_id","hostname","inventory_tag","name","rack_name","rack_unit","site_id","status","updated_at","vendor" FROM "adevices"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "adevices"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adrones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_level" integer, "created_at" datetime(6) NOT NULL, "drone_fleet_id" integer NOT NULL, "name" varchar, "online" boolean, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor_identifier" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adrones_on_site_id" ON "adrones" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adrones_on_drone_fleet_id" ON "adrones" ("drone_fleet_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "adrones" ("id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier")
+                     SELECT "id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier" FROM "drones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "drones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_level" integer, "created_at" datetime(6) NOT NULL, "drone_fleet_id" integer NOT NULL, "name" varchar, "online" boolean, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor_identifier" varchar, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "drones" ("id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier")
+                     SELECT "id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier" FROM "adrones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "adrones"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adrones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_level" integer, "created_at" datetime(6) NOT NULL, "drone_fleet_id" integer NOT NULL, "name" varchar, "online" boolean, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor_identifier" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adrones_on_site_id" ON "adrones" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adrones_on_drone_fleet_id" ON "adrones" ("drone_fleet_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "adrones" ("id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier")
+                     SELECT "id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier" FROM "drones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "drones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "drones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_level" integer, "created_at" datetime(6) NOT NULL, "drone_fleet_id" integer NOT NULL, "name" varchar, "online" boolean, "site_id" integer NOT NULL, "status" integer, "updated_at" datetime(6) NOT NULL, "vendor_identifier" varchar, CONSTRAINT "fk_rails_d36de8f37a"
+FOREIGN KEY ("drone_fleet_id")
+  REFERENCES "drone_fleets" ("id")
+, CONSTRAINT "fk_rails_b8a71df677"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_drone_fleet_id" ON "drones" ("drone_fleet_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_drones_on_site_id" ON "drones" ("site_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "drones" ("id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier")
+                     SELECT "id","battery_level","created_at","drone_fleet_id","name","online","site_id","status","updated_at","vendor_identifier" FROM "adrones"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "adrones"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aswap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer NOT NULL, "notes" text, "scheduled_at" datetime(6) NOT NULL, "site_id" integer NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "tech_id" integer, "tech_status" varchar, "updated_at" datetime(6) NOT NULL, "vendor" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aswap_tickets_on_site_id" ON "aswap_tickets" ("site_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aswap_tickets_on_device_id" ON "aswap_tickets" ("device_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aswap_tickets" ("id","assigned_tech_id","created_at","device_id","notes","scheduled_at","site_id","status","tech_id","tech_status","updated_at","vendor")
+                     SELECT "id","assigned_tech_id","created_at","device_id","notes","scheduled_at","site_id","status","tech_id","tech_status","updated_at","vendor" FROM "swap_tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "swap_tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "swap_tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "assigned_tech_id" integer DEFAULT 1 NOT NULL, "created_at" datetime(6) NOT NULL, "device_id" integer NOT NULL, "notes" text, "scheduled_at" datetime(6) NOT NULL, "site_id" integer NOT NULL, "status" varchar DEFAULT 'scheduled' NOT NULL, "tech_id" integer, "tech_status" varchar, "updated_at" datetime(6) NOT NULL, "vendor" varchar NOT NULL, CONSTRAINT "fk_rails_d9e88510fa"
+FOREIGN KEY ("site_id")
+  REFERENCES "sites" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_swap_tickets_on_device_id" ON "swap_tickets" ("device_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_swap_tickets_on_site_id" ON "swap_tickets" ("site_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "swap_tickets" ("id","assigned_tech_id","created_at","device_id","notes","scheduled_at","site_id","status","tech_id","tech_status","updated_at","vendor")
+                     SELECT "id","assigned_tech_id","created_at","device_id","notes","scheduled_at","site_id","status","tech_id","tech_status","updated_at","vendor" FROM "aswap_tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aswap_tickets"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260214213445)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260210194104),
+(20260210192246),
+(20260210033412),
+(20260209230657),
+(20260209225827),
+(20260209225818),
+(20260209054725),
+(20260209054115),
+(20260209053946),
+(20260209053930),
+(20260209052655),
+(20260209045224),
+(20260209045217),
+(20260209044745),
+(20260209043149),
+(20260209043140),
+(20260208061903);[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-02-14 21:49:40.207367', '2026-02-14 21:49:40.207369') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '3a6f3112c666e9cf4fb64bad3a89da4aadc4d682', '2026-02-14 21:49:40.208326', '2026-02-14 21:49:40.208327') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleTechIdToUsers (20260214214644)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "role" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "tech_id" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260214214644') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN immediate TRANSACTION[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tech@thomasit.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."tech_id" = ? LIMIT ?[0m  [["tech_id", "2001"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "role", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-02-14 21:57:27.333212"], ["email", "tech@thomasit.com"], ["encrypted_password", "$2a$12$ORQHZhfOJgnMdL2ROEPs0uzt4AcKdpRMOEv8FkmkwDfy6UeGpG0IS"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["updated_at", "2026-02-14 21:57:27.333212"], ["role", nil], ["tech_id", "2001"]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mCOMMIT TRANSACTION[0m

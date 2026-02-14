@@ -1,5 +1,9 @@
-<h1>Thomas IT Network Swap</h1>
-<p><strong><%= @device_count %> Devices</strong> | <%= @site_count %> Sites | <%= @swap_count %> Swaps</p>
-<p>🎉 PHASE 4-7 LIVE ON RENDER</p>
-<p>Static MVP deployed successfully! 🛫</p>
-<p>Zero Trust + AI coming soon...</p>
+<div style="padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh;">
+  <h1 style="font-size: 3rem;">🛠️ Tech Dashboard - #<%= @user.tech_id %></h1>
+  <p>Welcome <%= @user.email %> (<%= @user.tech_id %>)</p>
+  <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+    <h3>📱 Active Tickets:</h3>
+    <p>PHX-DC1: Cisco-2960-24TT (Critical)</p>
+    <p>DEN-DC1: Aruba-AP-305 (High)</p>
+  </div>
+</div>

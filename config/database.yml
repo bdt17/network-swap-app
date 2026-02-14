@@ -1,8 +1,17 @@
-# DISABLE DATABASE FOR DASHBOARDS
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
 development:
-  adapter: null
-  database: null
-  
+  <<: *default
+  database: db/development.sqlite3
+
 test:
-  adapter: null
-  database: null
+  <<: *default
+  database: db/test.sqlite3
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
