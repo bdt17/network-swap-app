@@ -12,3 +12,4 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
+gem 'sqlite3', '~> 1.4'

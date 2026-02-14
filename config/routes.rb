@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
+  # API Routes
+  namespace :api do
+    get '/devices', to: 'devices#index'
+    get '/dispatch', to: 'dispatch#index'
+    get '/swaps', to: 'swaps#index'
+  end
+
+  # Health check
   get '/health', to: -> (env) { [200, {'Content-Type' => 'text/plain'}, ['OK']] }
-  
-  # EXACT test script URLs
+
+  # Thomas IT pages
+  root to: proc { [200, {}, ['Thomas IT Network Swap API']] }
+  get '/tech', to: 'pages#tech'
+
+  # Swap tickets (existing)
   resources :swaps, path: 'api/swaps' do
     member do
       post :claim
     end
   end
-  
-  root to: proc { [200, {}, ['Thomas IT Network Swap API']] }
 end

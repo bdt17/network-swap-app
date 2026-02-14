@@ -1,16 +1,8 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+# DISABLE DATABASE FOR DASHBOARDS
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-
+  adapter: null
+  database: null
+  
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-
-production:
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: null
+  database: null

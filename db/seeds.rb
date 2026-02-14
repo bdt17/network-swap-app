@@ -29,3 +29,31 @@ end
 
 puts "Seeded #{Device.count} devices across #{Site.count} sites"
 
+
+puts "🌱 Seeding Dispatch Tower test data..."
+Device.create!([{
+  name: 'Cisco-2960-24TT', status: 'critical', site_id: 1
+}, {
+  name: 'Aruba-AP-305', status: 'online', site_id: 2
+}, {
+  name: 'HP-LaserJet-Pro', status: 'maintenance', site_id: 1
+}])
+
+Site.create!([{
+  name: 'PHX-DC1', location: 'Phoenix Data Center 1'
+}, {
+  name: 'DEN-DC1', location: 'Denver Data Center 1'
+}])
+
+SwapTicket.create!([{
+  device_id: 1, site_id: 1, status: 'pending', 
+  priority: 'critical', assigned_tech: 'Smith,J. #2001', eta: '2hr'
+}, {
+  device_id: 2, site_id: 2, status: 'assigned', 
+  priority: 'high', assigned_tech: 'Garcia,M. #2005', eta: '4hr'
+}, {
+  device_id: 3, site_id: 1, status: 'pending', 
+  priority: 'medium', assigned_tech: nil, eta: '6hr'
+}])
+
+puts "✅ Dispatch Tower seeded: 3 tickets ready!"
