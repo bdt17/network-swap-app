@@ -19463,3 +19463,10 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 42ms (Views: 21.2ms | ActiveRecord: 5.9ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/users/sign_in" for ::1 at 2026-02-14 16:39:39 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb
+  Rendered devise/sessions/new.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 7.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 9.7ms)
+
+
