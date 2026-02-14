@@ -1,9 +1,49 @@
-<div style="padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh;">
-  <h1 style="font-size: 3rem;">🛠️ Tech Dashboard - #<%= @user.tech_id %></h1>
-  <p>Welcome <%= @user.email %> (<%= @user.tech_id %>)</p>
-  <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
-    <h3>📱 Active Tickets:</h3>
-    <p>PHX-DC1: Cisco-2960-24TT (Critical)</p>
-    <p>DEN-DC1: Aruba-AP-305 (High)</p>
+<div class="min-h-screen bg-gradient-to-br from-[#0984C0] to-[#60BDD1] p-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-12 border border-[#AAA7B0]/50 shadow-2xl">
+      <% if user_signed_in? %>
+        <h1 class="text-5xl font-black text-[#0984C0] mb-8 flex items-center">
+          🛠️ Tech Dashboard 
+          <span class="ml-4 bg-[#565759]/20 px-4 py-2 rounded-full text-sm font-bold">
+            #<%= current_user.tech_id %>
+          </span>
+        </h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-[#565759] mb-6">📱 Active Tickets</h3>
+            <div class="space-y-4">
+              <div class="p-4 bg-[#C0BEC6]/20 rounded-lg">
+                <div class="font-bold text-[#0984C0]">PHX-DC1</div>
+                <div>Cisco-2960-24TT (Critical)</div>
+              </div>
+              <div class="p-4 bg-[#C0BEC6]/20 rounded-lg">
+                <div class="font-bold text-[#0984C0]">DEN-DC1</div>
+                <div>Aruba-AP-305 (High)</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card p-8">
+            <h3 class="text-2xl font-bold text-[#565759] mb-6">🚀 Status</h3>
+            <div class="space-y-3">
+              <div>✅ Logged in: <%= current_user.email %></div>
+              <div class="text-3xl font-black text-[#0984C0]">Phase 13 LIVE</div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="text-center">
+          <h1 class="text-6xl font-black text-white mb-8 drop-shadow-lg">
+            🔐 Thomas IT Network Swap
+          </h1>
+          <div class="bg-white/20 backdrop-blur-xl p-12 rounded-3xl max-w-md mx-auto border border-white/30">
+            <h2 class="text-3xl font-bold text-white mb-8">Tech Login</h2>
+            <%= link_to "Sign In →", new_user_session_path, 
+                class: "btn-primary text-xl block w-full text-center py-4" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -19334,3 +19334,88 @@ Started GET "/assets/application-*.js" for 127.0.0.1 at 2026-02-14 16:06:39 -070
   
 ActionController::RoutingError (No route matches [GET] "/assets/application-*.js"):
   
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 16:07:45 -0700
+Processing by Api::SwapsController#index as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 16:07:45 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/swaps/2001/claim"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 16:07:45 -0700
+Processing by Devise::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"tech@thomasit.com", "password"=>"Smith2001!"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "tech@thomasit.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 217ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+actionpack (8.1.2) lib/action_dispatch/request/session.rb:263:in `load_for_write!'
+actionpack (8.1.2) lib/action_dispatch/request/session.rb:155:in `[]='
+warden (1.2.9) lib/warden/session_serializer.rb:27:in `store'
+warden (1.2.9) lib/warden/proxy.rb:187:in `set_user'
+warden (1.2.9) lib/warden/proxy.rb:339:in `_perform_authentication'
+warden (1.2.9) lib/warden/proxy.rb:133:in `authenticate!'
+devise (5.0.1) app/controllers/devise/sessions_controller.rb:19:in `create'
+actionpack (8.1.2) lib/action_controller/metal/basic_implicit_render.rb:8:in `send_action'
+actionpack (8.1.2) lib/abstract_controller/base.rb:221:in `process_action'
+actionpack (8.1.2) lib/action_controller/metal/rendering.rb:199:in `process_action'
+actionpack (8.1.2) lib/abstract_controller/callbacks.rb:267:in `block in process_action'
+activesupport (8.1.2) lib/active_support/callbacks.rb:110:in `run_callbacks'
+actionpack (8.1.2) lib/abstract_controller/callbacks.rb:266:in `process_action'
+actionpack (8.1.2) lib/action_controller/metal/rescue.rb:36:in `process_action'
+actionpack (8.1.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.1.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.1.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.1.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.1.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.1.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.1.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.1.2) lib/abstract_controller/base.rb:154:in `process'
+actionview (8.1.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.1.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.1.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.1.2) lib/action_dispatch/routing/mapper.rb:32:in `block in <class:Constraints>'
+actionpack (8.1.2) lib/action_dispatch/routing/mapper.rb:62:in `serve'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:35:in `block in serve'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:86:in `block in recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `each'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:66:in `recognize'
+actionpack (8.1.2) lib/action_dispatch/journey/router.rb:31:in `serve'
+actionpack (8.1.2) lib/action_dispatch/routing/route_set.rb:906:in `call'
+railties (8.1.2) lib/rails/engine/lazy_route_set.rb:60:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.2.4) lib/rack/etag.rb:29:in `call'
+rack (3.2.4) lib/rack/conditional_get.rb:44:in `call'
+rack (3.2.4) lib/rack/head.rb:15:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (8.1.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.1.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.1.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/remote_ip.rb:98:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.2.4) lib/rack/runtime.rb:24:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/executor.rb:20:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in `call'
+actionpack (8.1.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.1.2) lib/rails/engine.rb:534:in `call'
+puma (7.2.0) lib/puma/configuration.rb:296:in `call'
+puma (7.2.0) lib/puma/request.rb:103:in `block in handle_request'
+puma (7.2.0) lib/puma/thread_pool.rb:355:in `with_force_shutdown'
+puma (7.2.0) lib/puma/request.rb:102:in `handle_request'
+puma (7.2.0) lib/puma/server.rb:503:in `process_client'
+puma (7.2.0) lib/puma/server.rb:262:in `block in run'
+puma (7.2.0) lib/puma/thread_pool.rb:182:in `block in spawn_thread'

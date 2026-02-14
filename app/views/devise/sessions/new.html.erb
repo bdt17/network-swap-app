@@ -1,37 +1,32 @@
-<div class="min-h-screen bg-[#FFFFFF] flex items-center justify-center p-6">
-  <div class="max-w-md w-full bg-[#FFFFFF] rounded-xl shadow-xl p-8 border border-[#C0BEC6]">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold bg-gradient-to-r from-[#0984C0] to-[#60BDD1] bg-clip-text text-transparent mb-2">
-        Thomas IT Analytics
-      </h1>
-      <p class="text-[#565759] font-medium">Network Swap Portal</p>
+<div class="min-h-screen bg-gradient-to-br from-[#0984C0] to-[#60BDD1] flex items-center justify-center p-8">
+  <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-12 border border-[#AAA7B0]/50 shadow-2xl max-w-md w-full">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-black text-[#0984C0] mb-4">🔐 Thomas IT Login</h1>
+      <p class="text-[#565759]">Network Swap Dashboard</p>
     </div>
     
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
       <div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", 
-            class: "w-full px-4 py-3 border border-[#AAA7B0] rounded-lg focus:ring-3 focus:ring-[#60BDD1]/30 focus:border-[#60BDD1]", 
-            placeholder: "tech@thomasit.com" %>
+        <%= f.label :email, "Email", class: 'block text-[#565759] font-semibold mb-2' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', 
+            class: 'w-full p-4 border border-[#AAA7B0] rounded-xl focus:ring-4 focus:ring-[#60BDD1] focus:border-transparent' %>
       </div>
-      <div class="relative">
-        <%= f.password_field :password, autocomplete: "current-password", 
-            class: "w-full px-4 py-3 border border-[#AAA7B0] rounded-lg focus:ring-3 focus:ring-[#60BDD1]/30 focus:border-[#60BDD1]", 
-            placeholder: "password" %>
+      
+      <div>
+        <%= f.label :password, "Password", class: 'block text-[#565759] font-semibold mb-2' %>
+        <%= f.password_field :password, autocomplete: 'current-password', 
+            class: 'w-full p-4 border border-[#AAA7B0] rounded-xl focus:ring-4 focus:ring-[#60BDD1] focus:border-transparent' %>
       </div>
-      <div class="flex items-center justify-between text-xs text-[#565759]">
-        <label class="flex items-center">
-          <input type="checkbox" class="rounded"> Remember me
-        </label>
-        <a href="#" class="text-[#60BDD1] hover:underline">Forgot password?</a>
+      
+      <div class="flex items-center justify-between">
+        <%= f.submit "Sign In", class: 'btn-primary text-lg px-8 py-4 w-full font-bold' %>
       </div>
-      <%= f.submit "Sign In", class: "w-full bg-[#0984C0] hover:bg-[#60BDD1] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5" %>
     <% end %>
     
-    <div class="mt-8 pt-6 border-t border-[#C0BEC6] text-center">
-      <p class="text-[#565759] text-sm mb-4">Skip login for demo:</p>
-      <a href="/tech" class="inline-flex items-center gap-2 text-[#60BDD1] hover:text-[#0984C0] hover:underline font-medium bg-[#FFFFFF] border border-[#C0BEC6] px-6 py-2 rounded-lg hover:bg-[#F8F9FA] transition-all">
-        → Tech Dashboard (Live)
-      </a>
+    <div class="mt-8 p-4 bg-[#C0BEC6]/20 rounded-xl text-center">
+      <div class="font-mono text-sm text-[#565759]">
+        tech@thomasit.com / Smith2001!
+      </div>
     </div>
   </div>
 </div>
