@@ -19224,3 +19224,20 @@ Migrating to AddRoleTechIdToUsers (20260214214644)
   [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."tech_id" = ? LIMIT ?[0m  [["tech_id", "2001"], ["LIMIT", 1]]
   [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "email", "encrypted_password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "role", "tech_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["created_at", "2026-02-14 21:57:27.333212"], ["email", "tech@thomasit.com"], ["encrypted_password", "$2a$12$ORQHZhfOJgnMdL2ROEPs0uzt4AcKdpRMOEv8FkmkwDfy6UeGpG0IS"], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["updated_at", "2026-02-14 21:57:27.333212"], ["role", nil], ["tech_id", "2001"]]
   [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mCOMMIT TRANSACTION[0m
+Started POST "/api/swaps/2001/claim" for 127.0.0.1 at 2026-02-14 16:00:19 -0700
+  
+SyntaxError (/home/zero-hd/network-swap-app/config/routes.rb:24: syntax error, unexpected backslash
+namespace :api do\n  resources :swaps\nend
+                 ^
+):
+  
+config/routes.rb:24: syntax error, unexpected backslash
+Started GET "/api/swaps" for 127.0.0.1 at 2026-02-14 16:00:19 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/swaps"):
+  
+Started POST "/users/sign_in" for 127.0.0.1 at 2026-02-14 16:00:19 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/users/sign_in"):
+  
+  [1m[36mUser Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
