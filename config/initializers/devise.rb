@@ -314,3 +314,11 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+
+Warden::Manager.after_set_user do |user, auth, opts|
+  auth.raw_session[:user_id] = user.id
+end
+
+Warden::Manager.before_failure do |env, app, opts|
+  env['warden.options'][:attempted_path] = env['REQUEST_PATH']
+end

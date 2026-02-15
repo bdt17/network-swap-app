@@ -13,3 +13,4 @@ group :development, :test do
 end
 gem 'sqlite3', '~> 2.1'
 gem 'devise'
+gem 'redis-rails'

@@ -39,8 +39,8 @@ Device.create!([{
   name: 'HP-LaserJet-Pro', status: 'maintenance', site_id: 1
 }])
 
-Site.create!([{
-  name: 'PHX-DC1', location: 'Phoenix Data Center 1'
+# Site.create!([{
+#   name: 'PHX-DC1', location: 'Phoenix Data Center 1'
 }, {
   name: 'DEN-DC1', location: 'Denver Data Center 1'
 }])
@@ -57,3 +57,30 @@ SwapTicket.create!([{
 }])
 
 puts "✅ Dispatch Tower seeded: 3 tickets ready!"
+
+puts "Seeding Phase 14/10..."
+
+# Phoenix field tech
+unless FieldTech.exists?
+  FieldTech.create!(
+    email: 'tech1@thomasit.com',
+    password: 'password123',
+    ar_glasses_token: SecureRandom.hex(16),
+    gps_lat: 33.4484,    # Phoenix
+    gps_lng: -112.0740
+  )
+  puts "✅ FieldTech created"
+end
+
+# Test drone inspection
+if DroneFleet.exists? && Site.exists?
+  Inspection.create!(
+    drone_fleet_id: DroneFleet.first.id,
+    site_id: Site.first.id,
+    issues: 'Loose Cat6 in rack 3, overheating PSU detected',
+    severity: :high
+  )
+  puts "✅ Inspection created"
+end
+
+puts "Phase 14/10 seed complete!"

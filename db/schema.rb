@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_14_214644) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_15_200121) do
   create_table "audit_logs", force: :cascade do |t|
     t.string "action", null: false
     t.datetime "created_at", null: false
@@ -62,6 +62,52 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_14_214644) do
     t.string "vendor_identifier"
     t.index ["drone_fleet_id"], name: "index_drones_on_drone_fleet_id"
     t.index ["site_id"], name: "index_drones_on_site_id"
+  end
+
+  create_table "field_tech_locations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "field_tech_id", null: false
+    t.float "lat"
+    t.float "lng"
+    t.datetime "timestamp"
+    t.datetime "updated_at", null: false
+    t.index ["field_tech_id"], name: "index_field_tech_locations_on_field_tech_id"
+  end
+
+  create_table "field_teches", force: :cascade do |t|
+    t.string "ar_glasses_token"
+    t.datetime "created_at", null: false
+    t.float "gps_lat"
+    t.float "gps_lng"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "field_techs", force: :cascade do |t|
+    t.string "ar_glasses_token"
+    t.datetime "created_at", null: false
+    t.datetime "current_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.float "gps_lat"
+    t.float "gps_lng"
+    t.datetime "last_sign_in_at"
+    t.string "last_sign_in_ip"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["ar_glasses_token"], name: "index_field_techs_on_ar_glasses_token", unique: true
+    t.index ["email"], name: "index_field_techs_on_email", unique: true
+  end
+
+  create_table "inspections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "drone_fleet_id", null: false
+    t.text "issues"
+    t.integer "severity"
+    t.integer "site_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drone_fleet_id"], name: "index_inspections_on_drone_fleet_id"
+    t.index ["site_id"], name: "index_inspections_on_site_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -119,5 +165,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_14_214644) do
   add_foreign_key "devices", "sites"
   add_foreign_key "drones", "drone_fleets"
   add_foreign_key "drones", "sites"
+  add_foreign_key "field_tech_locations", "field_teches"
+  add_foreign_key "inspections", "drone_fleets"
+  add_foreign_key "inspections", "sites"
   add_foreign_key "swap_tickets", "sites"
 end
