@@ -21660,3 +21660,131 @@ Information for cause: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-sw
   
 app/views/field_techs/index.html.erb:9: unterminated string meets end of file
 app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/sites" for ::1 at 2026-02-15 14:03:05 -0700
+Processing by SitesController#index as */*
+  Rendering sites/index.html.erb
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites"[0m
+  Rendered sites/index.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">)
+Caused by: NoMethodError (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">)
+
+Information for: ActionView::Template::Error (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">):
+    1: <h1>Phoenix Enterprise Sites (Phase 14)</h1>
+    2: <% @sites.each do |site| %>
+    3:   <div><%= site.name %> - <%= site.devices.count %> devices</div>
+    4: <% end %>
+  
+app/views/sites/index.html.erb:3
+app/views/sites/index.html.erb:2
+
+Information for cause: NoMethodError (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">):
+  
+app/views/sites/index.html.erb:3
+app/views/sites/index.html.erb:2
+Started GET "/field_techs" for ::1 at 2026-02-15 14:03:05 -0700
+Processing by FieldTechsController#index as */*
+  Rendering field_techs/index.html.erb
+  Rendered field_techs/index.html.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/field_techs/index.html.erb)
+Caused by: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+          end
+             ^
+/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/field_techs/index.html.erb):
+1:    <h1>AR Field Techs - Phoenix (Phase 10)</h1>
+2:    <% @field_techs.each do |tech| %>
+3:      <div>
+4:        <%= tech.email %> @ GPS: <%= tech.gps_lat %}, <%= tech.gps_lng %>
+5:        AR Token: <%= tech.ar_glasses_token[0..8] %>...
+6:      </div>
+7:    <% end %>
+  
+app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+          end
+             ^
+/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^
+):
+  
+app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/sites" for ::1 at 2026-02-15 14:03:14 -0700
+Processing by SitesController#index as */*
+  Rendering sites/index.html.erb
+  [1m[36mSite Load (0.1ms)[0m  [1m[34mSELECT "sites".* FROM "sites"[0m
+  Rendered sites/index.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">)
+Caused by: NoMethodError (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">)
+
+Information for: ActionView::Template::Error (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">):
+    1: <h1>Phoenix Enterprise Sites (Phase 14)</h1>
+    2: <% @sites.each do |site| %>
+    3:   <div><%= site.name %> - <%= site.devices.count %> devices</div>
+    4: <% end %>
+  
+app/views/sites/index.html.erb:3
+app/views/sites/index.html.erb:2
+
+Information for cause: NoMethodError (undefined method `devices' for #<Site id: 1, address: "123 Rack St, Phoenix, AZ", code: nil, created_at: "2026-02-15 13:04:04.412217000 -0700", distance_km_from_hub: 0.5e2, name: "DC-1", region: "US-West", updated_at: "2026-02-15 13:04:04.412217000 -0700">):
+  
+app/views/sites/index.html.erb:3
+app/views/sites/index.html.erb:2
+Started GET "/field_techs" for ::1 at 2026-02-15 14:03:14 -0700
+Processing by FieldTechsController#index as */*
+  Rendering field_techs/index.html.erb
+  Rendered field_techs/index.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/field_techs/index.html.erb)
+Caused by: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+          end
+             ^
+/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/field_techs/index.html.erb):
+1:    <h1>AR Field Techs - Phoenix (Phase 10)</h1>
+2:    <% @field_techs.each do |tech| %>
+3:      <div>
+4:        <%= tech.email %> @ GPS: <%= tech.gps_lat %}, <%= tech.gps_lng %>
+5:        AR Token: <%= tech.ar_glasses_token[0..8] %>...
+6:      </div>
+7:    <% end %>
+  
+app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+          end
+             ^
+/home/zero-hd/network-swap-app/app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^
+):
+  
+app/views/field_techs/index.html.erb:9: unterminated string meets end of file
+app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'

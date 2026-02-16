@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thomas IT Network Swap - Phase 14/10</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/tech">Tech</a>
+    <a href="/enterprise">Enterprise</a>
+    <a href="/eol_swaps">EOL Swaps</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/sites">Sites</a>
+    <a href="/field_techs">Field Techs</a>
+  </nav>
+  <main>
+    <%= yield %>
+  </main>
+</body>
+</html>

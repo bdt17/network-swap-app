@@ -16,3 +16,13 @@ Rails.application.configure do
   'Cache-Control' => "public, max-age=#{1.hour.to_i}"
 }
 end
+
+config.public_file_server.enabled = true
+config.public_file_server.headers = {
+  "Cache-Control" => "public, max-age=#{1.hour.to_i}"
+}
+
+config.public_file_server.enabled = true
+config.public_file_server.headers = {
+  "Cache-Control" => "public, max-age=#{1.hour.to_i}"
+}
