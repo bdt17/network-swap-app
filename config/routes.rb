@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "inventory/index"
+  get "eol_swaps/index"
+  get "enterprise/index"
+  get "tech/index"
   # Thomas IT Phase 14/10 routes from your test
   get '/tech', to: 'tech#index'
   get '/enterprise', to: 'enterprise#index'
