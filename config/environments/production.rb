@@ -10,4 +10,9 @@ Rails.application.configure do
   
   # Skip migrations (no DB yet)
   config.active_record.schema_format = :sql
+
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+  'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+}
 end
