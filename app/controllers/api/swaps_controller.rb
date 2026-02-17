@@ -1,13 +1,12 @@
 module Api
   class SwapsController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    
     def index
-      render json: [{id: 2001, device: 'Cisco-2960-24TT', site: 'PHX-DC1'}]
+      render json: SwapTicket.all.as_json(include: [:device, :site])
     end
-    
-    def claim
-      render json: {success: true, swap_id: params[:id]}
+
+    def show
+      swap = SwapTicket.find(params[:id])
+      render json: swap.as_json(include: [:device, :site])
     end
   end
 end
