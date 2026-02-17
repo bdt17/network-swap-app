@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "field_techs/index"
+  get "sites/index"
   get "inventory/index"
   get "eol_swaps/index"
   get "enterprise/index"
