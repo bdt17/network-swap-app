@@ -22264,3 +22264,39 @@ Information for cause: ActiveSupport::SyntaxErrorProxy (/home/zero-hd/network-sw
   
 app/views/field_techs/index.html.erb:9: unterminated string meets end of file
 app/views/field_techs/index.html.erb:9: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/sites" for ::1 at 2026-02-16 18:39:18 -0700
+Processing by SitesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sites/index.html.erb within layouts/application
+  Rendered sites/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/field_techs" for ::1 at 2026-02-16 18:39:18 -0700
+Processing by FieldTechsController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering field_techs/index.html.erb within layouts/application
+  Rendered field_techs/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/sites" for ::1 at 2026-02-16 19:46:13 -0700
+Processing by SitesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sites/index.html.erb within layouts/application
+  Rendered sites/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | GC: 0.1ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/field_techs" for ::1 at 2026-02-16 19:46:13 -0700
+Processing by FieldTechsController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering field_techs/index.html.erb within layouts/application
+  Rendered field_techs/index.html.erb within layouts/application (Duration: 0.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+

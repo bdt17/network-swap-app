@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Thomas IT Network Swap - Phase 14/10</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thomas IT Network Swap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary-blue: #0984C0;
+      --thomas-gold: #FCD34D;
+      --accent-silver: #AAA7B0;
+    }
+    .thomas-primary { color: var(--primary-blue); }
+    .thomas-gold { color: var(--thomas-gold); }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="/dashboard">Dashboard</a>
-    <a href="/tech">Tech</a>
-    <a href="/enterprise">Enterprise</a>
-    <a href="/eol_swaps">EOL Swaps</a>
-    <a href="/inventory">Inventory</a>
-    <a href="/sites">Sites</a>
-    <a href="/field_techs">Field Techs</a>
-  </nav>
-  <main>
-    <%= yield %>
-  </main>
+  <%= yield %>
 </body>
 </html>
