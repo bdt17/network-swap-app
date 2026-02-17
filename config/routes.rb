@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
-  get "field_techs/index"
-  get "sites/index"
-  get "inventory/index"
-  get "eol_swaps/index"
-  get "enterprise/index"
-  get "tech/index"
-  # Thomas IT Phase 14/10 routes from your test
+  # FIELD TECH ROUTES (No Auth Required)
+  get '/', to: 'home#index'
   get '/tech', to: 'tech#index'
+  get '/dashboard', to: 'dashboard#index'
   get '/enterprise', to: 'enterprise#index'
   get '/eol_swaps', to: 'eol_swaps#index'
-  get '/dashboard', to: 'dashboard#index'
   get '/inventory', to: 'inventory#index'
   
-  # Missing routes that failed locally too
-  get '/sites', to: 'sites#index'
-  get '/field_techs', to: 'field_techs#index'
+  # APIs (No Auth)
+  get '/api/devices', to: 'api#devices'
+  get '/api/shipments', to: 'api#shipments'
   
-  # Default root
-  root 'dashboard#index'
+  # DISABLE DEVise routes completely
+  # get '/users/sign_in', to: 'home#index'  # Redirect to landing
 end
