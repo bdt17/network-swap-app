@@ -2,7 +2,7 @@
 require "net/http"
 require "uri"
 
-BASE_URL = "http://localhost:3001"
+BASE_URL = "http://localhost:3000"
 TEST_PAGES = ["/tech", "/enterprise", "/eol_swaps", "/dashboard", "/inventory"]
 
 puts "🧪 THOMAS IT LOCAL TEST\n#{'='*70}"
@@ -22,4 +22,4 @@ end
 
 puts "#{'='*70}"
 puts "🎉 #{live}/#{TEST_PAGES.length} PAGES LIVE ✓"
-puts "\n🚀 LIVE: http://localhost:3001/tech"
+puts "\n🚀 LIVE: http://localhost:3000/tech"

@@ -14,3 +14,5 @@ end
 gem 'sqlite3', '~> 2.1'
 gem 'devise'
 gem 'redis-rails'
+gem 'pg', '~> 1.5'
+gem 'devise'

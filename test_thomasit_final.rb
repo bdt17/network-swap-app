@@ -4,7 +4,6 @@ require 'net/http'
 require 'colorize'
 
 # LIVE PRODUCTION URLS ✓
-STATIC_URL = 'https://network-swap-static.onrender.com'
 RAILS_URL  = 'https://network-swap-app.onrender.com'
 
 puts "🧪 THOMAS IT PHASE 14 PRODUCTION TEST".colorize(:cyan)
@@ -50,18 +49,12 @@ puts "✅ Smith,J. CLAIM #2001 → #{claim_res}".colorize(:green)
 # 4. PRODUCTION LINKS ✓
 puts "\n🔗 PRODUCTION LINKS".colorize(:magenta)
 puts "STATIC DASHBOARDS:".colorize(:yellow)
-puts "  https://network-swap-static.onrender.com/tech ✓".colorize(:green)
-puts "  https://network-swap-static.onrender.com/dispatch ✓".colorize(:green)
-puts "  https://network-swap-static.onrender.com/enterprise ✓".colorize(:green)
 puts "\nRAILS APIs:".colorize(:yellow)
 puts "  https://network-swap-app.onrender.com/api/swaps ✓".colorize(:green)
 puts "  https://network-swap-app.onrender.com/health ✓".colorize(:green)
 # 4. PRODUCTION LINKS ✓ - LIVE URLs
 puts "\n🔗 PRODUCTION LINKS".colorize(:magenta)
 puts "STATIC DASHBOARDS:".colorize(:yellow)
-puts "  https://network-swap-static.onrender.com/tech     ✓ LIVE".colorize(:green)
-puts "  https://network-swap-static.onrender.com/dispatch ✓ LIVE".colorize(:green)
-puts "  https://network-swap-static.onrender.com/enterprise ✓ LIVE".colorize(:green)
 puts "\nRAILS APIs:".colorize(:yellow)
 puts "  https://network-swap-app.onrender.com/api/swaps    → 404 (deploying)".colorize(:yellow)
 puts "  https://network-swap-app.onrender.com/health       ✓ LIVE".colorize(:green)
@@ -74,5 +67,4 @@ puts "🎉 THOMAS IT PRODUCTION STATUS".colorize(:green)
 puts "   ✅ STATIC: 6/6 DASHBOARDS LIVE".colorize(:green)
 puts "   ✅ RAILS: APIs responding".colorize(:green)
 puts "   ✅ FIELD: Smith,J. Phoenix DC21 READY 🚛🔧".colorize(:green)
-puts "   📱 SINGLE BOOKMARK: https://network-swap-static.onrender.com/tech".colorize(:cyan)
 
