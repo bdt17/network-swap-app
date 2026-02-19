@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_15_200121) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_19_023542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_15_200121) do
     t.string "location"
     t.string "serial_number"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inspection_logs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "drone_fleet_id", null: false
+    t.text "findings"
+    t.bigint "site_id", null: false
+    t.string "status"
+    t.datetime "updated_at", null: false
+    t.index ["drone_fleet_id"], name: "index_inspection_logs_on_drone_fleet_id"
+    t.index ["site_id"], name: "index_inspection_logs_on_site_id"
   end
 
   create_table "inspections", force: :cascade do |t|
@@ -80,6 +91,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_15_200121) do
   end
 
   add_foreign_key "devices", "sites"
+  add_foreign_key "inspection_logs", "drone_fleets"
+  add_foreign_key "inspection_logs", "sites"
   add_foreign_key "inspections", "drone_fleets"
   add_foreign_key "inspections", "sites"
   add_foreign_key "swap_tickets", "devices"

@@ -1,26 +1,19 @@
-puts "🌱 Seeding Thomas IT Network Swap App (Phase 4-7)..."
+puts "🌱 Thomas IT Network Swap - FINAL SEED..."
 
-# Admin user
-User.find_or_create_by!(email: 'admin@thomasit.com') do |user|
-  user.password = 'password123'
-  user.password_confirmation = 'password123'
+# Truncate
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE sites, devices, swap_tickets RESTART IDENTITY CASCADE")
+
+# Sites (5)
+5.times { |i| Site.create!(name: "Phoenix DC #{i}", location: "Rack #{i}") }
+
+# Devices (50)  
+50.times do |i|
+  Device.create!(name: "Switch-#{i}", site_id: Site.first.id, status: "active")
 end
 
-# Test sites (if missing)
-Site.find_or_create_by!(name: 'Phoenix HQ', code: 'PHX')
-Site.find_or_create_by!(name: 'Mesa DC', code: 'MES')
-
-# Test devices (leverage existing schema)
-Device.transaction do
-  25.times do |i|
-    Device.find_or_create_by!(name: "PHX-SW-#{i+1}") do |device|
-      device.model = 'Cisco Catalyst 9300'
-      device.eol_date = 45.days.from_now
-      device.site = Site.first
-      device.status = 'active'
-      device.vendor = 'Cisco'
-    end
-  end
+# Swaps (NO priority/vendor_notes - use existing columns only)
+10.times do |i|
+  SwapTicket.create!(device_id: Device.first.id, status: "pending")
 end
 
-puts "✅ Seeded #{User.count} users, #{Device.count} devices!"
+puts "✅ Seeded: #{Site.count} sites, #{Device.count} devices, #{SwapTicket.count} swaps"

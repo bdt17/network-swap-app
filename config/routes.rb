@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   
   # API endpoints (Phase 6)
   namespace :api do
+    namespace :v1 do
+      get "inspections/index"
+      get "inspections/show"
+    end
     resources :devices, only: [:index]
   end
   
