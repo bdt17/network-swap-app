@@ -1,37 +1,27 @@
 require_relative "boot"
 
-require "rails"
-# Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "action_cable/engine"
-# require "rails/test_unit/railtie"
+require "rails/all"
 
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module NetworkSwapApp
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
-    
-    # CRITICAL: Enable sessions for Devise (FIXES 401 errors)
-    config.session_store :cookie_store, key: '_network_swap_session'
-    
-    # Enable HTML views (your app needs this)
-    config.api_only = false
-    
-    # Serve static files
-    config.public_file_server.enabled = true
-    
-    # Timezone for Phoenix
-    config.time_zone = 'Mountain Time (US & Canada)'
-    
-    # Redis for ActionCable (Phase 14 real-time drone updates)
-    config.action_cable.url = 'redis://localhost:6379'
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w[assets tasks])
+
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
-ENV['RESTART_ON_DEPLOY'] = 'true'

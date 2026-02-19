@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-echo "🩺 NETWORK SWAP HEALTH CHECK"
-echo "═══════════════════════════════"
-curl -s https://network-swap-app.onrender.com/api/status
-echo -e "\nDevices: $(curl -s https://network-swap-app.onrender.com/api/devices | jq length)"
-echo "Drones: $(curl -s https://network-swap-app.onrender.com/api/drones)"
-echo "Uptime: $(curl -s -I https://network-swap-app.onrender.com | grep HTTP)"

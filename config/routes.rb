@@ -1,32 +1,14 @@
 Rails.application.routes.draw do
-  # Static landing (Phase 4)
-  root to: "public#index"
-  
-  # Devise authentication (Phase 5)
-  devise_for :users, path: 'session', controllers: { 
-    sessions: 'sessions'
-  }
-  
-  # API endpoints (Phase 6)
-  namespace :api do
-    namespace :v1 do
-      get "inspections/index"
-      get "inspections/show"
-    end
-    resources :devices, only: [:index]
-  end
-  
-  # Dashboard (Phase 6)
-  get '/dashboard', to: 'swaps#dashboard'
-  
-  # Health check (Rails 8.1)
-  get '/health', to: 'rails/health#show'
-end
-  get '/drone/inspect', to: 'api/drone#inspect'
-  get '/drone/status', to: 'api/drone#status'
-post '/api/v1/inspections', to: 'api/v1/inspections#create'
-namespace :api do
-  namespace :v1 do
-    post '/inspections', to: 'inspections#create'
-  end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
+
+  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+
+  # Defines the root path route ("/")
+  # root "posts#index"
 end
