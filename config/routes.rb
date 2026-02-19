@@ -24,3 +24,9 @@ Rails.application.routes.draw do
 end
   get '/drone/inspect', to: 'api/drone#inspect'
   get '/drone/status', to: 'api/drone#status'
+post '/api/v1/inspections', to: 'api/v1/inspections#create'
+namespace :api do
+  namespace :v1 do
+    post '/inspections', to: 'inspections#create'
+  end
+end
