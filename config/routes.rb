@@ -18,3 +18,5 @@ Rails.application.routes.draw do
   # Health check (Rails 8.1)
   get '/health', to: 'rails/health#show'
 end
+  get '/drone/inspect', to: 'api/drone#inspect'
+  get '/drone/status', to: 'api/drone#status'
