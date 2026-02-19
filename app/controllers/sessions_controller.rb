@@ -1,3 +1,3 @@
 class SessionsController < Devise::SessionsController
-  layout 'public'
+  layout false  # Login page has its own complete HTML
 end
