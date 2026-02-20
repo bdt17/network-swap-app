@@ -1,10 +1,20 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_secure_password
-  has_many :sessions, dependent: :destroy
 
-  normalizes :email_address, with: ->(e) { e.strip.downcase }
+  # ONLY validate what exists in DB
+  validates :email, presence: true, uniqueness: true
+  validates :role, inclusion: { in: %w[tech manager admin] }, allow_nil: true
+
+  # Network Swap relationships
+  has_many :swap_tickets, dependent: :restrict_with_error
+  has_many :drone_inspections, dependent: :restrict_with_error
+
+  before_validation :normalize_email
+
+  private
+
+  def normalize_email
+    self.email = email.strip.downcase if email.present?
+  end
 end
