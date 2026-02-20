@@ -1,9 +1,10 @@
 class DashboardController < ApplicationController
-  include Authentication
-  
-  before_action :require_authentication
+  before_action :authenticate_user!
   
   def index
-    @devices = Device.all
+    @swaps = Swap.all.order(created_at: :desc).limit(10)
+    @devices = Device.count
+    @sites = Site.count
+    render plain: "DJI-PHX-179 LIVE | #{Device.count} devices | #{Site.count} sites | #{Swap.count} swaps", layout: false
   end
 end
