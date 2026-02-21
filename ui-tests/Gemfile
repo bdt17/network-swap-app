@@ -1,1 +1,4 @@
 gem 'twilio-ruby'
+gem 'webrick'
+
+gem "rackup", "~> 2.3"

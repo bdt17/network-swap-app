@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
-  # COMPLETE TEST COVERAGE - PRIORITY ORDER
-  get '/session/new', to: proc { [200, {}, ['LOGIN OK']] }
-  post '/session', to: proc { [200, {}, ['LOGIN SUCCESS']] }
-  delete '/session', to: proc { [200, {}, ['LOGOUT OK']] }
-  
-  get '/', to: proc { [200, {}, ['ROOT OK']] }
-  get '/dashboard', to: proc { [200, {}, ['DASHBOARD OK']] }
-  get '/tech', to: proc { [200, {}, ['TECH OK']] }
-  get '/enterprise', to: proc { [200, {}, ['ENTERPRISE OK']] }
-  get '/eol_swaps', to: proc { [200, {}, ['EOL OK']] }
-  get '/inventory', to: proc { [200, {}, ['INVENTORY OK']] }
-  get '/api/devices', to: proc { [200, {'Content-Type' => 'application/json'}, ['[]']] }
+  root 'dashboard#index'
+
+  # Login flow
+  get  '/session/new',  to: 'sessions#new',    as: :login
+  post '/session',      to: 'sessions#create', as: :session
+  delete '/session',    to: 'sessions#destroy'
+
+  # Network swap pages
+  get '/dashboard',   to: 'dashboard#index'
+  get '/tech',        to: 'dashboard#tech'
+  get '/enterprise',  to: 'dashboard#enterprise'
+  get '/eol_swaps',   to: 'dashboard#eol_swaps'
+  get '/inventory',   to: 'inventory#index'
+
+  # API
+  namespace :api do
+    resources :devices, only: [:index]
+  end
 end

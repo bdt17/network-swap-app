@@ -1,28 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Network Swap App" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Network Swap App">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-  </head>
-
-  <body>
-    <%= yield %>
+<head>
+  <title>Thomas IT Network Swap - Phase 13</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+      min-height: 100vh; 
+      color: #1f2937;
+    }
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px; 
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .header { 
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: white; 
+      padding: 1.5rem 2rem;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .logo { 
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      display: flex; 
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo::before { content: "🌐"; font-size: 2rem; }
+    nav a { 
+      color: rgba(255,255,255,0.9); 
+      text-decoration: none; 
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      transition: all 0.2s;
+      margin-left: 0.25rem;
+    }
+    nav a:hover { background: rgba(255,255,255,0.2); }
+    .status { 
+      background: linear-gradient(90deg, #10b981, #059669);
+      color: white; 
+      padding: 0.25rem 1rem; 
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .main { padding: 3rem 2rem; }
+    h1 { 
+      font-size: 2.5rem; 
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    h2 { color: #1e40af; margin-bottom: 1rem; }
+    .flash { 
+      background: #d1fae5; 
+      border: 1px solid #a7f3d0;
+      color: #065f46; 
+      padding: 1rem; 
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card { 
+      background: white; 
+      border-radius: 16px; 
+      padding: 1.5rem; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid rgba(59,130,246,0.1);
+    }
+    .metric { font-size: 2.5rem; font-weight: 700; color: #1e40af; }
+    form { max-width: 400px; }
+    input, button { 
+      width: 100%; 
+      padding: 0.75rem; 
+      margin-bottom: 1rem; 
+      border: 1px solid #d1d5db; 
+      border-radius: 12px; 
+      font-size: 1rem;
+    }
+    button { 
+      background: linear-gradient(135deg, #3b82f6, #1e40af);
+      color: white; 
+      border: none; 
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">NETWORK SWAP</div>
+      <div>
+        <span class="status">PHASE 13 LIVE</span>
+        <nav>
+          <%= link_to "Dashboard", dashboard_path %>
+          <%= link_to "Tech", tech_path %>
+          <%= link_to "Inventory", inventory_path %>
+          <%= link_to "Login", login_path %>
+        </nav>
+      </div>
+    </div>
+    <div class="main">
+      <% if flash[:notice] %>
+        <div class="flash"><%= flash[:notice] %></div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -67,3 +67,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
+
+gem "webrick", "~> 1.9"

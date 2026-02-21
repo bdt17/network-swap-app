@@ -16,17 +16,23 @@ GEM
     nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
     racc (1.8.1)
+    rack (3.2.5)
+    rackup (2.3.1)
+      rack (>= 3)
     twilio-ruby (7.10.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 4.0)
       nokogiri (>= 1.6, < 2.0)
     uri (1.1.1)
+    webrick (1.9.2)
 
 PLATFORMS
   x86_64-linux-gnu
 
 DEPENDENCIES
+  rackup (~> 2.3)
   twilio-ruby
+  webrick
 
 CHECKSUMS
   base64 (0.3.0)
@@ -38,8 +44,11 @@ CHECKSUMS
   net-http (0.9.1)
   nokogiri (1.19.0-x86_64-linux-gnu)
   racc (1.8.1)
+  rack (3.2.5)
+  rackup (2.3.1)
   twilio-ruby (7.10.0)
   uri (1.1.1)
+  webrick (1.9.2)
 
 BUNDLED WITH
   4.0.5
