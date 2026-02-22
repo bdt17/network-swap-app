@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   # API
   namespace :api do
+    namespace :v1 do
+      get "drone_fleets/index"
+      get "drone_fleets/create"
+      get "inspections/index"
+      get "inspections/create"
+    end
     resources :devices, only: [:index]
   end
 end
