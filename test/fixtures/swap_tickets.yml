@@ -3,11 +3,17 @@
 one:
   device: one
   site: one
-  scheduled_at: 2026-02-06 00:26:18
-  status: 1
+  vendor: MyString
+  scheduled_at: 2026-02-22 16:25:09
+  status: MyString
+  issue: MyText
+  priority: MyString
 
 two:
   device: two
   site: two
-  scheduled_at: 2026-02-06 00:26:18
-  status: 1
+  vendor: MyString
+  scheduled_at: 2026-02-22 16:25:09
+  status: MyString
+  issue: MyText
+  priority: MyString

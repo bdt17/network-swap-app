@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fleet: one
+  serial: MyString
+  status: MyString
+
+two:
+  fleet: two
+  serial: MyString
+  status: MyString
