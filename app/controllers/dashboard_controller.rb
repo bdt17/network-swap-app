@@ -1,9 +1,8 @@
 class DashboardController < ApplicationController
   def index
-    render plain: "Thomas IT Network Swap - Phase 16 LIVE 🚀"
+    render plain: "Thomas IT Network Swap - DJI-PHX-179 OPERATIONAL 🚁"
   end
   
   def tech
-    # Your PRO DJI layout already LIVE at /tech
   end
 end
