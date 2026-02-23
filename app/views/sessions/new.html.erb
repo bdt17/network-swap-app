@@ -1,11 +1,20 @@
-<div style="max-width: 400px; margin: 0 auto;">
-  <h1>Tech Login</h1>
-  <form action="/session" method="post">
-    <input type="email" name="user[email]" placeholder="tech@thomasit.com" value="tech@thomasit.com" required>
-    <input type="password" name="user[password]" placeholder="password" value="password" required>
-    <button type="submit">🚀 Enter Network Swap</button>
-  </form>
-  <p style="text-align: center; margin-top: 1.5rem; color: #6b7280;">
-    Thomas IT • Phase 13 • Phoenix DC21
-  </p>
+<div style="max-width: 400px; margin: 4rem auto; padding: 2rem; background: rgba(255,255,255,0.95); border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.25); backdrop-filter: blur(20px);">
+  <h1 style="text-align: center; background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5rem; margin-bottom: 2rem; font-weight: 800;">
+    Thomas IT Field Tech
+  </h1>
+  
+  <% if flash[:alert] %>
+    <div style="background: #fee2e2; color: #dc2626; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 4px solid #dc2626;">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
+  <%= form_with url: sessions_path, local: true do |f| %>
+    <div style="margin-bottom: 1rem;">
+      <%= f.label :tech_id, "Tech ID", style: "display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;" %>
+      <%= f.text_field :tech_id, placeholder: "brett", required: true, 
+                       style: "width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 1rem; transition: all 0.2s; box-sizing: border-box;" %>
+    </div>
+    <%= f.submit "Login →", style: "width: 100%; background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 0.875rem; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s;" %>
+  <% end %>
 </div>

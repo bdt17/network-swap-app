@@ -1,42 +1,39 @@
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
-  
-  <!-- DJI DRONE CARD -->
-  <div class="bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border-4 border-emerald-400/50 rounded-3xl p-8">
-    <h3 class="text-3xl font-black text-white mb-6 flex items-center gap-4">
-      <span class="text-4xl">🚁</span>
-      DJI-PHX-179 LIVE
-    </h3>
-    <div class="space-y-4 mb-8">
-      <div class="flex justify-between text-xl">
-        <span>Battery:</span>
-        <span class="font-black text-emerald-400">85%</span>
-      </div>
-      <div class="flex justify-between">
-        <span>Racks:</span>
-        <span class="font-bold text-blue-400">3/8 scanned</span>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DJI-PHX-179 Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body style="margin:0;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:white;padding:2rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <h1 style="font-size:3rem;text-align:center;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 1rem;">
+      DJI-PHX-179 Status
+    </h1>
+    <p style="text-align:center;font-size:1.2rem;color:#94a3b8;margin:0 0 3rem;">
+      Field Tech: Brett Thomas ✓ | <%= Time.now.strftime("%Y-%m-%d %H:%M") %> MST
+    </p>
     
-    <!-- WORKING DRONE BUTTON -->
-    <form action="/api/v1/inspections" method="POST">
-      <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black py-4 px-8 rounded-2xl shadow-2xl hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all text-xl">
-        🚁 RUN DRONE SCAN NOW
-      </button>
-    </form>
-  </div>
-
-  <!-- METRICS -->
-  <div class="bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-2xl">
-    <h3 class="text-2xl font-black mb-6 text-slate-800">Phoenix DC</h3>
-    <div class="grid grid-cols-2 gap-6">
-      <div class="text-center p-6 rounded-2xl bg-blue-50">
-        <div class="text-4xl font-black text-blue-600">247</div>
-        <div class="text-slate-600 font-bold">Racks</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
+      <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.2);">
+        <h2 style="font-size:1.5rem;margin:0 0 1rem;color:#f8fafc;">Battery</h2>
+        <div style="font-size:3rem;font-weight:700;color:#10b981;"><%= @dji_status[:battery] %></div>
+        <div style="width:100%;height:12px;background:rgba(255,255,255,0.2);border-radius:6px;overflow:hidden;margin-top:1rem;">
+          <div style="width:<%= @dji_status[:battery].gsub('%','') %>;height:100%;background:linear-gradient(90deg,#10b981,#059669);"></div>
+        </div>
       </div>
-      <div class="text-center p-6 rounded-2xl bg-emerald-50">
-        <div class="text-4xl font-black text-emerald-600">98.7%</div>
-        <div class="text-slate-600 font-bold">Uptime</div>
+      
+      <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.2);">
+        <h2 style="font-size:1.5rem;margin:0 0 1rem;color:#f8fafc;">Racks</h2>
+        <div style="font-size:3rem;font-weight:700;color:#f59e0b;"><%= @dji_status[:racks] %></div>
+        <div style="color:#94a3b8;margin-top:0.5rem;">37.5% loaded</div>
+      </div>
+      
+      <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.2);">
+        <h2 style="font-size:1.5rem;margin:0 0 1rem;color:#f8fafc;">Thermal Alerts</h2>
+        <div style="font-size:4rem;color:#10b981;">0</div>
+        <div style="color:#10b981;font-weight:600;">All systems nominal</div>
       </div>
     </div>
   </div>
-</div>
+</body>
+</html>

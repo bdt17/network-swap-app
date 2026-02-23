@@ -1,16 +1,20 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
-
   def new
+    render layout: 'application'
   end
-
+  
   def create
-    flash[:notice] = 'Logged in successfully! Welcome to Phase 13.'
-    redirect_to dashboard_path
+    if params[:tech_id] == "brett"
+      session[:tech_id] = "brett"
+      redirect_to "/tech", notice: "Field Tech: Brett Thomas ✓ DJI-PHX-179 Ready"
+    else
+      flash[:alert] = "Invalid Tech ID"
+      render :new
+    end
   end
-
+  
   def destroy
-    flash[:notice] = 'Logged out successfully.'
-    redirect_to login_path
+    session[:tech_id] = nil
+    redirect_to root_path, notice: "Logged out"
   end
 end
