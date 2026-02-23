@@ -1,6 +1,9 @@
 class DashboardController < ApplicationController
-  def index; end
-  def tech; end
-  def enterprise; end
-  def eol_swaps; end
+  def index
+    render plain: "Thomas IT Network Swap - Phase 16 LIVE 🚀"
+  end
+  
+  def tech
+    # Your PRO DJI layout already LIVE at /tech
+  end
 end

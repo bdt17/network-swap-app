@@ -1,0 +1,2 @@
+class FieldTech < ApplicationRecord
+end

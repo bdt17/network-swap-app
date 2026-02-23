@@ -1,31 +1,19 @@
 Rails.application.routes.draw do
+  get "health/show"
+  get "dashboard/index"
+  get "dashboard/tech"
   root 'dashboard#index'
+  
+  # Tech Dashboard + DJI Drone
+  get '/tech', to: 'dashboard#tech'
+  
+  # API - DJI Drone (LIVE!)
   namespace :api do
     namespace :v1 do
-      post '/inspections', to: 'inspections#create'
+      post '/inspections', to: 'inspections#create'  # ✅ WORKING
     end
   end
-
-  # Login flow
-  get  '/session/new',  to: 'sessions#new',    as: :login
-  post '/session',      to: 'sessions#create', as: :session
-  delete '/session',    to: 'sessions#destroy'
-
-  # Network swap pages
-  get '/dashboard',   to: 'dashboard#index'
-  get '/tech',        to: 'dashboard#tech'
-  get '/enterprise',  to: 'dashboard#enterprise'
-  get '/eol_swaps',   to: 'dashboard#eol_swaps'
-  get '/inventory',   to: 'inventory#index'
-
-  # API
-  namespace :api do
-    namespace :v1 do
-      get "drone_fleets/index"
-      get "drone_fleets/create"
-      get "inspections/index"
-      get "inspections/create"
-    end
-    resources :devices, only: [:index]
-  end
+  
+  # Health check
+  get '/health', to: 'health#show'
 end
