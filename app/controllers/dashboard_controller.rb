@@ -1,9 +1,4 @@
 class DashboardController < ApplicationController
-  def index
-    render plain: "Thomas IT Network Swap - DJI-PHX-179 OPERATIONAL 🚁 Login: /login"
-  end
-
-  def tech
-    @dji_status = { battery: '85%', racks: '3/8', thermal_alerts: 0 }
-  end
+  def index; redirect_to tech_path; end
+  def tech; @time = Time.now.strftime("%Y-%m-%d %H:%M MST"); render layout: false; end
 end

@@ -1,14 +1,79 @@
-<h1>Thomas IT Network Swap - DJI-PHX-179</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DJI-PHX-179 • Thomas IT</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body style="margin:0;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);color:white;padding:2rem;font-family:system-ui,serif;font-size:16px;line-height:1.6;">
+  <div style="max-width:1400px;margin:0 auto;">
+    
+    <!-- HEADER -->
+    <header style="text-align:center;margin-bottom:4rem;">
+      <div style="display:inline-flex;gap:1rem;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:1rem 2rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);margin-bottom:2rem;">
+        <div style="width:12px;height:12px;background:#10b981;border-radius:50%;animation:pulse 2s infinite;"></div>
+        <span style="font-size:1.25rem;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;">Phase 14 • LIVE</span>
+      </div>
+      <h1 style="font-size:clamp(3rem,8vw,6rem);font-weight:900;background:linear-gradient(135deg,#3b82f6,#10b981,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;letter-spacing:-0.02em;text-shadow:0 4px 20px rgba(59,130,246,0.3);">
+        DJI-PHX-179 🚁
+      </h1>
+      <p style="font-size:1.5rem;color:#94a3b8;margin:1rem 0 0 0;font-weight:400;">Field Tech: Brett Thomas ✓ | Phoenix, AZ</p>
+    </header>
 
-<div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-  <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🚁 DJI-PHX-179 LIVE</h2>
-  <p style="font-size: 1.25rem;">Battery: <strong style="color: #ecfdf5;">85%</strong> | Racks Scanned: <strong>3/8</strong></p>
-  
-  <form action="/api/v1/inspections" method="POST" style="margin-top: 2rem;">
-    <button type="submit" style="background: linear-gradient(135deg, #059669, #047857); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; font-size: 1.25rem; font-weight: bold; cursor: pointer;">
-      🚁 RUN DRONE SCAN NOW
-    </button>
-  </form>
-</div>
+    <!-- METRICS GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2.5rem;margin-bottom:4rem;">
+      
+      <!-- BATTERY -->
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 25px 50px rgba(0,0,0,0.25);">
+        <h2 style="font-size:1.25rem;margin:0 0 1.5rem 0;color:#cbd5e1;font-weight:600;letter-spacing:0.5px;">Battery Status</h2>
+        <div style="font-size:4.5rem;font-weight:900;color:#10b981;margin-bottom:1.5rem;">85%</div>
+        <div style="width:100%;height:20px;background:rgba(255,255,255,0.12);border-radius:12px;overflow:hidden;">
+          <div style="width:85%;height:100%;background:linear-gradient(90deg,#10b981,#059669);box-shadow:0 0 20px rgba(16,185,129,0.4);border-radius:12px;"></div>
+        </div>
+        <p style="color:#94a3b8;margin:1rem 0 0 0;font-size:0.95rem;">Optimal range • 17+ min flight time</p>
+      </div>
 
-<p><strong>Production Status:</strong> DJI Drone API = 201 SUCCESS ✅</p>
+      <!-- RACKS -->
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 25px 50px rgba(0,0,0,0.25);">
+        <h2 style="font-size:1.25rem;margin:0 0 1.5rem 0;color:#cbd5e1;font-weight:600;letter-spacing:0.5px;">Rack Utilization</h2>
+        <div style="font-size:5rem;font-weight:900;color:#f59e0b;margin-bottom:1rem;">3/8</div>
+        <p style="color:#94a3b8;margin:0;font-size:1.1rem;font-weight:500;">37.5% loaded</p>
+        <p style="color:#64748b;margin:0.5rem 0 0 0;font-size:0.9rem;">Phoenix DC • Network Swap Active</p>
+      </div>
+
+      <!-- THERMAL -->
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 25px 50px rgba(0,0,0,0.25);">
+        <h2 style="font-size:1.25rem;margin:0 0 1.5rem 0;color:#cbd5e1;font-weight:600;letter-spacing:0.5px;">Thermal Alerts</h2>
+        <div style="font-size:6rem;font-weight:900;color:#10b981;margin-bottom:1rem;">0</div>
+        <p style="color:#10b981;font-weight:700;margin:0;font-size:1.2rem;">All systems nominal</p>
+        <p style="color:#64748b;margin:0.5rem 0 0 0;font-size:0.9rem;">Real-time IR scanning</p>
+      </div>
+
+    </div>
+
+    <!-- ACTION BUTTON -->
+    <div style="text-align:center;">
+      <form action="/scans" method="POST" style="display:inline-block;">
+        <%= csrf_meta_tags %>
+        <button type="submit" style="background:linear-gradient(135deg,#10b981,#059669);color:white;padding:1.25rem 3rem;border:none;border-radius:20px;font-size:1.25rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.3s;box-shadow:0 20px 40px rgba(16,185,129,0.4);border:2px solid rgba(16,185,129,0.3);transform:translateY(0);">
+          🚀 RUN DRONE SCAN NOW
+        </button>
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="text-align:center;margin-top:6rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.1);">
+      <p style="color:#64748b;margin:0;font-size:1rem;">
+        Thomas Information Technology | Network Swap Application | DJI-PHX-179<br>
+        <span style="font-size:0.9rem;">Phoenix, AZ • <%= Time.now.strftime("%Y-%m-%d %H:%M MST") %></span>
+      </p>
+    </footer>
+  </div>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</body>
+</html>
