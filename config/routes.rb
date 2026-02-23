@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'dashboard#index'
+  namespace :api do
+    namespace :v1 do
+      post '/inspections', to: 'inspections#create'
+    end
+  end
 
   # Login flow
   get  '/session/new',  to: 'sessions#new',    as: :login
