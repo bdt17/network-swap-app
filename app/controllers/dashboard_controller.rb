@@ -4,6 +4,5 @@ class DashboardController < ApplicationController
   end
 
   def tech
-    # PRO DJI layout renders here
   end
 end
