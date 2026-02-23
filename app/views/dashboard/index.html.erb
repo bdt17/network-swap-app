@@ -1,2 +1,53 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thomas IT Network Swap - DJI-PHX-179</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body style="margin:0;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);color:white;padding:2rem;font-family:system-ui,serif;">
+  <div style="max-width:1400px;margin:0 auto;text-align:center;">
+    
+    <!-- LIVE STATUS -->
+    <div style="display:inline-flex;gap:1rem;align-items:center;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:1rem 2rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);margin-bottom:2rem;">
+      <div style="width:12px;height:12px;background:#10b981;border-radius:50%;animation:pulse 2s infinite;"></div>
+      <span style="font-size:1.25rem;font-weight:700;color:#10b981;text-transform:uppercase;">Phase 14 • LIVE</span>
+    </div>
+    
+    <!-- MAIN TITLE -->
+    <h1 style="font-size:clamp(3rem,8vw,6rem);font-weight:900;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 1rem 0;">
+      DJI-PHX-179 🚁
+    </h1>
+    
+    <!-- SUBTITLE -->
+    <p style="font-size:1.5rem;color:#94a3b8;margin:0 0 3rem 0;">Field Tech: Brett Thomas ✓ | Phoenix, AZ</p>
+    
+    <!-- METRICS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1200px;margin:0 auto 4rem;">
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
+        <div style="font-size:4rem;font-weight:900;color:#10b981;margin-bottom:0.5rem;">85%</div>
+        <div style="color:#cbd5e1;font-weight:600;">Battery</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
+        <div style="font-size:4rem;font-weight:900;color:#f59e0b;margin-bottom:0.5rem;">3/8</div>
+        <div style="color:#cbd5e1;font-weight:600;">Racks</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
+        <div style="font-size:5rem;font-weight:900;color:#10b981;">0</div>
+        <div style="color:#10b981;font-weight:700;">Thermal Alerts</div>
+      </div>
+    </div>
+    
+    <!-- DRONE SCAN BUTTON -->
+    <form action="/scans" method="POST" style="display:inline-block;">
+      <button type="submit" style="background:linear-gradient(135deg,#10b981,#059669);color:white;padding:1.5rem 3rem;border:none;border-radius:24px;font-size:1.25rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 20px 40px rgba(16,185,129,0.4);border:2px solid rgba(16,185,129,0.3);transition:all 0.3s;">
+        🚀 RUN DRONE SCAN NOW
+      </button>
+    </form>
+    
+    <p style="color:#64748b;margin:4rem 0 0 0;font-size:0.95rem;">Thomas IT Network Swap | Phoenix DC | <%= Time.now.strftime("%Y-%m-%d %H:%M MST") %></p>
+  </div>
+  <style>
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+  </style>
+</body>
+</html>
