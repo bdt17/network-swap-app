@@ -20,3 +20,15 @@ Rails.application.routes.draw do
   # ActionCable (uncomment when ready)
   # mount ActionCable.server => "/cable"
 end
+# Phase 13 Field Tech Routes
+get "/dispatch-tower", to: "dispatch#tower"
+get "/inventory", to: "devices#index"
+get "/eol-swaps", to: "swaps#eol"
+get "/enterprise", to: "sites#index"
+
+# Phase 13 API
+namespace :api do
+  namespace :v1 do
+    resources :swaps, only: [:index, :show, :update]
+  end
+end
