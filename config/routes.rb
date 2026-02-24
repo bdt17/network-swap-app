@@ -7,13 +7,16 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: :logout
-  
+
   # PHASE 14 DRONE API (WORKING)
   namespace :api do
     namespace :v1 do
       post "/inspections", to: "inspections#create"
     end
   end
+
+  # ActionCable WebSocket - INSIDE routes block (FIXES Render error)
+  mount ActionCable.server => '/cable'
 
   # ========================================
   # PHASE 13 STUBS (DISABLED - no syntax errors)
@@ -28,4 +31,3 @@ Rails.application.routes.draw do
   #   end
   # end
 end
-mount ActionCable.server => '/cable'
