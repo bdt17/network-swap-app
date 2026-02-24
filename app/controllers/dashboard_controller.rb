@@ -7,8 +7,8 @@ class DashboardController < ApplicationController
       battery: 85,
       racks_scanned: 8,
       total_racks: 12,
-      status: "Scanning PHX-DC21"
+      status: "Scanning PHX-DC21 (8/12 racks)"
     }
-    render layout: 'dashboard'
+    render layout: 'dashboard', status: :ok
   end
 end
