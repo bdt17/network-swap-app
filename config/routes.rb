@@ -1,25 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "dashboard#index"
+  root 'dashboard#index'
   
-  # FIXED: Match test_login_flow.sh expectations (singular 'session')
-  get "/session/new", to: "sessions#new"
-  post "/session", to: "sessions#create" 
-  delete "/session", to: "sessions#destroy"
-
-  get "/dashboard", to: "dashboard#index"
-  get "/tech", to: "dashboard#tech", as: :tech
-
-  # PHASE 14 DRONE API (WORKING ✅ DJI-PHX-179)
-  namespace :api do
-    namespace :v1 do
-      post "/inspections", to: "inspections#create"
-    end
-  end
-
-  mount ActionCable.server => '/cable'
+  resources :techs
+  get '/tech', to: 'techs#index'
+  
+  # Thomas IT Login Routes
+  get 'session/new', to: 'sessions#new'
+  post 'session', to: 'sessions#create'
+  delete 'session', to: 'sessions#destroy'
 end
-
-get 'session/new', to: 'sessions#new'
-post 'session', to: 'sessions#create'
-delete 'session', to: 'sessions#destroy'
