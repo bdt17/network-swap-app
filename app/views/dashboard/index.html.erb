@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DJI-PHX-179 • Thomas IT Network Swap</title>
+  <title>Thomas IT Network Swap - DJI-PHX-179</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="<%= form_authenticity_token %>">
 </head>
-<body style="margin:0;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#334155 100%);color:white;padding:2rem;font-family:system-ui,serif;font-size:16px;line-height:1.6;">
-  <div style="max-width:1400px;margin:0 auto;text-align:center;">
+<body style="margin:0;min-height:100vh;background:radial-gradient(circle at top,#0f172a,#020617);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#e5e7eb;display:flex;align-items:center;justify-content:center;">
+
+  <div style="width:100%;max-width:800px;padding:2.5rem;border-radius:1.5rem;background:rgba(15,23,42,0.9);box-shadow:0 25px 70px rgba(15,23,42,0.95);backdrop-filter:blur(20px);border:1px solid rgba(148,163,184,0.3);">
     
-    <!-- LIVE BADGE -->
-    <div style="display:inline-flex;gap:1rem;align-items:center;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);padding:1rem 2rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);margin-bottom:2rem;">
-      <div style="width:12px;height:12px;background:#10b981;border-radius:50%;animation:pulse 2s infinite;"></div>
-      <span style="font-size:1.25rem;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;">Phase 14 • LIVE</span>
+    <!-- Header -->
+    <header style="text-align:center;margin-bottom:2.5rem;">
+      <h1 style="margin:0 0 0.5rem;font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#22c55e,#06b6d4);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.02em;">
+        🚁 DJI-PHX-179 Live
+      </h1>
+      <p style="margin:0;font-size:1.1rem;color:#94a3b8;">
+        Autonomous Phoenix DC rack inspections • Phase 14 LIVE
+      </p>
+    </header>
+
+    <!-- Status Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
+      
+      <!-- Battery -->
+      <div style="padding:1.5rem;border-radius:1rem;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);">
+        <h3 style="margin:0 0 0.5rem;font-size:0.9rem;color:#10b981;font-weight:600;">Battery</h3>
+        <div style="font-size:2.5rem;font-weight:700;color:#059669;">85%</div>
+      </div>
+
+      <!-- Racks -->
+      <div style="padding:1.5rem;border-radius:1rem;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);">
+        <h3 style="margin:0 0 0.5rem;font-size:0.9rem;color:#d97706;font-weight:600;">Racks Scanned</h3>
+        <div style="font-size:2.5rem;font-weight:700;color:#b45309;">8/12</div>
+      </div>
+
+      <!-- Alerts -->
+      <div style="padding:1.5rem;border-radius:1rem;background:rgba(30,64,175,0.15);border:1px solid rgba(30,64,175,0.3);">
+        <h3 style="margin:0 0 0.5rem;font-size:0.9rem;color:#1e40af;font-weight:600;">Thermal Alerts</h3>
+        <div style="font-size:2.5rem;font-weight:700;color:#1e3a8a;">0</div>
+      </div>
+
     </div>
-    
-    <!-- TITLE -->
-    <h1 style="font-size:clamp(3rem,8vw,6rem);font-weight:900;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 1.5rem 0;letter-spacing:-0.02em;">
-      DJI-PHX-179 🚁
-    </h1>
-    
-    <!-- METRICS -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1200px;margin:3rem auto;">
-      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
-        <div style="font-size:5rem;font-weight:900;color:#10b981;margin-bottom:1rem;">85%</div>
-        <div style="color:#cbd5e1;font-size:1.1rem;font-weight:600;">Battery</div>
-        <p style="color:#94a3b8;margin:0.5rem 0 0 0;font-size:0.95rem;">Autonomous Phoenix DC rack inspections</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
-        <div style="font-size:5.5rem;font-weight:900;color:#f59e0b;margin-bottom:1rem;">3/8</div>
-        <div style="color:#cbd5e1;font-size:1.1rem;font-weight:600;">Racks</div>
-        <p style="color:#94a3b8;margin:0.5rem 0 0 0;font-size:0.95rem;">8 Phoenix DC racks</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.12);">
-        <div style="font-size:6rem;font-weight:900;color:#10b981;margin-bottom:1rem;">0</div>
-        <div style="color:#10b981;font-size:1.2rem;font-weight:700;">Thermal Alerts</div>
-        <p style="color:#94a3b8;margin:0.5rem 0 0 0;font-size:0.95rem;">Real-time thermal scans</p>
-      </div>
-    </div>
-    
-    <!-- ACTION BUTTON -->
-    <div style="margin:4rem 0;">
-      <form action="/scans" method="POST" style="display:inline-block;">
-        <button type="submit" style="background:linear-gradient(135deg,#10b981,#059669);color:white;padding:1.5rem 4rem;border:none;border-radius:24px;font-size:1.25rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 20px 40px rgba(16,185,129,0.4);border:2px solid rgba(16,185,129,0.3);transition:all 0.3s;">
-          🚀 RUN DRONE SCAN NOW
+
+    <!-- Drone Scan Button -->
+    <div style="text-align:center;">
+      <form action="/api/v1/inspections" method="post" style="display:inline;">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <button type="submit"
+          style="padding:1rem 2.5rem;border-radius:999px;border:none;background:linear-gradient(135deg,#22c55e,#16a34a);color:#022c22;font-weight:700;font-size:1.1rem;cursor:pointer;box-shadow:0 15px 40px rgba(34,197,94,0.5);transition:all 0.2s;"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 20px 50px rgba(34,197,94,0.6)';"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 15px 40px rgba(34,197,94,0.5)';">
+          🚁 RUN DRONE SCAN NOW
         </button>
       </form>
     </div>
-    
-    <footer style="color:#64748b;font-size:0.95rem;">
-      Thomas Information Technology | Network Swap Application<br>
-      <span>Phoenix, AZ • <%= @time %></span>
-    </footer>
+
+    <!-- Footer -->
+    <p style="margin-top:2rem;font-size:0.85rem;color:#6b7280;text-align:center;">
+      Field Tech: Brett Thomas ✓ | Phoenix, AZ | <%= Time.now.strftime("%Y-%m-%d %H:%M MST") %>
+    </p>
+
   </div>
-  <style>
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
-  </style>
+
 </body>
 </html>

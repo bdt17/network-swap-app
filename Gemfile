@@ -69,3 +69,4 @@ end
 
 
 gem "webrick", "~> 1.9"
+gem "tailwindcss-rails", "~> 2.0"

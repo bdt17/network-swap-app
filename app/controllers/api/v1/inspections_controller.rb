@@ -1,16 +1,24 @@
-class Api::V1::InspectionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  
-  def create
-    render json: {
-      status: 'success',
-      message: '🚁 DJI-PHX-179 dispatched - thermal scan initiated',
-      inspection_id: rand(1000..9999),
-      drone_status: 'scanning_phoenix_dc_racks',
-      battery: '85%',
-      racks_scanned: 3,
-      thermal_alerts: 0,
-      estimated_completion: Time.now + 5.minutes
-    }, status: :created
+module Api
+  module V1
+    class InspectionsController < ApplicationController
+      skip_before_action :verify_authenticity_token # API endpoint
+
+      def create
+        # Simulate drone scan result
+        scan_result = {
+          drone_id: "DJI-PHX-179",
+          site_code: "PHX-DC21",
+          battery: "84%",
+          racks_scanned: 8,
+          thermal_alerts: 0,
+          timestamp: Time.current.iso8601,
+          status: "completed"
+        }
+
+        Rails.logger.info("[DJI-PHX-179] Scan completed: #{scan_result}")
+
+        render json: scan_result, status: :created
+      end
+    end
   end
 end
