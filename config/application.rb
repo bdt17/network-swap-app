@@ -25,3 +25,4 @@ module NetworkSwapApp
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+Rails.autoloaders.main.push_dir(Rails.root.join('app/services'))

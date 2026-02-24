@@ -2,10 +2,18 @@
 
 one:
   fleet: one
-  serial: MyString
+  identifier: MyString
   status: MyString
+  battery_level: 1
+  gps_lat: 1.5
+  gps_lng: 1.5
+  last_heartbeat: 2026-02-24 14:36:47
 
 two:
   fleet: two
-  serial: MyString
+  identifier: MyString
   status: MyString
+  battery_level: 1
+  gps_lat: 1.5
+  gps_lng: 1.5
+  last_heartbeat: 2026-02-24 14:36:47

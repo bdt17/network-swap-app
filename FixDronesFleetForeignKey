@@ -1,0 +1,5 @@
+class FixDronesFleetForeignKey < ActiveRecord::Migration[8.1]
+  def change
+    remove_foreign_key :drones, :fleets if foreign_key_exists?(:drones, :fleets)
+  end
+end
