@@ -1,17 +1,23 @@
 class SessionsController < ApplicationController
-  # Skip CSRF for API-like endpoints (matches test script)
   skip_before_action :verify_authenticity_token, only: [:create, :destroy]
 
   def new
-    render plain: "Thomas IT Login - Phase 14 Drone Diagnostics 🚁", status: :ok
+    render layout: 'dashboard'
   end
 
   def create
-    # Simulate login success for test
-    render plain: "Login successful - Welcome to Thomas IT Network Ops", status: :ok
+    if params[:username] == 'admin' && params[:password] == 'thomasit'
+      session[:user_id] = 1
+      session[:username] = 'admin'
+      redirect_to root_path, notice: 'Thomas IT Network Ops Center - Access Granted!'
+    else
+      flash.now[:alert] = 'Invalid credentials. Use: admin / thomasit'
+      render :new, layout: 'dashboard'
+    end
   end
 
   def destroy
-    render plain: "Logged out successfully", status: :ok
+    session.destroy
+    redirect_to session_new_path, notice: 'Logged out successfully'
   end
 end

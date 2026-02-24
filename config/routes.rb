@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "dashboard#index"
   
   # FIXED: Match test_login_flow.sh expectations (singular 'session')
@@ -18,3 +19,7 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 end
+
+get 'session/new', to: 'sessions#new'
+post 'session', to: 'sessions#create'
+delete 'session', to: 'sessions#destroy'
