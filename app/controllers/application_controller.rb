@@ -21,3 +21,16 @@ end
       redirect_to session_new_path
     end
   end
+
+private
+
+def logged_in?
+  session[:user_id].present?
+end
+
+def require_login!
+  unless logged_in?
+    flash[:alert] = 'Network Ops requires login'
+    redirect_to session_new_path
+  end
+end
