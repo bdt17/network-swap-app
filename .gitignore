@@ -39,3 +39,4 @@
 network_swap_test_*.txt
 network_swap_errors_*.txt
 *.txt
+config/master.key
