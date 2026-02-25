@@ -7,6 +7,7 @@ Rails.application.configure do
   config.enable_reloading = false
 
   # Eager load code on boot for better performance and memory savings (ignored by Rake tasks).
+config.eager_load = true
   config.eager_load = true
 
   # Full error reports are disabled.
@@ -90,4 +91,5 @@ Rails.application.configure do
   config.active_record.encryption.deterministic_key = ENV['ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY']
   config.active_record.encryption.key_derivation_salt = ENV['ACTIVE_RECORD_ENCRYPTION_SALT']
 end
+config.eager_load = true
 config.eager_load = true

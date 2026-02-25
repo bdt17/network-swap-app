@@ -76,4 +76,6 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 end
 config.eager_load = false
+config.eager_load = false
+config.rake_eager_load = false
 config.rake_eager_load = false
