@@ -1,4 +1,10 @@
 class DashboardController < ApplicationController
+  before_action :require_login, except: :index
+
+  skip_before_action :require_login, only: :index # Public landing
+  skip_before_action :require_login, only: :index # Public landing
+  before_action :require_login, except: :index
+
   skip_before_action :require_login, only: :index # Public landing
   before_action :require_login, except: :index
 
