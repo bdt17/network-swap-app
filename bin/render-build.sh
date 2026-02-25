@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 set -o errexit
+set -o pipefail
 
-# Install dependencies
-bundle install
+# Install gems
+bundle lock --add-platform x86_64-linux
+bundle install -j4
 
 # Precompile assets
 bundle exec rails assets:precompile
 
 # Clean old assets
-bundle exec rails assets:clean
+bundle exec rails assets:clobber
 
-# Run migrations (Render provides DATABASE_URL)
-bundle exec rails db:migrate
+# Create/parse database + migrate (Render provides DATABASE_URL)
+bundle exec rails db:prepare
 
-# Optional: Seed if needed
-# bundle exec rails db:seed
+# Verify app boots
+bundle exec rails runner "Rails.application.load_tasks; puts 'Build successful'"
