@@ -7,4 +7,10 @@ class ApiController < ApplicationController
       {id: 2, name: "PHX-SW-02", status: "active", location: "PHX-DC21-Rack09"}
     ]
   end
+
+  def shipments
+    render json: [
+      {id: 1, carrier: "UPS", status: "in-transit", destination: "PHX-DC21"}
+    ]
+  end
 end
