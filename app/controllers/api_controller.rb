@@ -1,16 +1,8 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def devices
-    render json: [
-      {id: 1, name: "PHX-SW-01", status: "active", location: "PHX-DC21-Rack08"},
-      {id: 2, name: "PHX-SW-02", status: "active", location: "PHX-DC21-Rack09"}
-    ]
+    render json: [{id: 1, type: 'Cisco Switch', site: 'Phoenix DC21', status: 'EOL'}]
   end
-
   def shipments
-    render json: [
-      {id: 1, carrier: "UPS", status: "in-transit", destination: "PHX-DC21"}
-    ]
+    render json: [{id: 1, vendor: 'CDW', devices: 25, eta: '2026-03-01'}]
   end
 end
