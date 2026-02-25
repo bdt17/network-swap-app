@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
-set -o errexit
-set -o pipefail
+set -e
 
-# Install gems
-bundle lock --add-platform x86_64-linux
-bundle install -j4
+# Thomas IT Phase 14: FULL DB RESET + MIGRATE
+bundle exec rails db:drop db:create db:migrate db:seed
 
-# Precompile assets  
+# Precompile assets
 bundle exec rails assets:precompile
-bundle exec rails assets:clobber
 
-# NUCLEAR DATABASE RESET - Creates ALL tables (fleets, etc.)
-bundle exec rails db:drop db:create db:migrate
+echo "✅ Thomas IT Build: DB + Assets COMPLETE"

@@ -1,9 +1,12 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Thomas IT Phase 14: Drone Fleet Data
+Site.create!([
+  {name: 'Phoenix DC21', address: '123 Tech Dr, Phoenix AZ'},
+  {name: 'Phoenix HQ', address: '456 Network Blvd'}
+])
+
+DroneFleet.create!([
+  {manufacturer: 'DJI', api_key: 'dji_phx_179_mock', status: 1, site_id: 1},
+  {manufacturer: 'DJI', api_key: 'dji_hq_22_mock', status: 1, site_id: 2}
+])
+
+puts "✅ Seeded: Phoenix DC21 + HQ sites + DJI-PHX-179 drone"
