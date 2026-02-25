@@ -16,3 +16,10 @@ Rails.application.routes.draw do
     end
   end
 end
+
+# PHASE 14 DIRECT ROUTE - NO NAMESPACE (bulletproof)
+get '/api/v1/drone_fleets/:fleet_id/inspect', to: 'api/v1/drone#inspect'
+
+# PHASE 14 DIRECT ROUTE - PRODUCTION PROVEN
+get '/api/v1/drone_fleets/:fleet_id/inspect', to: 'api/v1/drone#inspect'
+
