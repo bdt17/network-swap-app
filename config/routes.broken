@@ -1,0 +1,35 @@
+Rails.application.routes.draw do
+  root 'dashboard#index'
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'session/new', to: 'sessions#new', as: 'session_new'
+  post 'session', to: 'sessions#create'
+  delete 'session', to: 'sessions#destroy'
+  get 'health', to: proc { [200, {}, ['OK']] }
+  get 'api/devices', to: 'api#devices'
+  get 'api/shipments', to: 'api#shipments'
+  
+  # Thomas IT Network Swap - Production Routes (ALL controllers exist)
+  get '/tech', to: 'public#tech'           # public_controller.rb ✓
+  get '/dispatch', to: 'dispatch#index'    # dispatch_controller.rb ✓
+  get '/enterprise', to: 'public#enterprise' # public_controller.rb ✓
+  get '/health', to: 'health#index'        # health_controller.rb ✓
+  
+  # API routes (uses your existing controllers)
+  namespace :api do
+    namespace :v1 do
+      resources :swaps  # api/v1/swaps_controller.rb ✓
+    end
+  end
+  
+  # Keep any other existing routes here...
+end
+
+namespace :api do
+  namespace :v1 do
+    resources :drone_fleets, only: [] do
+      member do
+        get :inspect
+      end
+    end
+  end
+end

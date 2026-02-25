@@ -3,11 +3,11 @@
 one:
   manufacturer: MyString
   api_key: MyString
-  capabilities: MyText
-  status: MyString
+  status: 1
+  site: one
 
 two:
   manufacturer: MyString
   api_key: MyString
-  capabilities: MyText
-  status: MyString
+  status: 1
+  site: two
