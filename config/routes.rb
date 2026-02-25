@@ -1,25 +1,18 @@
 Rails.application.routes.draw do
   root 'dashboard#index'
-  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  get 'session/new', to: 'sessions#new', as: 'session_new'
+  get 'dashboard', to: 'dashboard#index'
+  get 'session/new', to: 'sessions#new'
   post 'session', to: 'sessions#create'
   delete 'session', to: 'sessions#destroy'
   get 'health', to: proc { [200, {}, ['OK']] }
-  get 'api/devices', to: 'api#devices'
-  get 'api/shipments', to: 'api#shipments'
-  
-  # Thomas IT Network Swap - Production Routes (ALL controllers exist)
-  get '/tech', to: 'public#tech'           # public_controller.rb ✓
-  get '/dispatch', to: 'dispatch#index'    # dispatch_controller.rb ✓
-  get '/enterprise', to: 'public#enterprise' # public_controller.rb ✓
-  get '/health', to: 'health#index'        # health_controller.rb ✓
-  
-  # API routes (uses your existing controllers)
+  get '/api/devices', to: 'api#devices'
+  get '/api/shipments', to: 'api#shipments'
+  get 'tech', to: 'public#tech'
+
+  # PHASE 14 DRONE ROUTES - CORRECTLY INSIDE DRAW BLOCK
   namespace :api do
     namespace :v1 do
-      resources :swaps  # api/v1/swaps_controller.rb ✓
+      get '/drone_fleets/:fleet_id/inspect', to: 'drone#inspect'
     end
   end
-  
-  # Keep any other existing routes here...
 end
