@@ -6,3 +6,4 @@ Rails.application.routes.draw do
   delete 'session', to: 'sessions#destroy'
   get 'api/devices', to: 'api#devices'
 end
+  get 'dashboard', to: 'dashboard#index'
