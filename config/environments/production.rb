@@ -90,3 +90,4 @@ Rails.application.configure do
   config.active_record.encryption.deterministic_key = ENV['ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY']
   config.active_record.encryption.key_derivation_salt = ENV['ACTIVE_RECORD_ENCRYPTION_SALT']
 end
+config.eager_load = true
