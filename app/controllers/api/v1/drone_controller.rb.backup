@@ -8,6 +8,6 @@ class Api::V1::DroneController < ApplicationController
       video_stream: 'ws://network-swap-app.onrender.com/cable/drone_feed',
       timestamp: Time.now.utc.iso8601,
       swarm_ready: true
-    }
+    }, status: :ok
   end
 end
