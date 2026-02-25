@@ -15,8 +15,7 @@ class DashboardController < ApplicationController
   private
 
   def require_login
-    unless session[:user_id]
-      redirect_to '/session/new', alert: 'Thomas IT Network Ops requires login'
-    end
+    return if session[:user_id].present?
+    redirect_to session_new_path, alert: 'Please login'
   end
 end
