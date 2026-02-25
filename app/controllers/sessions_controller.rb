@@ -1,8 +1,13 @@
 class SessionsController < ApplicationController
   def new
-    render plain: "Thomas IT Login - admin/thomasit", status: :ok
+    render layout: 'application'
   end
+  
   def create
-    render plain: "Logged in as admin@thomasit.com", status: :ok
+    if params[:password] == 'thomasit'
+      render json: { logged_in: true, user: 'admin@thomasit.com' }, status: :ok
+    else
+      render json: { error: 'Invalid credentials' }, status: 401
+    end
   end
 end
