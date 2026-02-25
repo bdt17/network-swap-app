@@ -1,41 +1,35 @@
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900">
-  <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 w-full max-w-md shadow-2xl">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500 bg-clip-text text-transparent mb-2 tracking-tight">
-        Thomas IT
-      </h1>
-      <p class="text-gray-300 text-lg">Network Operations Center</p>
-    </div>
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+  <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); border-radius: 24px; padding: 2rem; width: 100%; max-width: 400px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+    <h1 style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 1rem;">
+      Thomas IT
+    </h1>
+    <p style="color: #cbd5e1; text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Network Operations Center</p>
     
     <% if flash[:alert] %>
-      <div class="bg-red-500/20 border border-red-500/50 text-red-200 p-4 rounded-xl mb-6 backdrop-blur-sm animate-pulse">
+      <div style="background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem;">
         <%= flash[:alert] %>
       </div>
     <% end %>
     
-    <%= form_with url: '/session', local: true, class: "space-y-4" do |f| %>
-      <div>
-        <%= f.label :username, "Username", class: "block text-sm font-semibold text-gray-200 mb-2" %>
-        <%= f.text_field :username, value: "admin", required: true, autocomplete: "username",
-            class: "w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 
-                   focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all" %>
+    <%= form_with url: '/session', local: true do |f| %>
+      <div style="margin-bottom: 1.5rem;">
+        <%= f.label :username, "Username", style: "display: block; color: #e2e8f0; font-weight: 500; margin-bottom: 0.5rem;" %>
+        <%= f.text_field :username, value: "admin", required: true, 
+            style: "width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; color: white; font-size: 1rem; backdrop-filter: blur(10px); transition: all 0.3s;" %>
       </div>
       
-      <div>
-        <%= f.label :password, "Password", class: "block text-sm font-semibold text-gray-200 mb-2" %>
-        <%= f.password_field :password, value: "thomasit", required: true, autocomplete: "current-password",
-            class: "w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 
-                   focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all" %>
+      <div style="margin-bottom: 2rem;">
+        <%= f.label :password, "Password", style: "display: block; color: #e2e8f0; font-weight: 500; margin-bottom: 0.5rem;" %>
+        <%= f.password_field :password, value: "thomasit", required: true, 
+            style: "width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; color: white; font-size: 1rem; backdrop-filter: blur(10px); transition: all 0.3s;" %>
       </div>
       
       <%= f.submit "🚁 Enter Network Ops", 
-          class: "w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 
-                 text-white font-bold py-4 px-6 rounded-xl transition-all text-lg shadow-lg hover:shadow-xl 
-                 border border-emerald-500/50 hover:scale-[1.02] active:scale-[0.98]" %>
+          style: "width: 100%; background: linear-gradient(135deg, #10b981, #059669); color: white; font-weight: 700; padding: 1rem; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 20px rgba(16,185,129,0.3);" %>
     <% end %>
     
-    <div class="mt-6 pt-6 border-t border-white/10 text-center">
-      <p class="text-gray-400 text-sm font-mono">admin / thomasit</p>
+    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+      <p style="color: #94a3b8; font-size: 0.9rem; font-family: 'SF Mono', monospace;">admin / thomasit</p>
     </div>
   </div>
 </div>

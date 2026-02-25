@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
 
   def new
-    render layout: 'dashboard'
+    # Use application.html.erb for login (no dashboard layout)
+    render 'sessions/new', layout: 'application'
   end
 
   def create
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: 'Thomas IT Network Ops Center'
     else
       flash.now[:alert] = 'Invalid: admin/thomasit'
-      render :new, layout: 'dashboard'
+      render 'sessions/new', layout: 'application'
     end
   end
 
