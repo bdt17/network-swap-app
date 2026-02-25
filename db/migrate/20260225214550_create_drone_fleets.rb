@@ -5,7 +5,6 @@ class CreateDroneFleets < ActiveRecord::Migration[8.1]
       t.string :api_key
       t.integer :status
       t.references :site, null: false, foreign_key: true
-
       t.timestamps
     end
   end
