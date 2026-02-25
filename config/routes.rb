@@ -8,18 +8,7 @@ Rails.application.routes.draw do
   get '/api/devices', to: 'api#devices'
   get '/api/shipments', to: 'api#shipments'
   get 'tech', to: 'public#tech'
-
-  # PHASE 14 DRONE ROUTES - CORRECTLY INSIDE DRAW BLOCK
-  namespace :api do
-    namespace :v1 do
-      get '/drone_fleets/:fleet_id/inspect', to: 'drone#inspect'
-    end
-  end
+  
+  # PHASE 14 DRONE - BULLETPROOF DIRECT ROUTE
+  get '/api/v1/drone_fleets/:fleet_id/inspect', to: 'api/v1/drone#inspect'
 end
-
-# PHASE 14 DIRECT ROUTE - NO NAMESPACE (bulletproof)
-get '/api/v1/drone_fleets/:fleet_id/inspect', to: 'api/v1/drone#inspect'
-
-# PHASE 14 DIRECT ROUTE - PRODUCTION PROVEN
-get '/api/v1/drone_fleets/:fleet_id/inspect', to: 'api/v1/drone#inspect'
-
