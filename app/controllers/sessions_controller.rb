@@ -1,22 +1,19 @@
 class SessionsController < ApplicationController
   def new
-    # Render login form HTML (matches your beautiful Tailwind UI)
-    render layout: 'application', status: :ok
+    render file: 'public/index.html' # Use your existing perfect login page
   end
   
   def create
-    if params[:user][:password] == 'thomasit'
+    if params[:password] == 'thomasit'
       session[:user_id] = 1
-      session[:user_email] = 'admin@thomasit.com'
-      redirect_to dashboard_path, notice: 'Welcome to Thomas IT Network Ops'
+      redirect_to dashboard_path, notice: 'Welcome to Network Ops'
     else
-      flash.now[:alert] = 'Invalid credentials'
-      render :new, status: :unprocessable_entity
+      render file: 'public/index.html', status: :unprocessable_entity
     end
   end
   
   def destroy
     session.clear
-    redirect_to root_path, notice: 'Logged out successfully'
+    render file: 'public/index.html', status: :see_other
   end
 end
