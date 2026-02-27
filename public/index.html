@@ -66,3 +66,11 @@
   </script>
 </body>
 </html>
+
+<script>
+document.querySelector('form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  // Simulate login success
+  window.location.href = '/dashboard.html';
+});
+</script>
