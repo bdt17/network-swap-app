@@ -1,11 +1,34 @@
+# config/routes.rb
 Rails.application.routes.draw do
   # STATIC PAGES (your perfect TailwindCSS designs)
-  get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]] }
-  get '/dashboard', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/dashboard.html')]] }
-  
+  get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')] }
+
+  # Dashboard and inventory (same page, different routes)
+  get '/dashboard', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/dashboard.html')] }
+  get '/inventory', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/inventory.html')] }
+
+  # Sites / enterprise routes
+  get '/sites',      to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/sites.html')] }
+  get '/enterprise', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/enterprise.html')] }
+
+  # Field techs
+  get '/field_techs', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/field_techs.html')] }
+
+  # EOL swaps
+  get '/eol_swaps', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/eol_swaps.html')] }
+
+  # Tech / field ops
+  get '/tech', to: proc { [200, {}, ['Thomas IT Tech Dashboard - Field Ops Ready']] }
+
   # APIs (already working perfectly)
   get '/health', to: proc { [200, {}, ['OK']] }
+
   get '/api/devices', to: 'api#devices'
+
+  # DRONE / diagnostics (Phase 14)
   get '/drone/inspect/:id', to: 'drone#inspect'
-  get '/tech', to: proc { [200, {}, ['Thomas IT Tech Dashboard - Field Ops Ready']] }
+
+  # You can add API‑style versions for UI tests later:
+  # get '/api/sites', to: 'api#sites'
+  # get '/api/field_techs', to: 'api#field_techs'
 end

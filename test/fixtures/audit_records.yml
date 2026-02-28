@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_type: MyString
+  subject_type: MyString
+  subject_id: 1
+  actor_type: MyString
+  actor_id: 1
+  changes_json: 
+  ip: MyString
+  user_agent: MyText
+
+two:
+  event_type: MyString
+  subject_type: MyString
+  subject_id: 1
+  actor_type: MyString
+  actor_id: 1
+  changes_json: 
+  ip: MyString
+  user_agent: MyText

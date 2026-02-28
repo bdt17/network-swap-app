@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  site: one
+  swap_ticket: one
+  inspection_report: 
+  status: MyString
+  started_at: 2026-02-28 13:51:01
+  completed_at: 2026-02-28 13:51:01
+
+two:
+  site: two
+  swap_ticket: two
+  inspection_report: 
+  status: MyString
+  started_at: 2026-02-28 13:51:01
+  completed_at: 2026-02-28 13:51:01
