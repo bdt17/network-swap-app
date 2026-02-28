@@ -1,21 +1,21 @@
 # config/routes.rb
 Rails.application.routes.draw do
   # STATIC PAGES (your perfect TailwindCSS designs)
-  get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')] }
+  get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]] }
 
   # Dashboard and inventory (same page, different routes)
-  get '/dashboard', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/dashboard.html')] }
-  get '/inventory', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/inventory.html')] }
+  get '/dashboard', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/dashboard.html')]] }
+  get '/inventory', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/inventory.html')]] }
 
   # Sites / enterprise routes
-  get '/sites',      to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/sites.html')] }
-  get '/enterprise', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/enterprise.html')] }
+  get '/sites',      to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/sites.html')]] }
+  get '/enterprise', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/enterprise.html')]] }
 
   # Field techs
-  get '/field_techs', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/field_techs.html')] }
+  get '/field_techs', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/field_techs.html')]] }
 
   # EOL swaps
-  get '/eol_swaps', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/eol_swaps.html')] }
+  get '/eol_swaps', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/eol_swaps.html')]] }
 
   # Tech / field ops
   get '/tech', to: proc { [200, {}, ['Thomas IT Tech Dashboard - Field Ops Ready']] }
