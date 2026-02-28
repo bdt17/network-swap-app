@@ -28,7 +28,12 @@ Rails.application.routes.draw do
   # DRONE / diagnostics (Phase 14)
   get '/drone/inspect/:id', to: 'drone#inspect'
 
-  # You can add API‑style versions for UI tests later:
-  # get '/api/sites', to: 'api#sites'
-  # get '/api/field_techs', to: 'api#field_techs'
+  # PHASE 14 DRONE SWARM API (FIXED ROUTES)
+  namespace :api do
+    namespace :drone do
+      post 'drones/launch_swarm', to: 'api/drone#launch_swarm'
+      post 'inspect', to: 'api/drone#inspect'
+      get 'status', to: 'api/drone#status'
+    end
+  end
 end
