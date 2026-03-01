@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_28_210440) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_28_233120) do
   create_table "audit_events", force: :cascade do |t|
     t.integer "actor_id"
     t.string "actor_type"
@@ -56,12 +56,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_210440) do
   create_table "drone_inspections", force: :cascade do |t|
     t.datetime "completed_at"
     t.datetime "created_at", null: false
+    t.integer "drone_fleet_id", null: false
     t.json "inspection_report"
     t.integer "site_id", null: false
     t.datetime "started_at"
     t.string "status"
     t.integer "swap_ticket_id", null: false
     t.datetime "updated_at", null: false
+    t.index ["drone_fleet_id"], name: "index_drone_inspections_on_drone_fleet_id"
     t.index ["site_id"], name: "index_drone_inspections_on_site_id"
     t.index ["swap_ticket_id"], name: "index_drone_inspections_on_swap_ticket_id"
   end
@@ -85,6 +87,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_210440) do
   end
 
   add_foreign_key "drone_fleets", "sites"
+  add_foreign_key "drone_inspections", "drone_fleets"
   add_foreign_key "drone_inspections", "sites"
   add_foreign_key "drone_inspections", "swap_tickets"
   add_foreign_key "swap_tickets", "sites"

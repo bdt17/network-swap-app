@@ -36,4 +36,5 @@ Rails.application.routes.draw do
       get 'status', to: 'api/drone#status'
     end
   end
+  mount ActionCable.server => '/cable'
 end
