@@ -1,17 +1,6 @@
 services:
   - type: web
-    name: network-swap
+    name: network-swap-app
     env: ruby
-    buildCommand: |
-      bundle lock --add-platform x86_64-linux
-      bundle install
-      bundle exec rake assets:precompile
-      bundle exec rake db:migrate
-    startCommand: bundle exec puma -C config/puma.rb
-    envVars:
-      - key: RAILS_MASTER_KEY
-        generateValue: true
-      - key: RAILS_ENV
-        value: production
-      - key: PORT
-        value: 10000
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bin/rails server -p $PORT -b 0.0.0.0"

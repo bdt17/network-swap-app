@@ -1,0 +1,13 @@
+<h1>🚨 AI SWAP DISPATCH LIVE</h1>
+<p>🟢 Phoenix DC21 | DJI-001 85% | C9300 EOL</p>
+<button onclick="dispatchEOL()" style="padding:15px;font-size:18px;background:#10b981;color:white;border:none;border-radius:8px;cursor:pointer;">📱 Dispatch Smith,J. → Rack3U</button>
+<div id="result"></div>
+<script>
+function dispatchEOL() {
+  document.getElementById('result').innerHTML = '🚀 Sending SMS...';
+  fetch('/api/dispatch_sms', {method: 'POST'})
+    .then(r=>r.json())
+    .then(data=> document.getElementById('result').innerHTML = '✅ ' + data.message)
+    .catch(e=> document.getElementById('result').innerHTML = '❌ ' + e);
+}
+</script>
