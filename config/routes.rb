@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get "up", to: "rails/health#show"
   get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
   get '/status', to: 'status#index'
- 
-  # STATIC PAGES (your perfect TailwindCSS designs)
+  post '/api/dispatch_sms', to: 'status#dispatch_sms' 
+  
+ # STATIC PAGES (your perfect TailwindCSS designs)
   get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]] }
 
   # Dashboard and inventory (same page, different routes)
@@ -46,4 +47,3 @@ Rails.application.routes.draw do
   end
   mount ActionCable.server => '/cable'
 end
-  post '/api/dispatch_sms', to: 'status#dispatch_sms'
