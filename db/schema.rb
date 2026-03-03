@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_28_233120) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_03_011919) do
   create_table "audit_events", force: :cascade do |t|
     t.integer "actor_id"
     t.string "actor_type"
@@ -46,9 +46,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_233120) do
     t.string "make"
     t.string "manufacturer"
     t.string "model"
+    t.string "name"
     t.integer "site_id", null: false
     t.integer "status"
     t.datetime "updated_at", null: false
+    t.string "vendor"
     t.string "video_stream_url"
     t.index ["site_id"], name: "index_drone_fleets_on_site_id"
   end
@@ -66,6 +68,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_233120) do
     t.index ["drone_fleet_id"], name: "index_drone_inspections_on_drone_fleet_id"
     t.index ["site_id"], name: "index_drone_inspections_on_site_id"
     t.index ["swap_ticket_id"], name: "index_drone_inspections_on_swap_ticket_id"
+  end
+
+  create_table "drone_missions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "drone_id", null: false
+    t.integer "site_id", null: false
+    t.string "status"
+    t.datetime "updated_at", null: false
+    t.string "video_url"
+    t.index ["drone_id"], name: "index_drone_missions_on_drone_id"
+    t.index ["site_id"], name: "index_drone_missions_on_site_id"
+  end
+
+  create_table "drones", force: :cascade do |t|
+    t.integer "battery_level"
+    t.datetime "created_at", null: false
+    t.integer "fleet_id"
+    t.string "identifier"
+    t.string "status"
+    t.datetime "updated_at", null: false
   end
 
   create_table "sites", force: :cascade do |t|
@@ -90,5 +112,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_28_233120) do
   add_foreign_key "drone_inspections", "drone_fleets"
   add_foreign_key "drone_inspections", "sites"
   add_foreign_key "drone_inspections", "swap_tickets"
+  add_foreign_key "drone_missions", "drones"
+  add_foreign_key "drone_missions", "sites"
   add_foreign_key "swap_tickets", "sites"
 end

@@ -1,0 +1,26 @@
+class Drone < ApplicationRecord
+  belongs_to :fleet, class_name: "DroneFleet"  # Keep your existing
+  has_many :drone_missions                      # ➕ PHASE 14
+  has_many :drone_telemetries                   # ➕ PHASE 14
+  
+  # Keep your existing validation
+  validates :identifier, presence: true
+  
+  # ➕ PHASE 14 enums (won't break existing data)
+  enum status: { 
+    offline: 0,      # maps to your existing
+    online: 1,       # your current default  
+    in_mission: 2,
+    charging: 3,
+    maintenance: 4 
+  }
+  
+  # Keep + improve your online? method
+  def online?
+    status == "online" && (battery_level || battery_pct || 0) > 20
+  end
+  
+  # ➕ PHASE 14 scopes
+  scope :available, -> { online.where("COALESCE(battery_level, battery_pct, 0) > 40") }
+  scope :recent_heartbeat, -> { where("updated_at > ?", 10.minutes.ago) }
+end
