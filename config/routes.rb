@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/health', to: proc { [200, {}, ['OK']] }
 
   get '/api/devices', to: 'api#devices'
+  get "up", to: "rails/health#show"
+  get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
 
   # DRONE / diagnostics (Phase 14)
   get '/drone/inspect/:id', to: 'drone#inspect'
