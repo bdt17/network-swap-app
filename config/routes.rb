@@ -38,3 +38,4 @@ Rails.application.routes.draw do
   end
   mount ActionCable.server => '/cable'
 end
+get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
