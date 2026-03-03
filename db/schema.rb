@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_03_011919) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_03_030142) do
   create_table "audit_events", force: :cascade do |t|
     t.integer "actor_id"
     t.string "actor_type"
@@ -35,6 +35,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_03_011919) do
     t.string "subject_type"
     t.datetime "updated_at", null: false
     t.text "user_agent"
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.integer "site_id", null: false
+    t.string "status"
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_devices_on_site_id"
   end
 
   create_table "drone_fleets", force: :cascade do |t|
@@ -108,6 +117,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_03_011919) do
     t.index ["site_id"], name: "index_swap_tickets_on_site_id"
   end
 
+  add_foreign_key "devices", "sites"
   add_foreign_key "drone_fleets", "sites"
   add_foreign_key "drone_inspections", "drone_fleets"
   add_foreign_key "drone_inspections", "sites"
