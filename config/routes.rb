@@ -1,7 +1,10 @@
 # config/routes.rb
 Rails.application.routes.draw do
   get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
-
+  get "health", to: ->(_) { [200, {}, ["OK"]] }
+  get "up", to: "rails/health#show"
+  get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
+ 
   # STATIC PAGES (your perfect TailwindCSS designs)
   get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]] }
 
