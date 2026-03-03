@@ -46,3 +46,6 @@ Rails.application.routes.draw do
   end
   mount ActionCable.server => '/cable'
 end
+post '/api/dispatch_sms', to: 'status#dispatch_sms'
+post '/api/dispatch_sms', to: 'status#dispatch_sms'
+post '/api/dispatch_sms', to: 'status#dispatch_sms'

@@ -1,13 +1,29 @@
 <h1>🚨 AI SWAP DISPATCH LIVE</h1>
-<p>🟢 Phoenix DC21 | DJI-001 85% | C9300 EOL</p>
-<button onclick="dispatchEOL()" style="padding:15px;font-size:18px;background:#10b981;color:white;border:none;border-radius:8px;cursor:pointer;">📱 Dispatch Smith,J. → Rack3U</button>
-<div id="result"></div>
+<p>🟢 Phoenix DC21 | DJI-001 85% | 4 drones | 2 EOL devices</p>
+<button onclick="dispatchEOL()" style="padding:20px 30px;font-size:20px;font-weight:bold;background:#10b981;color:white;border:none;border-radius:12px;cursor:pointer;box-shadow:0 6px 20px rgba(16,185,129,0.4);transition:all 0.3s;">📱 DISPATCH SMITH,J. → C9300 RACK3U</button>
+<div id="result" style="margin-top:25px;padding:20px;border-radius:12px;background:#f8fafc;font-family:monospace;"></div>
 <script>
 function dispatchEOL() {
-  document.getElementById('result').innerHTML = '🚀 Sending SMS...';
+  const btn = document.querySelector('button');
+  const result = document.getElementById('result');
+  btn.disabled = true;
+  btn.innerHTML = '🚀 DISPATCHING...';
+  result.innerHTML = 'AI analyzing → Dispatching Tech #1 (Smith,J.)...';
+  result.style.background = '#fef3c7';
+  
   fetch('/api/dispatch_sms', {method: 'POST'})
     .then(r=>r.json())
-    .then(data=> document.getElementById('result').innerHTML = '✅ ' + data.message)
-    .catch(e=> document.getElementById('result').innerHTML = '❌ ' + e);
+    .then(data=> {
+      result.innerHTML = `✅ ${data.message}<br>🟢 Device: ${data.device || 'C9300 Rack3U'}<br>📱 Tech: Smith,J. (Tech #1)`;
+      result.style.background = '#d1fae5';
+      btn.innerHTML = '✅ DISPATCHED!';
+      btn.style.background = '#059669';
+    })
+    .catch(e=> {
+      result.innerHTML = `❌ Dispatch failed: ${e}`;
+      result.style.background = '#fee2e2';
+      btn.disabled = false;
+      btn.innerHTML = '📱 DISPATCH SMITH,J.';
+    });
 }
 </script>
