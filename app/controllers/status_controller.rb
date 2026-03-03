@@ -3,31 +3,28 @@ class StatusController < ApplicationController
   
   def dispatch_sms
     eol_device = Device.where(status: 'EOL').first
-    tech_phone = '+15551234567'  # Smith,J. Tech #1
-    message = "🚨 AI SWAP ALERT\n#{eol_device&.name || 'Critical device'} EOL\nPhoenix DC21 - Rack3U\nDispatch ASAP? Reply YES/NO"
+    message = "🚨 AI SWAP ALERT\n#{eol_device&.name || 'Critical device'} EOL @ Phoenix DC21\nRack: Rack3U\nDispatch Smith,J. ASAP? Reply YES/NO"
     
-    if ENV['TWILIO_SID'].present? && ENV['TWILIO_AUTH_TOKEN'].present? && ENV['TWILIO_PHONE'].present?
+    if ENV['TWILIO_SID'].present?
       require 'twilio-ruby'
-      client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
       sms = client.messages.create(
         from: ENV['TWILIO_PHONE'],
-        to: tech_phone,
+        to: '+15551234567',  # Tech #1 Smith,J.
         body: message
       )
       render json: { 
-        success: true,
         message: "✅ REAL SMS SENT! SID: #{sms.sid}",
         device: eol_device&.name,
-        phone: tech_phone,
+        success: true,
         twilio: true
       }
     else
       render json: { 
-        success: true,
-        message: "AI dispatched Smith,J. → #{eol_device&.name} (Twilio env vars needed)",
-        twilio_ready: false,
+        message: "AI dispatched Smith,J. (Tech #1) - Twilio setup needed",
+        device: eol_device&.name,
         mock_sms: message,
-        missing_env: ['TWILIO_SID', 'TWILIO_AUTH_TOKEN', 'TWILIO_PHONE'].select { |k| ENV[k].blank? }
+        twilio: false
       }
     end
   end
