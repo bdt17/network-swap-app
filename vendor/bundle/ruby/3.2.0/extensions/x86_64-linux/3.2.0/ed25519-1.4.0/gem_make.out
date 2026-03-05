@@ -7,10 +7,10 @@ checking for whether -std=c99 is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-dtgcz9 sitelibdir\=./.gem.20260220-25312-dtgcz9 clean
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-s2mbmz sitelibdir\=./.gem.20260304-59427-s2mbmz clean
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-dtgcz9 sitelibdir\=./.gem.20260220-25312-dtgcz9
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-s2mbmz sitelibdir\=./.gem.20260304-59427-s2mbmz
 compiling ed25519_ref10.c
 ed25519_ref10.c: In function ‘Init_ed25519_ref10’:
 ed25519_ref10.c:12:6: warning: old-style function definition [-Wold-style-definition]
@@ -32,8 +32,8 @@ compiling verify.c
 linking shared-object ed25519_ref10.so
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-dtgcz9 sitelibdir\=./.gem.20260220-25312-dtgcz9 install
-/usr/bin/install -c -m 0755 ed25519_ref10.so ./.gem.20260220-25312-dtgcz9
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-s2mbmz sitelibdir\=./.gem.20260304-59427-s2mbmz install
+/usr/bin/install -c -m 0755 ed25519_ref10.so ./.gem.20260304-59427-s2mbmz
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/ed25519-1.4.0/ext/ed25519_ref10
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-dtgcz9 sitelibdir\=./.gem.20260220-25312-dtgcz9 clean
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-s2mbmz sitelibdir\=./.gem.20260304-59427-s2mbmz clean

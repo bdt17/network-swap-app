@@ -22,17 +22,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/bigdecimal-4.0.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-cjkvv7 sitelibdir\=./.gem.20260220-25312-cjkvv7 clean
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-sgz42s sitelibdir\=./.gem.20260304-59427-sgz42s clean
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/bigdecimal-4.0.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-cjkvv7 sitelibdir\=./.gem.20260220-25312-cjkvv7
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-sgz42s sitelibdir\=./.gem.20260304-59427-sgz42s
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/bigdecimal-4.0.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-cjkvv7 sitelibdir\=./.gem.20260220-25312-cjkvv7 install
-/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20260220-25312-cjkvv7
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-sgz42s sitelibdir\=./.gem.20260304-59427-sgz42s install
+/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20260304-59427-sgz42s
 
 current directory: /home/zero-hd/network-swap-app/vendor/bundle/ruby/3.2.0/gems/bigdecimal-4.0.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260220-25312-cjkvv7 sitelibdir\=./.gem.20260220-25312-cjkvv7 clean
+make DESTDIR\= sitearchdir\=./.gem.20260304-59427-sgz42s sitelibdir\=./.gem.20260304-59427-sgz42s clean
