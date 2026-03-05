@@ -2,5 +2,5 @@ services:
   - type: web
     name: network-swap-app
     env: ruby
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bin/rails server -p $PORT -b 0.0.0.0"
+    buildCommand: bundle install
+    startCommand: "bundle exec rails server -p $PORT -b '0.0.0.0'"
