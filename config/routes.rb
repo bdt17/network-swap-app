@@ -36,20 +36,12 @@ Rails.application.routes.draw do
   post '/api/drone/thermal_scan/:rack', to: 'drone#thermal_scan'
 
   # PHASE 14 DRONE SWARM API (existing namespace)
-  namespace :api do
-    namespace :drone do
-      post 'drones/launch_swarm', to: 'api/drone#launch_swarm'
-      post 'inspect', to: 'api/drone#inspect'
-      get 'status', to: 'api/drone#status'
-    end
   end
 
   # ActionCable
-  mount ActionCable.server => '/cable'
 end
 
 # Phase 9 ActionCable
-mount ActionCable.server => '/cable'
 
 # Phase 9 Swarm endpoints
 post '/api/drone/launch_swarm', to: 'drone#launch_swarm'
