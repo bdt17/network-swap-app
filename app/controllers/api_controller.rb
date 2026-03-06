@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token  # API endpoints
+  skip_before_action :verify_authenticity_token
 
   def devices
     render json: [
@@ -17,15 +17,10 @@ class ApiController < ApplicationController
   def claim_swap
     render json: {
       success: true,
-      message: "✅ Swap 2001 CLAIMED - SMITH,J dispatched to C9300 Rack3U",
+      message: "✅ Swap #{params[:id]} CLAIMED - SMITH,J. → Phoenix DC21",
       swap_id: params[:id],
       tech: "SMITH,J.",
-      site: "Phoenix DC21",
       timestamp: Time.now.utc.iso8601
     }, status: :ok
-  end
-
-  def analytics
-    render json: {dashboard: "Phase 8B LIVE"}
   end
 end
