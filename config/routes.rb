@@ -1,48 +1,24 @@
-# config/routes.rb
 Rails.application.routes.draw do
-  # SESSION ROUTES (FIXES 404s - your tests expect these EXACT paths)
+  # SESSION ROUTES
   resource :session, only: [:new, :create, :destroy], path: 'session'
 
   # HEALTH CHECKS
   get "health", to: ->(_) { [200, {}, ["OK"]] }
   get "up", to: "rails/health#show"
 
-  # STATIC PAGES (your perfect TailwindCSS designs)  
+  # STATIC PAGES
   get '/', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/index.html')]] }
-  get '/dashboard', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/dashboard.html')]] }
-  get '/inventory', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/inventory.html')]] }
-  get '/sites', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/sites.html')]] }
-  get '/enterprise', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/enterprise.html')]] }
-  get '/field_techs', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/field_techs.html')]] }
-  get '/eol_swaps', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/eol_swaps.html')]] }
-
-  # STATUS + TECH DASHBOARDS
   get '/status', to: 'status#index'
-  get '/tech', to: proc { [200, {}, ['Thomas IT Tech Dashboard - Field Ops Ready']] }
+  get '/drone-live', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/drone-live.html')]] }
 
-  # APIs (already working perfectly)
+  # APIs (Phase 8B LIVE ✅)
   get '/api/devices', to: 'api#devices'
   get '/api/swaps', to: 'api#swaps'
   post '/api/swaps/:id/claim', to: 'api#claim_swap'
   post '/api/dispatch_sms', to: 'status#dispatch_sms'
-  get '/api/analytics/dashboard', to: 'api/analytics#dashboard'
 
-  # DRONE INSPECTION (Phase 8A - WORKING)
+  # Phase 9 Swarm
   get '/drone/inspect/:id', to: 'drone#inspect'
-
-  # PHASE 8B - DRONE SWARM + FLEET STATUS
   get '/api/drone/status', to: 'drone#status'
   post '/api/drone/launch_swarm', to: 'drone#launch_swarm'
-  post '/api/drone/thermal_scan/:rack', to: 'drone#thermal_scan'
-
-  # PHASE 14 DRONE SWARM API (existing namespace)
-  end
-
-  # ActionCable
 end
-
-# Phase 9 ActionCable
-
-# Phase 9 Swarm endpoints
-post '/api/drone/launch_swarm', to: 'drone#launch_swarm'
-get '/drone-live', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/drone-live.html')]] }
