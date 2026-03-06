@@ -16,3 +16,15 @@ class DroneController < ApplicationController
     render json: {fleet: "7/7 operational", avg_battery: 87, site: "Phoenix DC21"}
   end
 end
+
+  def launch_swarm
+    ActionCable.server.broadcast "drone_fleet:phoenix_dc21", {
+      drone_id: 'DJI-PHX-179',
+      battery: 87,
+      issues: ['loose RJ45 rack 3U', 'thermal alert B2', 'dust filter clogged'],
+      status: 'swarm_launched',
+      timestamp: Time.now.utc.iso8601
+    }
+    
+    render json: {success: true, message: "🚀 Swarm launched - 7 drones inspecting Phoenix DC21"}
+  end

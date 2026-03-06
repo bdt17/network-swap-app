@@ -47,3 +47,10 @@ Rails.application.routes.draw do
   # ActionCable
   mount ActionCable.server => '/cable'
 end
+
+# Phase 9 ActionCable
+mount ActionCable.server => '/cable'
+
+# Phase 9 Swarm endpoints
+post '/api/drone/launch_swarm', to: 'drone#launch_swarm'
+get '/drone-live', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/drone-live.html')]] }
