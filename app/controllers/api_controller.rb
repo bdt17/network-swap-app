@@ -9,9 +9,7 @@ class ApiController < ApplicationController
   end
 
   def swaps
-    render json: [
-      {id: 2001, device: "C9300-24T", site: "Phoenix DC21 Rack3U", status: "available", tech: nil}
-    ]
+    render json: [{id: 2001, device: "C9300-24T", site: "Phoenix DC21 Rack3U", status: "available"}]
   end
 
   def claim_swap

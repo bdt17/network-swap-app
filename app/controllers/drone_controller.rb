@@ -13,11 +13,6 @@ class DroneController < ApplicationController
   end
 
   def status
-    render json: {
-      fleet: "7/7 operational",
-      avg_battery: 87,
-      site: "Phoenix DC21",
-      timestamp: Time.now.utc.iso8601
-    }
+    render json: {fleet: "7/7 operational", avg_battery: 87, site: "Phoenix DC21"}
   end
 end

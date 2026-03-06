@@ -13,6 +13,6 @@ class StatusController < ApplicationController
       tech: "SMITH,J.",
       site: "Phoenix DC21",
       timestamp: Time.now.utc.iso8601
-    }
+    }, status: :ok
   end
 end
