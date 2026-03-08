@@ -1,10 +1,11 @@
-module Api
-  class DevicesController < ApplicationController
-    def index
-      render json: [
-        { id: 1, name: 'Test Device 1' },
-        { id: 2, name: 'Test Device 2' }
-      ]
-    end
+  # Add this method to existing controller
+  def health
+    device = Device.find(params[:id])
+    render json: { score: device.health_score, issues: device.health_issues }
   end
-end
+
+  def export
+    require 'csv'
+    csv = Device.all.to_csv
+    send_data csv, filename: "devices-#{Date.today}.csv"
+  end

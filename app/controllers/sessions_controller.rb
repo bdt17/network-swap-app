@@ -1,17 +1,18 @@
 class SessionsController < ApplicationController
-  def new
-    # Renders public/login.html or simple form
-  end
-  
   def create
-    # Simple auth - tests expect POST /session → /dashboard
-    session[:user_id] = 1
-    session[:user_email] = "brett@thomasit.com"
-    redirect_to "/dashboard", notice: "Logged in"
+    user_params = params[:user] || params
+    user = User.find_by(email: user_params[:email])
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to dashboard_path, notice: 'Logged in!'
+    else
+      flash.now[:alert] = 'Invalid email/password'
+      render :new
+    end
   end
-  
+
   def destroy
-    reset_session
-    redirect_to "/session/new", notice: "Logged out"
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'Logged out!'
   end
 end

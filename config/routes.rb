@@ -26,3 +26,7 @@ Rails.application.routes.draw do
   # Phase 9 Live Dashboard
   get '/drone-live', to: proc { [200, {'Content-Type' => 'text/html'}, [File.read('public/drone-live.html')]] }
 end
+  get '/api/devices/:id/health', to: 'api/devices#health'
+  get '/api/devices/export.csv', to: 'api/devices#export'
+  post '/session', to: 'sessions#create'
+  delete '/session', to: 'sessions#destroy'
