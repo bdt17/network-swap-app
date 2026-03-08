@@ -30,3 +30,7 @@ end
   get '/api/devices/export.csv', to: 'api/devices#export'
   post '/session', to: 'sessions#create'
   delete '/session', to: 'sessions#destroy'
+  get '/api/devices/:id/health', to: 'api/devices#health'
+  get '/api/devices/export.csv', to: 'api/devices#export'
+  post '/session', to: 'sessions#create'
+  delete '/session', to: 'sessions#destroy'
