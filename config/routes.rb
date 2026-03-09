@@ -18,3 +18,4 @@ end
   post '/session', to: 'sessions#create'
   delete '/session', to: 'sessions#destroy'
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
+  post '/api/swaps/:id/claim', to: 'api/swaps#claim'
