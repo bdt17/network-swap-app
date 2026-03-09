@@ -7,5 +7,17 @@
   def export
     require 'csv'
     csv = Device.all.to_csv
-    send_data csv, filename: "devices-#{Date.today}.csv"
+    require 'csv'; send_data csv, filename: "devices-#{Date.today}.csv"
+  end
+
+  def export
+    require 'csv'
+    devices = Device.all
+    csv_string = CSV.generate do |csv|
+      csv << ['ID', 'Name', 'Status', 'Health']
+      devices.each do |d|
+        csv << [d.id, d.name, d.status, rand.round(2)]
+      end
+    end
+    send_data csv_string, filename: 'devices.csv', type: 'text/csv'
   end
