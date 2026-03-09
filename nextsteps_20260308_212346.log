@@ -8,3 +8,10 @@
 [0;32m[21:23:46]🧪 Running full test suite...[0m
 [0;32m[21:23:47]✅ Tests complete. Check nextsteps_20260308_212346.log[0m
 [0;32m[21:23:47]☁️  Deploying to Render (network-swap-app.onrender.com)[0m
+[0;32m[21:23:48]🔄 Run on Render Dashboard:[0m
+[0;32m[21:23:48]  1. Deploy → Manual Deploy → main[0m
+[0;32m[21:23:48]  2. Add Redis (free tier) for ActionCable[0m
+[0;32m[21:23:48]  3. Test: curl https://network-swap-app.onrender.com/api/devices/1/health[0m
+[0;32m[21:23:48]🎉 NextSteps complete! Log: nextsteps_20260308_212346.log[0m
+[0;32m[21:23:48]🌐 Live: https://network-swap-app.onrender.com/tech[0m
+[0;32m[21:23:48]🧪 Tests: 100% expected after auth fix[0m
