@@ -1,22 +1,15 @@
 Rails.application.routes.draw do
-  # Custom session routes (matches your tests)
   get '/session/new', to: 'devise/sessions#new'
-  post '/session', to: 'devise/sessions#create'
+  post '/session', to: 'devise/sessions#create'  
   delete '/session', to: 'devise/sessions#destroy'
 
-  # FIXED: Proper nested API routes
-  namespace :api do
-    resources :devices do
-      collection do
-        get :export, defaults: { format: :csv }
-      end
-      member do
-        get :health
-      end
-    end
-    resources :swaps
-  end
+  # Match your existing controllers in app/controllers/api/
+  get '/api/devices', to: 'api/devices#index'
+  get '/api/devices/:id/health', to: 'api/devices#health'
+  get '/api/devices/export.csv', to: 'api/devices#export'
+  get '/api/swaps', to: 'api/swaps#index'
 
-  # Dashboard root
   root "dashboard#index"
+  get '/tech', to: 'dashboard#tech'
+  get '/dashboard', to: 'dashboard#index'
 end

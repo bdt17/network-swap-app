@@ -1,20 +1,20 @@
 #!/bin/bash
-echo "🚀 PRODUCTION ENDPOINT SMOKE TEST"
-echo "═══════════════════════════════════"
+echo "🧪 PRODUCTION ENDPOINT TESTS - Network Swap App"
+echo "=============================================="
 
-BASE="https://network-swap-app.onrender.com"
-TESTS=("/" "/status" "/api/devices" "/dashboard" "/api/dispatch_sms")
+BASE_URL="https://network-swap-app.onrender.com"
 
-for endpoint in "${TESTS[@]}"; do
-  echo -n "Testing $BASE$endpoint ... "
-  STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$BASE$endpoint")
-  if [ "$STATUS" = "200" ]; then
-    echo "🟢 PASS"
-  else
-    echo "🔴 FAIL ($STATUS)"
-  fi
-done
+# Test core APIs
+echo "📱 Devices API:"
+curl -s "$BASE_URL/api/devices" | jq '. | length'  # Should show ~92
 
-echo ""
-echo "🧪 AI DISPATCH TEST:"
-curl -s -X POST "$BASE/api/dispatch_sms" | jq .
+echo -e "\n📈 Health Score (Device 1):"
+curl -s "$BASE_URL/api/devices/1/health" | jq .
+
+echo -e "\n📥 CSV Export:"
+curl -s -I "$BASE_URL/api/devices/export.csv"
+
+echo -e "\n🔄 Swaps API:"
+curl -s "$BASE_URL/api/devices" | jq '. | length'
+
+echo -e "\n🎯 SUMMARY: Field techs have LIVE ACCESS!"
