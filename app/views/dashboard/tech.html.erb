@@ -6,172 +6,109 @@
   <meta name="csrf-token" content="<%= form_authenticity_token %>">
   <style>
     :root {
-      --primary-blue: #0984C0;    /* Deep Ocean Blue */
-      --accent-silver: #AAA7B0;   /* Metallic Silver */
-      --mid-grey: #565759;        /* Davy's Grey */
-      --bg-white: #FFFFFF;        /* Pure White */
-      --light-silver: #C0BEC6;    /* Silver Sand */
-      --lighter-blue: #60BDD1;    /* Sea Serpent */
+      --primary-blue: #0984C0; --accent-silver: #AAA7B0; --mid-grey: #565759;
+      --bg-white: #FFFFFF; --light-silver: #C0BEC6; --lighter-blue: #60BDD1;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      min-height: 100vh;
-      color: var(--mid-grey);
+      min-height: 100vh; color: var(--mid-grey);
     }
   </style>
 </head>
 <body>
   <div style="max-width: 1400px; margin: 0 auto; padding: 2rem;">
-    
+
     <!-- Header -->
     <header style="text-align: center; margin-bottom: 3rem;">
       <h1 style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary-blue), var(--lighter-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">
         🛠️ Tech Dashboard LIVE
       </h1>
       <p style="font-size: 1.1rem; color: var(--accent-silver);">
-        Thomas IT Network Swap • Field Operations • Phase 8 LIVE
+        Thomas IT Network Swap • <%= Device.count %> Devices • <%= Time.now.strftime("%H:%M MST") %>
       </p>
     </header>
 
-    <!-- Stats Grid -->
+    <!-- LIVE STATS GRID -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
       <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Devices</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">500</div>
+        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Total Devices</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);"><%= Device.count %></div>
       </div>
       <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Sites</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">5</div>
+        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Critical</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: #ef4444;"><%= Device.where(status: 0).count %></div>
       </div>
       <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Swap Tickets</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">25</div>
+        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Needs Attention</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: #f59e0b;"><%= Device.where(status: 1).count %></div>
       </div>
       <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Open Jobs</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">42</div>
+        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Operational</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: #10b981;"><%= Device.where(status: 2).count %></div>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 400px; gap: 2rem; align-items: start;">
+    <!-- DEVICE TABLE - LIVE DATA -->
+    <div style="background: var(--bg-white); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">📊 Live Device Status</h2>
+        <%= link_to "📥 CSV Export", api_devices_export_path(format: :csv), 
+            class: "bg-var(--primary-blue) text-white px-6 py-2 rounded-lg font-semibold hover:bg-var(--lighter-blue)" %>
+      </div>
       
-      <!-- LEFT: Swap Tickets -->
-      <div>
-        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-          📋 Active Swap Tickets
-        </h2>
-        
-        <!-- Ticket Cards -->
-        <div style="display: grid; gap: 1rem;">
-          
-          <!-- Ticket #2001 -->
-          <div style="background: var(--bg-white); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid var(--primary-blue); position: relative;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-              <div>
-                <span style="background: var(--primary-blue); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">#2001</span>
-              </div>
-              <div style="font-size: 0.85rem; color: var(--accent-silver);">Cisco Catalyst 9300</div>
-            </div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--mid-grey); margin-bottom: 0.5rem;">PHX-DC21 Rack 3B</h3>
-            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-              <span style="color: var(--accent-silver);">Status:</span>
-              <span style="background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;">Ready</span>
-            </div>
-            <button style="background: var(--primary-blue); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 0.5rem;">
-              CLAIM THIS JOB
-            </button>
-          </div>
-
-          <!-- Ticket #2002 -->
-          <div style="background: var(--bg-white); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid var(--lighter-blue); position: relative;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-              <div>
-                <span style="background: var(--lighter-blue); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">#2002</span>
-              </div>
-              <div style="font-size: 0.85rem; color: var(--accent-silver);">Aruba AP-515</div>
-            </div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--mid-grey); margin-bottom: 0.5rem;">PHX-DC21 Rack 5A</h3>
-            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-              <span style="color: var(--accent-silver);">Status:</span>
-              <span style="background: #f59e0b; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;">Scheduled</span>
-            </div>
-            <button style="background: var(--lighter-blue); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 0.5rem;">
-              CLAIM THIS JOB
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- RIGHT: DJI Drone Panel -->
-      <div style="background: linear-gradient(135deg, rgba(9,132,192,0.1), rgba(96,189,209,0.1)); border-radius: 20px; padding: 2rem; border: 1px solid rgba(9,132,192,0.2);">
-        <div style="text-align: center; margin-bottom: 2rem;">
-          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(9,132,192,0.2); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1rem;">
-            <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
-            <span style="color: var(--primary-blue); font-weight: 700; font-size: 0.9rem;">PHASE 14 • LIVE</span>
-          </div>
-          <h2 style="font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--primary-blue), var(--lighter-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            🚁 DJI-PHX-179
-          </h2>
-        </div>
-
-        <!-- Drone Stats -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-          <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.7); border-radius: 12px;">
-            <div style="font-size: 3rem; font-weight: 800; color: #10b981;">85%</div>
-            <div style="font-size: 0.85rem; color: var(--mid-grey);">Battery</div>
-          </div>
-          <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.7); border-radius: 12px;">
-            <div style="font-size: 3rem; font-weight: 800; color: #f59e0b;">8/12</div>
-            <div style="font-size: 0.85rem; color: var(--mid-grey);">Racks Scanned</div>
-          </div>
-          <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.7); border-radius: 12px; grid-column: span 2;">
-            <div style="font-size: 3rem; font-weight: 800; color: #3b82f6;">0</div>
-            <div style="font-size: 0.85rem; color: var(--mid-grey);">Thermal Alerts</div>
-          </div>
-        </div>
-
-        <!-- Drone Scan Button -->
-        <form action="/api/v1/inspections" method="post" style="text-align: center;">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <button type="submit" style="
-            width: 100%; padding: 1rem 2rem; border: none; border-radius: 16px; 
-            background: linear-gradient(135deg, var(--primary-blue), var(--lighter-blue));
-            color: white; font-weight: 700; font-size: 1.1rem; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(9,132,192,0.4);
-            transition: all 0.3s ease;
-          ">
-            🚁 RUN DRONE SCAN NOW
-          </button>
-        </form>
-
-        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--accent-silver);">
-          Field Tech: Brett Thomas ✓ | Phoenix, AZ | <%= Time.now.strftime("%Y-%m-%d %H:%M MST") %>
-        </p>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background: #f8fafc;">
+              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Device</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Status</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Health</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Last Seen</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @devices.take(20).each do |device| %>
+            <tr style="border-bottom: 1px solid #e2e8f0; hover: background-color: #f8fafc;">
+              <td style="padding: 1rem 1.5rem; font-weight: 500;"><%= device.name %></td>
+              <td style="padding: 1rem 1.5rem;">
+                <% case device.status %>
+                <% when 0 %><span style="background: #fee2e2; color: #dc2626; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">EOL</span>
+                <% when 1 %><span style="background: #fef3c7; color: #d97706; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">Needs FW</span>
+                <% when 2 %><span style="background: #d1fae5; color: #059669; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">Operational</span>
+                <% end %>
+              </td>
+              <td style="padding: 1rem 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 80px; height: 8px; background: linear-gradient(to right, <%= device.health_score > 1.8 ? '#10b981' : device.health_score > 1.2 ? '#f59e0b' : '#ef4444' %>, transparent); border-radius: 4px;"></div>
+                  <span style="font-weight: 600; color: var(--mid-grey);"><%= number_with_precision(device.health_score || 0, precision: 1) %></span>
+                </div>
+              </td>
+              <td style="padding: 1rem 1.5rem; color: var(--accent-silver);"><%= device.last_seen_at&.strftime('%H:%M') || 'Never' %></td>
+              <td style="padding: 1rem 1.5rem;">
+                <%= link_to "Health", api_device_health_path(device), 
+                    style: "color: var(--primary-blue); text-decoration: none; font-weight: 500; margin-right: 1rem;" %>
+                <%= link_to "Claim", "#", 
+                    style: "background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500;",
+                    data: { device_id: device.id } %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--light-silver);">
-      <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1.5rem;">
-        ⚡ Quick Actions
-      </h3>
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <button style="background: var(--primary-blue); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer;">Create Swap</button>
-        <button style="background: #10b981; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer;">Claim Job</button>
-        <button style="background: #ef4444; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer;">Dispatch Tower</button>
-        <button style="background: var(--accent-silver); color: var(--mid-grey); border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer;">Refresh</button>
-      </div>
+    <!-- Quick Actions - LIVE LINKS -->
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; padding: 2rem; background: var(--bg-white); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <%= link_to "➕ Create Swap", new_swap_path, class: "bg-var(--primary-blue) text-white px-6 py-3 rounded-lg font-semibold hover:bg-var(--lighter-blue)" %>
+      <%= link_to "📱 SMS Dispatch", api_dispatch_sms_path, class: "bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700" %>
+      <%= link_to "🕶️ AR View", ar_path, class: "bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700" %>
+      <%= link_to "📊 Full Report", api_devices_export_path(format: :csv), class: "bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700", download: "" %>
     </div>
+
   </div>
-
-  <style>
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-  </style>
 </body>
 </html>
