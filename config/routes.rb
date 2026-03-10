@@ -12,3 +12,5 @@ Rails.application.routes.draw do
     resources :swaps, only: [:index]
   end
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
