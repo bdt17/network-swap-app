@@ -18,3 +18,5 @@ Rails.application.routes.draw do
 end
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
