@@ -5,6 +5,4 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.assets.compile = false
   config.assets.digest = true
-  config.force_ssl = false
-  config.log_level = :info
 end
