@@ -20,3 +20,4 @@ end
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
+  post '/api/swaps/:id/claim', to: 'api/swaps#claim'
