@@ -53,3 +53,4 @@ Rails.application.configure do
 end
 config.eager_load = false
 config.eager_load = false
+config.eager_load = false
