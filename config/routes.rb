@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  get '/api/devices', to: 'api/devices#index'
-  get '/api/devices/:id/health', to: 'api/devices#health'
-  get '/api/devices/export.csv', to: 'api/devices#export'
-  get '/api/swaps', to: 'api/swaps#index'
-  root "dashboard#index"
-  get '/tech', to: 'dashboard#tech'
-  get '/dashboard', to: 'dashboard#index'
+  resources :dashboard, only: [:index] do
+    get :tech, on: :collection
+    get :ar, on: :collection
+  end
+  
+  namespace :api do
+    resources :devices do
+      get :health, on: :member
+      get :export, on: :collection, defaults: {format: 'csv'}
+    end
+    resources :swaps, only: [:index]
+  end
 end
-
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
