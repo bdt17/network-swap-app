@@ -13,3 +13,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get '/ar', to: 'dashboard#ar'                    # Phase 10 AR
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
