@@ -17,3 +17,4 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
 end
   post '/api/swaps/:id/claim', to: 'api/swaps#claim'
+  post '/api/swaps/:id/claim', to: 'api/swaps#claim'

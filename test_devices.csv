@@ -1,0 +1,4 @@
+ID,Name,Status,Health Score,Last Updated
+1,Cisco C9300-24T Rack3U,EOL,1.011,2026-03-03T05:10:21Z
+2,Cisco IE3400 Rack4B,operational,1.519,2026-03-03T05:10:21Z
+3,Aruba AP-515 Rack2A,needs_firmware,0.96,2026-03-03T05:10:22Z
