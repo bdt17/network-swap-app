@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_03_030142) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_10_042227) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "audit_events", force: :cascade do |t|
     t.integer "actor_id"
     t.string "actor_type"
@@ -39,6 +42,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_03_030142) do
 
   create_table "devices", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "last_seen_at"
     t.string "name"
     t.integer "site_id", null: false
     t.string "status"
@@ -117,6 +121,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_03_030142) do
     t.index ["site_id"], name: "index_swap_tickets_on_site_id"
   end
 
+  create_table "swaps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "device_id", null: false
+    t.text "reason"
+    t.integer "status", default: 0
+    t.string "tech_name"
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_swaps_on_device_id"
+  end
+
   add_foreign_key "devices", "sites"
   add_foreign_key "drone_fleets", "sites"
   add_foreign_key "drone_inspections", "drone_fleets"
@@ -125,4 +139,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_03_030142) do
   add_foreign_key "drone_missions", "drones"
   add_foreign_key "drone_missions", "sites"
   add_foreign_key "swap_tickets", "sites"
+  add_foreign_key "swaps", "devices"
 end
