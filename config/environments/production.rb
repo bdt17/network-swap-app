@@ -11,3 +11,10 @@ config.eager_load = true
 config.public_file_server.enabled = true
 config.eager_load = true
 config.eager_load = true
+
+# Eager loading for production
+config.eager_load = true
+
+# Force assets precompile
+config.assets.compile = false
+config.assets.digest = true
