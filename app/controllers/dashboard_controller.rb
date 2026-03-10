@@ -1,5 +1,17 @@
 class DashboardController < ApplicationController
+  def index
+    @devices = Device.all
+    @drones = Drone.all
+  end
+  
   def tech
-    @devices = Device.includes(:site).order(last_seen_at: :desc).limit(100)
+    @devices = Device.where(status: %w[operational needs_firmware])
+    @drones = Drone.all  # ← FIX: Always set @drones
+    render :index
+  end
+  
+  def ar
+    @devices = Device.all
+    render :ar
   end
 end

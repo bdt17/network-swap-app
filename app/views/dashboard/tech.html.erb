@@ -1,114 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Thomas IT Network Swap - Tech Dashboard</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="csrf-token" content="<%= form_authenticity_token %>">
-  <style>
-    :root {
-      --primary-blue: #0984C0; --accent-silver: #AAA7B0; --mid-grey: #565759;
-      --bg-white: #FFFFFF; --light-silver: #C0BEC6; --lighter-blue: #60BDD1;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      min-height: 100vh; color: var(--mid-grey);
-    }
-  </style>
-</head>
-<body>
-  <div style="max-width: 1400px; margin: 0 auto; padding: 2rem;">
-
-    <!-- Header -->
-    <header style="text-align: center; margin-bottom: 3rem;">
-      <h1 style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary-blue), var(--lighter-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">
-        🛠️ Tech Dashboard LIVE
-      </h1>
-      <p style="font-size: 1.1rem; color: var(--accent-silver);">
-        Thomas IT Network Swap • <%= Device.count %> Devices • <%= Time.now.strftime("%H:%M MST") %>
-      </p>
-    </header>
-
-    <!-- LIVE STATS GRID -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-      <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Total Devices</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);"><%= Device.count %></div>
+<div class="p-8 bg-gradient-to-r from-blue-50 to-indigo-100 min-h-screen">
+  <h1 class="text-4xl font-bold text-gray-900 mb-8">Tech Dashboard - Phoenix DC21</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <% @devices.each do |device| %>
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3"><%= device.name %></h3>
+        <div class="flex items-center space-x-3 mb-4">
+          <span class="px-4 py-2 rounded-full text-sm font-semibold 
+            <%= case device.status
+                when 'operational' then 'bg-emerald-100 text-emerald-800'
+                when 'needs_firmware' then 'bg-amber-100 text-amber-800' 
+                when 'EOL' then 'bg-red-100 text-red-800'
+                else 'bg-gray-100 text-gray-800'
+                end %>">
+            <%= device.status.gsub('_', ' ').titleize %>
+          </span>
+        </div>
+        <div class="text-sm text-gray-600 space-y-1">
+          <p><strong>Status:</strong> <%= device.status.humanize %></p>
+          <p><strong>Site:</strong> Phoenix DC21</p>
+        </div>
       </div>
-      <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Critical</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #ef4444;"><%= Device.where(status: 0).count %></div>
-      </div>
-      <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Needs Attention</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #f59e0b;"><%= Device.where(status: 1).count %></div>
-      </div>
-      <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--light-silver);">
-        <div style="font-size: 0.9rem; color: var(--accent-silver); font-weight: 600; margin-bottom: 0.5rem;">Operational</div>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #10b981;"><%= Device.where(status: 2).count %></div>
-      </div>
-    </div>
-
-    <!-- DEVICE TABLE - LIVE DATA -->
-    <div style="background: var(--bg-white); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">📊 Live Device Status</h2>
-        <%= link_to "📥 CSV Export", api_devices_export_path(format: :csv), 
-            class: "bg-var(--primary-blue) text-white px-6 py-2 rounded-lg font-semibold hover:bg-var(--lighter-blue)" %>
-      </div>
-      
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="background: #f8fafc;">
-              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Device</th>
-              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Status</th>
-              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Health</th>
-              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Last Seen</th>
-              <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--mid-grey);">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @devices.take(20).each do |device| %>
-            <tr style="border-bottom: 1px solid #e2e8f0; hover: background-color: #f8fafc;">
-              <td style="padding: 1rem 1.5rem; font-weight: 500;"><%= device.name %></td>
-              <td style="padding: 1rem 1.5rem;">
-                <% case device.status %>
-                <% when 0 %><span style="background: #fee2e2; color: #dc2626; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">EOL</span>
-                <% when 1 %><span style="background: #fef3c7; color: #d97706; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">Needs FW</span>
-                <% when 2 %><span style="background: #d1fae5; color: #059669; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500;">Operational</span>
-                <% end %>
-              </td>
-              <td style="padding: 1rem 1.5rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <div style="width: 80px; height: 8px; background: linear-gradient(to right, <%= device.health_score > 1.8 ? '#10b981' : device.health_score > 1.2 ? '#f59e0b' : '#ef4444' %>, transparent); border-radius: 4px;"></div>
-                  <span style="font-weight: 600; color: var(--mid-grey);"><%= number_with_precision(device.health_score || 0, precision: 1) %></span>
-                </div>
-              </td>
-              <td style="padding: 1rem 1.5rem; color: var(--accent-silver);"><%= device.last_seen_at&.strftime('%H:%M') || 'Never' %></td>
-              <td style="padding: 1rem 1.5rem;">
-                <%= link_to "Health", api_device_health_path(device), 
-                    style: "color: var(--primary-blue); text-decoration: none; font-weight: 500; margin-right: 1rem;" %>
-                <%= link_to "Claim", "#", 
-                    style: "background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500;",
-                    data: { device_id: device.id } %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Quick Actions - LIVE LINKS -->
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; padding: 2rem; background: var(--bg-white); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-      <%= link_to "➕ Create Swap", new_swap_path, class: "bg-var(--primary-blue) text-white px-6 py-3 rounded-lg font-semibold hover:bg-var(--lighter-blue)" %>
-      <%= link_to "📱 SMS Dispatch", api_dispatch_sms_path, class: "bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700" %>
-      <%= link_to "🕶️ AR View", ar_path, class: "bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700" %>
-      <%= link_to "📊 Full Report", api_devices_export_path(format: :csv), class: "bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700", download: "" %>
-    </div>
-
+    <% end %>
   </div>
-</body>
-</html>
+
+  <div class="bg-white p-8 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold mb-6">DJI Drone Fleet</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <% @drones.each do |drone| %>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h4 class="font-semibold"><%= drone.identifier %></h4>
+          <p>Battery: <%= drone.battery_level || 'N/A' %>%</p>
+          <p>Status: <%= drone.status || 'Unknown' %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
