@@ -10,3 +10,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get '/ar', to: 'dashboard#ar'
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
