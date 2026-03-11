@@ -25,3 +25,5 @@ Rails.application.routes.draw do
   get '/health', to: proc { [200, {}, ['OK']] }
   get '/api/dispatch_sms', to: 'dispatch#sms'
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
