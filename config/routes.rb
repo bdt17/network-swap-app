@@ -1,29 +1,26 @@
 Rails.application.routes.draw do
-  resources :dashboard, only: [:index] do
-    get :tech, on: :collection
-    get :ar, on: :collection
-  end
-
-  namespace :api do
-    get "dji/telemetry", to: "dji#telemetry"
-    resources :devices do
-      get :health, on: :member
-      get :export, on: :collection, defaults: {format: 'csv'}
-    end
-    resources :swaps, only: [:index]
-    
-    # Phase 8B SMS Dispatch - ENTERPRISE LIVE
-    get 'drones', to: 'drones#index'
-    get 'status', to: 'status#index'
-  end
-
   root 'dashboard#index'
-  get '/login', to: 'sessions#new'
-  get '/devices', to: 'devices#index'
-  get '/drones', to: 'drones#index'
-  get '/network', to: 'network#index'
-  get '/health', to: proc { [200, {}, ['OK']] }
-  get '/api/dispatch_sms', to: 'dispatch#sms'
+  
+  # Dashboard routes
+  get '/tech', to: 'dashboard#tech'
+  get '/dashboard/tech', to: 'dashboard#tech'
+  
+  # API routes - NAMESPACED
+  namespace :api do
+    get '/dispatch_sms', to: 'dispatch#sms'
+    
+    resources :devices, only: [:index] do
+      member do
+        get :health
+      end
+    end
+    
+    resources :swaps, only: [:index] do
+      member do
+        post :claim
+      end
+    end
+    
+    get '/devices/export.csv', to: 'devices#export'
+  end
 end
-
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'

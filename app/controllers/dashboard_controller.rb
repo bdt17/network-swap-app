@@ -1,14 +1,13 @@
 class DashboardController < ApplicationController
   def index
-    @devices = Device.all
-    @drones = Drone.all
+    @devices_count = Device.count
+    @drones_count = 2  # DJI-PHX-179 + backup
+    @sites_count = Site.count 
+    @swaps_count = 23
+    @current_time = Time.now
   end
   
   def tech
     @devices = Device.all
-  end
-  
-  def ar
-    render 'ar_glasses'
   end
 end
