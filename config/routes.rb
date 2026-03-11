@@ -23,6 +23,5 @@ Rails.application.routes.draw do
   get '/drones', to: 'drones#index'
   get '/network', to: 'network#index'
   get '/health', to: proc { [200, {}, ['OK']] }
+  get '/api/dispatch_sms', to: 'dispatch#sms'
 end
-
-get '/api/dispatch_sms', to: 'dispatch#sms'

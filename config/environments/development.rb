@@ -1,7 +1,7 @@
 Rails.application.configure do
+  config.eager_load = false
   # Core settings
   config.cache_classes = false
-  config.eager_load = false
   config.consider_all_requests_local = true
   config.server_timing = true
 
@@ -22,4 +22,3 @@ Rails.application.configure do
   config.active_record.encryption.deterministic_key = ENV["ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY"]
   config.active_record.encryption.key_derivation_salt = ENV["ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT"]
 end
-config.eager_load = false
