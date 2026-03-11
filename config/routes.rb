@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :devices do
       get :health, on: :member
       get :export, on: :collection, defaults: {format: 'csv'}
-      post 'dispatch_sms', to: 'dispatch#sms'
+      post '/dispatch_sms', to: 'dispatch#sms'
+
     end
     resources :swaps, only: [:index]
     
