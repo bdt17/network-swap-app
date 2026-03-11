@@ -1,0 +1,14 @@
+Endpoint,Local Status,Local Time,Prod Status,Prod Time,Local Size,Prod Size,Match
+Home,200,35.8ms,200,207.71ms,3706,3706,YES
+Tech Dashboard,200,2.12ms,200,275.1ms,36,36,YES
+Dashboard,200,2.49ms,200,209.44ms,5964,5964,YES
+AR Glasses,200,2.05ms,200,260.17ms,625,625,YES
+Devices JSON,200,227.64ms,200,889.07ms,697,458,YES
+Devices Export,200,36.03ms,200,259.35ms,267,222,YES
+Drones API,404,5.58ms,404,200.94ms,0,0,YES
+Status API,404,4.81ms,404,221.39ms,0,0,YES
+Login Page,404,14.92ms,404,194.57ms,0,0,YES
+Devices Page,404,6.2ms,404,274.93ms,0,0,YES
+Drones Page,404,14.7ms,404,204.09ms,0,0,YES
+Network Page,404,11.25ms,404,173.23ms,0,0,YES
+Health Check,200,4.21ms,200,205.66ms,2,2,YES
