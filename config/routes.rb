@@ -22,3 +22,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/health', to: proc { [200, {}, ['OK']] }
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
