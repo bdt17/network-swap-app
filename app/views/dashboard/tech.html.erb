@@ -1,39 +1,44 @@
-<div class="p-8 bg-gradient-to-r from-blue-50 to-indigo-100 min-h-screen">
-  <h1 class="text-4xl font-bold text-gray-900 mb-8">Tech Dashboard - Phoenix DC21</h1>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-    <% @devices.each do |device| %>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-        <h3 class="text-xl font-semibold text-gray-900 mb-3"><%= device.name %></h3>
-        <div class="flex items-center space-x-3 mb-4">
-          <span class="px-4 py-2 rounded-full text-sm font-semibold 
-            <%= case device.status
-                when 'operational' then 'bg-emerald-100 text-emerald-800'
-                when 'needs_firmware' then 'bg-amber-100 text-amber-800' 
-                when 'EOL' then 'bg-red-100 text-red-800'
-                else 'bg-gray-100 text-gray-800'
-                end %>">
-            <%= device.status.gsub('_', ' ').titleize %>
-          </span>
-        </div>
-        <div class="text-sm text-gray-600 space-y-1">
-          <p><strong>Status:</strong> <%= device.status.humanize %></p>
-          <p><strong>Site:</strong> Phoenix DC21</p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="bg-white p-8 rounded-xl shadow-lg">
-    <h2 class="text-2xl font-bold mb-6">DJI Drone Fleet</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <% @drones.each do |drone| %>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <h4 class="font-semibold"><%= drone.identifier %></h4>
-          <p>Battery: <%= drone.battery_level || 'N/A' %>%</p>
-          <p>Status: <%= drone.status || 'Unknown' %></p>
+<div class="min-h-screen bg-gray-900 p-8 text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-black">🔧 TECH DASHBOARD - Phoenix DC21</h1>
+      <a href="/" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold">🏠 NOC</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <% @devices.each do |device| %>
+        <div class="bg-white/5 border border-white/20 rounded-2xl p-6 hover:bg-white/10 transition-all">
+          <h3 class="font-bold text-xl mb-2"><%= device.name %></h3>
+          <p class="text-sm opacity-75 mb-2">
+            Status: <span class="font-mono px-3 py-1 rounded <%= device.status == 'operational' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400' %>">
+              <%= device.status %>
+            </span>
+          </p>
+          <p class="text-xs opacity-60 mb-4">Site: <%= device.site_id %> | Last seen: <%= device.last_seen_at || 'Never' %></p>
+          <div class="flex space-x-2">
+            <a href="#" class="flex-1 text-center py-2 bg-indigo-600 hover:bg-indigo-700 rounded-xl text-sm font-bold">📱 Dispatch</a>
+            <a href="#" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-xl text-sm">🔧 Details</a>
+          </div>
         </div>
       <% end %>
+    </div>
+    
+    <!-- CRITICAL ALERTS -->
+    <div class="p-8 bg-red-500/20 border-2 border-red-500/50 rounded-3xl">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        🚨 CRITICAL: Rack 3U-B2 Thermal Alert <span class="ml-3 px-3 py-1 bg-red-500 text-white rounded-full text-sm font-bold">HIGH</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-xl mb-2">Temperature: <span class="font-black text-2xl text-red-400">42°C</span></p>
+          <p class="text-lg opacity-90">(Threshold: 35°C)</p>
+        </div>
+        <div class="flex space-x-3">
+          <a href="/api/dispatch_sms?tech=Brett Thomas&device=Rack3U-B2&issue=Thermal+Alert" 
+             class="flex-1 px-6 py-3 bg-red-600 text-white font-bold rounded-2xl hover:bg-red-700 text-center">🚨 EMERGENCY SMS</a>
+          <button class="px-6 py-3 bg-gray-600 text-white font-bold rounded-2xl hover:bg-gray-700">⏸️ Snooze 1h</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

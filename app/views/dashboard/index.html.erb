@@ -1,84 +1,71 @@
 <div class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 p-8 text-white">
   <div class="max-w-7xl mx-auto">
     <header class="mb-12">
-      <h1 class="text-5xl font-black tracking-tight mb-4">Thomas IT Network Operations Center</h1>
+      <h1 class="text-5xl font-black tracking-tight mb-4">🖥️ Thomas IT Network Operations Center</h1>
       <div class="flex space-x-4 text-sm opacity-90">
-        <span>Live: Phoenix DC21 | <%= Time.current.strftime("%m/%d %H:%M") %> MST</span>
-        <a href="/login" class="hover:text-yellow-300">👤 Brett Thomas</a>
-        <a href="/health" class="hover:text-yellow-300">🩺 Status</a>
+        <span>🔴 LIVE: Phoenix DC21 | <%= Time.current.strftime("%m/%d %H:%M MST") %></span>
+        <a href="/dashboard/tech" class="hover:text-yellow-300">📊 Tech Dashboard</a>
+        <a href="/health" class="hover:text-yellow-300">🩺 System Status</a>
+        <a href="/logout" class="hover:text-red-300">🚪 Logout</a>
       </div>
     </header>
 
+    <!-- ENTERPRISE KPI CARDS -->
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
-      <!-- KPI CARDS -->
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:scale-105 transition-all">
-        <div class="text-4xl font-black text-yellow-400 mb-2">📊 <%= @devices.count %></div>
+        <div class="text-4xl font-black text-yellow-400 mb-2">📊 <%= Device.count %></div>
         <div class="text-lg opacity-90">Network Devices</div>
-        <div class="text-sm opacity-75 mt-2">
-          <%= @devices.where(status: 'operational').count %> operational
-        </div>
+        <div class="text-sm opacity-75 mt-2"><%= Device.where(status: 'operational').count %> operational</div>
       </div>
 
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:scale-105 transition-all">
-        <div class="text-4xl font-black text-emerald-400 mb-2">🚁 <%= @drones.count %></div>
+        <div class="text-4xl font-black text-emerald-400 mb-2">🚁 <%= Drone.count %></div>
         <div class="text-lg opacity-90">DJI Drones</div>
-        <div class="text-sm opacity-75 mt-2">
-          <% @drones.each do |drone| %>
-            <div>DJI-<%= drone.identifier %>: <%= drone.battery_level %>%</div>
-          <% end %>
-        </div>
+        <% Drone.limit(2).each do |drone| %>
+          <div class="text-sm mt-1">DJI-<%= drone.identifier %>: <%= drone.battery_level %>%</div>
+        <% end %>
       </div>
 
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:scale-105 transition-all">
-        <div class="text-4xl font-black text-orange-400 mb-2">🔧 <%= 14 %></div>
+        <div class="text-4xl font-black text-orange-400 mb-2">🔧 14</div>
         <div class="text-lg opacity-90">Data Centers</div>
         <div class="text-sm opacity-75 mt-2">Phoenix DC21 + 13 regional</div>
       </div>
 
       <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:scale-105 transition-all">
-        <div class="text-4xl font-black text-red-400 mb-2">📦 <%= 23 %></div>
+        <div class="text-4xl font-black text-red-400 mb-2">📦 23</div>
         <div class="text-lg opacity-90">Hardware Swaps</div>
         <div class="text-sm opacity-75 mt-2">CDW ETA 3/15</div>
       </div>
     </div>
 
-    <!-- ALERTS & STATUS -->
+    <!-- ACTIVE ALERTS + ACTIVITY -->
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-      <!-- ACTIVE ALERTS -->
       <div class="bg-red-500/20 border-2 border-red-500/50 rounded-3xl p-8">
-        <h2 class="text-2xl font-bold mb-6 flex items-center">🚨 ACTIVE ALERTS <span class="ml-2 px-3 py-1 bg-red-500 text-white rounded-full text-sm">3</span></h2>
-        <div class="space-y-4">
-          <div class="flex items-start space-x-4 p-4 bg-red-500/20 rounded-2xl">
-            <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-2xl font-bold">🔥</div>
-            <div>
-              <h3 class="font-bold text-lg">Rack 3U-B2 Thermal Alert</h3>
-              <p class="opacity-90">Phoenix DC21 | 42°C (Threshold: 35°C)</p>
-              <div class="flex space-x-2 mt-2">
-                <button class="px-4 py-1 bg-red-600 text-white rounded-xl text-sm hover:bg-red-700">Dispatch Tech</button>
-                <button class="px-4 py-1 bg-gray-600 text-white rounded-xl text-sm hover:bg-gray-700">Snooze</button>
-              </div>
+        <h2 class="text-2xl font-bold mb-6 flex items-center">🚨 ACTIVE ALERTS <span class="ml-2 px-3 py-1 bg-red-500 text-white rounded-full text-sm font-bold">1</span></h2>
+        <div class="flex items-start space-x-4 p-4 bg-red-500/20 rounded-2xl">
+          <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-2xl font-bold">🔥</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-lg">Rack 3U-B2 Thermal Alert</h3>
+            <p class="opacity-90">Phoenix DC21 | 42°C > 35°C threshold</p>
+            <div class="flex space-x-2 mt-3">
+              <a href="/api/dispatch_sms" class="px-6 py-2 bg-red-600 text-white rounded-xl text-sm font-bold hover:bg-red-700">🚨 Dispatch Tech</a>
+              <button class="px-4 py-2 bg-gray-600 text-white rounded-xl text-sm hover:bg-gray-700">⏸️ Snooze</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RECENT ACTIVITY -->
       <div class="bg-white/10 border-2 border-white/30 rounded-3xl p-8">
         <h2 class="text-2xl font-bold mb-6">📋 RECENT ACTIVITY</h2>
         <div class="space-y-3">
-          <div class="flex items-center space-x-3 p-3 bg-white/20 rounded-xl">
+          <div class="flex items-center space-x-3 p-3 bg-emerald-500/20 rounded-xl">
             <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-sm font-bold">✓</div>
-            <div>
-              <div class="font-semibold">DJI-PHX-179 scan complete</div>
-              <div class="text-xs opacity-75">Rack 3U | 25 devices inventoried | 2m ago</div>
-            </div>
+            <div>DJI-PHX-179 scan complete<br><span class="text-xs opacity-75">Rack 3U | 25 devices | 2m ago</span></div>
           </div>
           <div class="flex items-center space-x-3 p-3 bg-yellow-500/20 rounded-xl">
             <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center text-sm font-bold">⚠</div>
-            <div>
-              <div class="font-semibold">Smith,J. claimed #2001 Cisco 9300 EOL</div>
-              <div class="text-xs opacity-75">RMA shipped CDW | ETA 3/1 | 15m ago</div>
-            </div>
+            <div>Smith,J. claimed #2001 Cisco 9300 EOL<br><span class="text-xs opacity-75">RMA shipped CDW | ETA 3/1</span></div>
           </div>
         </div>
       </div>
@@ -87,6 +74,7 @@
 </div>
 
 <script>
-// Auto-refresh every 30s
+// Auto-refresh every 30s for LIVE data
 setInterval(() => location.reload(), 30000);
+console.log("🖥️ Thomas IT NOC v2.0 LIVE - Phoenix DC21");
 </script>

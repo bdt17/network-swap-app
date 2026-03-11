@@ -5,13 +5,10 @@ class DashboardController < ApplicationController
   end
   
   def tech
-    @devices = Device.where(status: %w[operational needs_firmware])
-    @drones = Drone.all  # ← FIX: Always set @drones
-    render :index
+    @devices = Device.all
   end
   
   def ar
-    @devices = Device.all
-    render :ar
+    render 'ar_glasses'
   end
 end
