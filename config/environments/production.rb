@@ -6,3 +6,4 @@ Rails.application.configure do
   config.assets.compile = false
   config.assets.digest = true
 end
+config.eager_load = true

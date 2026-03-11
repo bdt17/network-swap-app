@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :swaps, only: [:index]
     
     # Phase 8B SMS Dispatch - ENTERPRISE LIVE
-    post 'dispatch_sms', to: 'dispatch#sms'
     get 'drones', to: 'drones#index'
     get 'status', to: 'status#index'
   end
@@ -26,5 +25,4 @@ Rails.application.routes.draw do
   get '/health', to: proc { [200, {}, ['OK']] }
 end
 
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
 get '/api/dispatch_sms', to: 'dispatch#sms'
