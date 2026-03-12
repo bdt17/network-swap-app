@@ -1,5 +1,7 @@
 Rails.application.configure do
+  # Turn off eager‑loading in development
   config.eager_load = false
+
   # Core settings
   config.cache_classes = false
   config.consider_all_requests_local = true
@@ -17,7 +19,7 @@ Rails.application.configure do
   # Hosts
   config.hosts.clear
 
-  # Database encryption (your existing)
+  # Database encryption (your existing keys)
   config.active_record.encryption.primary_key = ENV["ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY"]
   config.active_record.encryption.deterministic_key = ENV["ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY"]
   config.active_record.encryption.key_derivation_salt = ENV["ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT"]
