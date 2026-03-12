@@ -12,3 +12,15 @@ Rails.application.routes.draw do
   # get '/about', to: 'pages#about'
   # resources :users
 end
+
+  namespace :drones do
+    get 'fleet', to: 'drones#fleet'
+    get ':id/inspect', to: 'drones#inspect'
+    get ':id/diagnostics', to: 'drones#diagnostics'
+    get 'swarm/status', to: 'drones#swarm'
+  end
+  
+  namespace :firmware do
+    get ':id/status', to: 'firmware#status'
+  end
+  get 'health', to: 'health#show'
