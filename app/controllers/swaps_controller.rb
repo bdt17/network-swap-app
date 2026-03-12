@@ -1,13 +1,12 @@
 class SwapsController < ApplicationController
   def index
-    render json: { count: 23, status: "pending" }
+    @swaps = Swap.all
+    render inline: "<h1>Swaps (#{@swaps.count})</h1>"
   end
   
-  def claim
-    render json: { 
-      swap_id: params[:id], 
-      claimed_by: params[:user] || "Brett Thomas", 
-      status: "claimed" 
-    }
-  end
+  def new; end
+  def create; redirect_to swaps_path; end
+  def show; render plain: "Swap ##{params[:id]}"; end
+  def status; render plain: "Swap #{params[:id]}: ACTIVE"; end
+  def claim; render plain: "Swap #{params[:id]} claimed"; end
 end
