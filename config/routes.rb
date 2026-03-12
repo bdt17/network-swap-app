@@ -24,3 +24,5 @@ Rails.application.routes.draw do
     get '/devices/export.csv', to: 'devices#export'
   end
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
