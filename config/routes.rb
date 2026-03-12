@@ -56,3 +56,5 @@ Rails.application.routes.draw do
 end
 
   post '/api/dispatch_sms', to: 'api/dispatch#sms'
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
