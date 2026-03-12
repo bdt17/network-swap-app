@@ -1,4 +1,5 @@
 class DispatchController < ApplicationController
+  skip_forgery_protection
   def sms
     tech = params[:tech] || "Field Tech"
     device = params[:device] || "Unknown" 
