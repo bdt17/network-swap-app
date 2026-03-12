@@ -54,3 +54,5 @@ Rails.application.routes.draw do
   # Health check
   get '/health', to: proc { [200, {}, ['OK']] }
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
