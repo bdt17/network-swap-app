@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   # API routes - NAMESPACED (FIXED)
   namespace :api do
     get '/dispatch_sms', to: 'dispatch#sms'
-    post '/dispatch_sms', to: 'dispatch#sms'  # Added POST version
     
     resources :devices, only: [:index, :show] do
       member do
@@ -55,10 +54,7 @@ Rails.application.routes.draw do
   get '/health', to: proc { [200, {}, ['OK']] }
 end
 
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
 
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
 
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
 
   post '/api/dispatch_sms', to: 'api/dispatch#sms'
