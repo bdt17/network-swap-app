@@ -1,16 +1,12 @@
 class Api::DispatchController < ApplicationController
-  skip_forgery_protection
-  
   def sms
-    phone = params[:tech_phone]
-    message = params[:message] || "Network swap dispatch"
+    device = Device.find(params[:device_id])
+    result = Twilio::DispatchService.call(
+      device_name: device.name,
+      tech_phone: params[:tech_phone],
+      issue: params[:issue] || 'urgent_network_swap'
+    )
     
-    # TODO: Add Twilio integration here
-    render json: { 
-      status: "SMS dispatched", 
-      phone: phone,
-      message: message,
-      sid: "mock-#{rand(100000)}"
-    }, status: :ok
+    render json: result, status: result[:success] ? :ok : :unprocessable_entity
   end
 end
