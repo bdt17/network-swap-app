@@ -27,10 +27,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # API routes - NAMESPACED (FIXED)
+  # API routes - NAMESPACED
   namespace :api do
     get '/dispatch_sms', to: 'dispatch#sms'
-    
+    post '/dispatch_sms', to: 'dispatch#sms'  # SMS dispatch API
+
     resources :devices, only: [:index, :show] do
       member do
         get :health
@@ -47,16 +48,6 @@ Rails.application.routes.draw do
     get '/status', to: 'status#index'
   end
 
-  # Devise Auth (if using)
-  # devise_for :users
-
   # Health check
   get '/health', to: proc { [200, {}, ['OK']] }
 end
-
-
-
-
-    post "/api/dispatch_sms", to: "api/dispatch#sms"
-
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
