@@ -1,4 +1,6 @@
-class Api::DevicesController < Api::ApplicationController
+class Api::DevicesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     render json: [
       {id: 1, name: "Cisco C9300-Rack1U", status: "operational", site: "Phoenix DC21"},
@@ -7,7 +9,12 @@ class Api::DevicesController < Api::ApplicationController
   end
 
   def show
-    render json: {id: params[:id], name: "Cisco C9300", status: "green"}
+    render json: { 
+      id: params[:id], 
+      name: "Cisco C9300", 
+      status: "green",
+      site: "Phoenix DC21"
+    }
   end
 
   def health
@@ -21,6 +28,9 @@ class Api::DevicesController < Api::ApplicationController
 
   def export
     csv = "ID,Name,Status,Site\n1,Cisco C9300-Rack1U,operational,Phoenix DC21\n2,Aruba AP-515,active,Phoenix DC21"
-    send_data csv, filename: "devices-#{Date.today}.csv", type: 'text/csv'
+    send_data csv, 
+              filename: "devices-#{Date.today}.csv", 
+              type: 'text/csv',
+              disposition: 'attachment'
   end
 end
