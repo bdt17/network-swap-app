@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         get :health
       end
       collection do
-        get :export  # Generates /api/devices/export.csv automatically
+        get :export  # → /api/devices/export.csv
       end
     end
 
@@ -24,8 +24,12 @@ Rails.application.routes.draw do
     get 'drones/fleet', to: 'drones#fleet'
     get 'drones/:id/inspect', to: 'drones#inspect'
     get 'drones/:id/diagnostics', to: 'drones#diagnostics'
-    
+
     # Phase 13: Firmware
     get 'firmware/:id/status', to: 'firmware#status'
   end
 end
+
+# TEMPORARY FIX - bypass namespace
+get '/api/devices/:id/health', to: 'devices#health'
+get '/api/devices/export', to: 'devices#export'

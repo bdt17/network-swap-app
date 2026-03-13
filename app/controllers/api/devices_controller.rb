@@ -1,36 +1,20 @@
-class Api::DevicesController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class DevicesController < ApplicationController
+  protect_from_forgery except: :export  # Disable CSRF for API
+  
   def index
-    render json: [
-      {id: 1, name: "Cisco C9300-Rack1U", status: "operational", site: "Phoenix DC21"},
-      {id: 2, name: "Aruba AP-515", status: "active", site: "Phoenix DC21"}
-    ]
+    render json: {status: 'ok', devices: 2}
   end
-
+  
   def show
-    render json: { 
-      id: params[:id], 
-      name: "Cisco C9300", 
-      status: "green",
-      site: "Phoenix DC21"
-    }
+    render json: {id: params[:id], status: 'green'}
   end
-
+  
   def health
-    render json: {
-      device: params[:id],
-      status: "green",
-      uptime: "99.9%",
-      site: "Phoenix DC21"
-    }
+    render json: {device: params[:id], status: 'green', uptime: '99.9%'}
   end
-
+  
   def export
-    csv = "ID,Name,Status,Site\n1,Cisco C9300-Rack1U,operational,Phoenix DC21\n2,Aruba AP-515,active,Phoenix DC21"
-    send_data csv, 
-              filename: "devices-#{Date.today}.csv", 
-              type: 'text/csv',
-              disposition: 'attachment'
+    csv = "ID,Name,Status\n1,Cisco C9300,green\n2,Aruba AP,green"
+    send_data csv, filename: 'devices.csv', type: 'text/csv'
   end
 end
