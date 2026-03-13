@@ -12,3 +12,5 @@ Rails.application.routes.draw do
     get 'health', to: 'health#show'
   end
 end
+
+  post '/api/dispatch_sms', to: 'api/dispatch#sms'
