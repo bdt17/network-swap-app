@@ -1,47 +1,60 @@
-require 'securerandom'
-require 'csv'
-require 'open-uri'
+class Api::MainController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
-class Api::MainController < Api::ApplicationController
-  def dispatch_sms
-    data = params.require(:dispatch).permit(:tech, :device).to_h
-    tech = data[:tech] || params[:tech]
-    device = data[:device] || params[:device]
-    
-    # Simulate SMS dispatch (replace with Twilio/SMS service)
-    response = {
-      success: true,
-      message: "SMS dispatched to #{tech} for #{device}",
-      tech: tech,
-      device: device,
-      timestamp: Time.current
-    }
-    
-    render_json(response)
-  rescue => e
-    render_json({error: e.message}, :unprocessable_entity)
-  end
-  
-  def health
-    device_id = params[:id]
-    device = {id: device_id, status: 'healthy', uptime: 99.9, last_check: Time.current}
-    render_json(device)
-  end
-  
-  def export_csv
-    devices = [
-      {id: 1, name: 'C9300-1', status: 'active', location: 'DC1'},
-      {id: 2, name: 'C9300-2', status: 'active', location: 'DC2'},
-      {id: 3, name: 'C9300-3', status: 'maintenance', location: 'DC1'}
+  # Devices
+  def index
+    render json: [
+      {id: 1, name: "Cisco C9300-Rack1U", status: "operational", site: "Phoenix DC21"},
+      {id: 2, name: "Aruba AP-515", status: "active", site: "Phoenix DC21"}
     ]
-    
-    csv_data = CSV.generate do |csv|
-      csv << ['id', 'name', 'status', 'location']
-      devices.each { |d| csv << [d[:id], d[:name], d[:status], d[:location]] }
-    end
-    
-    send_data csv_data,
-              type: 'text/csv',
-              filename: "devices-#{Time.current.strftime('%Y%m%d')}.csv"
+  end
+
+  def show
+    render json: {id: params[:id], name: "Cisco C9300", status: "green"}
+  end
+
+  def health
+    render json: {
+      device: params[:id],
+      status: "green",
+      uptime: "99.9%",
+      site: "Phoenix DC21"
+    }
+  end
+
+  def export
+    render json: {
+      format: 'csv',
+      devices: [
+        {id: 1, name: "Cisco C9300-Rack1U", status: "operational"},
+        {id: 2, name: "Aruba AP-515", status: "active"}
+      ]
+    }
+  end
+
+  # Drones  
+  def fleet
+    render json: [
+      {id: 1, name: "DJI-PHX-179", battery: 87, status: "scanning"},
+      {id: 2, name: "DJI-PHX-225", battery: 95, status: "idle"}
+    ]
+  end
+
+  def inspect
+    render json: {id: params[:id], status: "inspection complete"}
+  end
+
+  def diagnostics
+    render json: {id: params[:id], battery: 87, cpu: 23.5}
+  end
+
+  # Dispatch SMS
+  def sms
+    render json: {success: true, message: "SMS sent to #{params[:tech]}"}
+  end
+
+  # Health
+  def show
+    render json: {status: 'ok', timestamp: Time.now.utc.iso8601}
   end
 end
