@@ -1,5 +1,5 @@
-class Api::HealthController < ApplicationController
+class Api::HealthController < Api::ApplicationController
   def show
-    render json: {status: "green", phase: "14", drones: 2, timestamp: Time.current}
+    render json: { status: 'ok' }
   end
 end
