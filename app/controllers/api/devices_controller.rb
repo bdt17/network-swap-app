@@ -1,4 +1,7 @@
-class Api::DevicesController < ApplicationController
+require 'csv'
+
+class Api::DevicesController < Api::ApplicationController  # ← THIS WAS THE PROBLEM!
+  
   def index
     render json: [
       {id: 1, name: "Cisco C9300-Rack1U", status: "operational", site: "Phoenix DC21"},
@@ -20,7 +23,18 @@ class Api::DevicesController < ApplicationController
   end
 
   def export
-    csv = "ID,Name,Status,Site\n1,Cisco C9300-Rack1U,operational,Phoenix DC21\n2,Aruba AP-515,active,Phoenix DC21\n"
-    send_data csv, filename: "devices-#{Date.today}.csv", type: 'text/csv'
+    devices = [
+      [1, "Cisco C9300-Rack1U", "operational", "Phoenix DC21"],
+      [2, "Aruba AP-515", "active", "Phoenix DC21"]
+    ]
+    
+    csv_data = CSV.generate do |csv|
+      csv << ['ID', 'Name', 'Status', 'Site']
+      devices.each { |row| csv << row }
+    end
+    
+    send_data csv_data, 
+              filename: "devices-#{Date.today}.csv", 
+              type: 'text/csv'
   end
 end
