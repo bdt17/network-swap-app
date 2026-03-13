@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     
     post 'dispatch_sms', to: 'main#sms'
     get 'health', to: 'main#show'
+    get 'drones/:id/control', to: 'drones#control'
   end
 end
-  get 'drones/:id/control', to: 'drones#control'
