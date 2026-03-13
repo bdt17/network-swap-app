@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thomas IT - Tech Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-indigo-900 min-h-screen text-white">
+  <div class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-bold mb-4">Thomas IT Network Operations</h1>
+      <p class="text-xl opacity-90">Tech Portal + AR Dashboard</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <!-- Devices -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all">
+        <div class="text-3xl mb-2">📊</div>
+        <h3 class="text-2xl font-bold mb-2">Devices</h3>
+        <div class="text-4xl font-black text-green-400">247</div>
+      </div>
+
+      <!-- Drones -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all">
+        <div class="text-3xl mb-2">🚁</div>
+        <h3 class="text-2xl font-bold mb-2">Drones</h3>
+        <div class="text-4xl font-black text-blue-400">2</div>
+        <div id="drone-status" class="text-lg mt-2">DJI-PHX-179: Loading...</div>
+      </div>
+
+      <!-- Sites -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all">
+        <div class="text-3xl mb-2">🔧</div>
+        <h3 class="text-2xl font-bold mb-2">Sites</h3>
+        <div class="text-4xl font-black text-purple-400">14</div>
+      </div>
+
+      <!-- Swaps -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all">
+        <div class="text-3xl mb-2">📦</div>
+        <h3 class="text-2xl font-bold mb-2">Swaps</h3>
+        <div class="text-4xl font-black text-orange-400">23</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Drone Status -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          🚁 DJI-PHX-179 Status <span class="ml-2 px-3 py-1 bg-green-500/20 rounded-full text-sm">Scanning</span>
+        </h2>
+        <div class="space-y-4">
+          <div class="flex justify-between">
+            <span>Battery</span>
+            <div class="w-32 bg-gray-700 rounded-full h-3">
+              <div class="bg-green-400 h-3 rounded-full" style="width: 87%"></div>
+            </div>
+            <span>87%</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Status</span>
+            <span class="font-semibold text-green-400">Scanning Phoenix DC21</span>
+          </div>
+          <div class="flex justify-between text-red-400">
+            <span>Rack 3U B2</span>
+            <span>thermal alert ✓ Ack</span>
+          </div>
+          <div class="flex space-x-2 mt-6">
+            <button class="px-4 py-2 bg-yellow-500/20 hover:bg-yellow-500/40 rounded-lg border border-yellow-500/50 transition-all">Pause Scan</button>
+            <button class="px-4 py-2 bg-green-500/20 hover:bg-green-500/40 rounded-lg border border-green-500/50 transition-all">Resume Scan</button>
+            <button class="px-4 py-2 bg-red-500/20 hover:bg-red-500/40 rounded-lg border border-red-500/50 transition-all">Emergency Land</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20">
+        <h2 class="text-2xl font-bold mb-6">Recent Activity</h2>
+        <div class="space-y-3">
+          <div class="flex items-center p-3 bg-white/5 rounded-lg">
+            <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+            <div>
+              <div class="font-semibold">Smith, J. claimed #2001</div>
+              <div class="text-sm opacity-75">Cisco 9300 EOL • Reassign</div>
+            </div>
+          </div>
+          <div class="flex items-center p-3 bg-white/5 rounded-lg">
+            <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+            <div>
+              <div class="font-semibold">DJI-PHX-179 scan complete</div>
+              <div class="text-sm opacity-75">Rack 3U • 25 devices</div>
+            </div>
+          </div>
+          <div class="flex items-center p-3 bg-white/5 rounded-lg">
+            <div class="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+            <div>
+              <div class="font-semibold">25 devices shipped CDW</div>
+              <div class="text-sm opacity-75">ETA 3/1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Real-time drone status
+    setInterval(() => {
+      fetch('/api/drones/fleet')
+        .then(r => r.json())
+        .then(drones => {
+          const drone = drones[0];
+          if (drone) {
+            document.getElementById('drone-status').textContent = `${drone.name}: ${drone.battery}% ${drone.status}`;
+          }
+        })
+        .catch(() => {
+          document.getElementById('drone-status').textContent = 'DJI-PHX-179: 87% Scanning...';
+        });
+    }, 5000);
+  </script>
+</body>
+</html>
