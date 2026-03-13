@@ -13,14 +13,14 @@ class Api::DevicesController < ApplicationController
   def health
     render json: {
       device: params[:id],
-      status: "green", 
+      status: "green",
       uptime: "99.9%",
       site: "Phoenix DC21"
     }
   end
 
   def export
-    csv = "ID,Name,Status,Site,Battery\n1,Cisco C9300-Rack1U,operational,Phoenix DC21,100%\n2,Aruba AP-515,active,Phoenix DC21,98%\n"
+    csv = "ID,Name,Status,Site\n1,Cisco C9300-Rack1U,operational,Phoenix DC21\n2,Aruba AP-515,active,Phoenix DC21\n"
     send_data csv, filename: "devices-#{Date.today}.csv", type: 'text/csv'
   end
 end
