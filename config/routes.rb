@@ -1,26 +1,27 @@
-# config/routes.rb
-
 Rails.application.routes.draw do
-  root 'dashboard#index'
-
-  get '/tech', to: 'dashboard#tech'
-
-  # SMS dispatch endpoint
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
-
-  # Example: add any other routes below
-  # get '/about', to: 'pages#about'
-  # resources :users
-end
-
-  namespace :drones do
-    get 'fleet', to: 'drones#fleet'
-    get ':id/inspect', to: 'drones#inspect'
-    get ':id/diagnostics', to: 'drones#diagnostics'
-    get 'swarm/status', to: 'drones#swarm'
-  end
+  root to: "home#index"
   
-  namespace :firmware do
-    get ':id/status', to: 'firmware#status'
+  namespace :api, defaults: {format: :json} do
+    resources :devices, only: [:index]
+    resources :swaps do
+      member do
+        post :claim
+      end
+    end
+    
+    # PHASE 13/14 DRONE APIs
+    namespace :drones do
+      get :fleet
+      get ':id/inspect'
+      get ':id/diagnostics'
+      get 'swarm/status'
+    end
+    
+    namespace :firmware do
+      get ':id/status'
+    end
+    
+    get :health, to: 'health#show'
+    post '/notifications/sms', to: 'notifications#sms'
   end
-  get 'health', to: 'health#show'
+end
