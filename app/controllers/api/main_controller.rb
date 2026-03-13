@@ -10,7 +10,7 @@ class Api::MainController < ApplicationController
   end
 
   def sms
-    render json: {success: true, sid: "SM#{rand(10**10)}", phone: params[:phone]}
+    render json: {success: true, sid: "SM#{rand(10**10)}", phone: params[:phone] || 'test'}
   end
 
   def fleet
