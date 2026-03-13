@@ -10,9 +10,7 @@ class Api::DronesController < ApplicationController
         status: "scanning",
         battery: 87,
         site: "Phoenix DC21",
-        location: {lat: 33.4484, lng: -112.0740},
-        last_scan: "Rack 3U B2",
-        thermal_alerts: 1
+        location: {lat: 33.4484, lng: -112.0740}
       },
       {
         id: 2,
@@ -20,8 +18,7 @@ class Api::DronesController < ApplicationController
         model: "Matrice 300 RTK",
         status: "idle",
         battery: 95,
-        site: "Phoenix DC22",
-        location: {lat: 33.5153, lng: -112.0518}
+        site: "Phoenix DC22"
       }
     ]
   end
@@ -31,10 +28,7 @@ class Api::DronesController < ApplicationController
       id: params[:id],
       inspection: "complete",
       devices_scanned: 25,
-      issues: [
-        {rack: "3U B2", device: "#2001 Cisco 9300", status: "EOL"}
-      ],
-      timestamp: Time.now.utc.iso8601,
+      issues: ["Rack 3U B2: Cisco 9300 EOL"],
       pilot: "Smith,J"
     }
   end
@@ -45,8 +39,7 @@ class Api::DronesController < ApplicationController
       battery: 87,
       cpu: 23.5,
       gps: {satellites: 14, fix: "3D"},
-      sensors: {imu: "ok", compass: "calibrated"},
-      camera: {thermal: "online", zoom: "20x"}
+      sensors: {imu: "ok", compass: "calibrated"}
     }
   end
 end
