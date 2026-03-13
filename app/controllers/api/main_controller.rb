@@ -6,34 +6,33 @@ class Api::MainController < ApplicationController
   end
 
   def show
-    render json: {status: 'healthy', devices: 247, timestamp: Time.now.utc.iso8601}
+    render json: {status: 'healthy', app_id: 180694, timestamp: Time.now.utc.iso8601}
   end
 
-  def sms
-    render json: {success: true, sid: "SM#{rand(10**10)}", phone: params[:phone] || 'test'}
+  def health
+    render json: {status: 'healthy', app_id: 180694}
   end
 
   def fleet
     render json: [
-      {id: 1, name: "DJI-PHX-179", battery: 87, status: "scanning Phoenix DC21"},
-      {id: 2, name: "DJI-PHX-225", battery: 95, status: "idle"}
+      {id: "DJI-PHX-179", battery: 87, status: "scanning Phoenix DC21", app_id: 180694},
+      {id: "DJI-PHX-225", battery: 95, status: "idle", app_id: 180694}
     ]
   end
 
   def inspect
-    render json: {id: params[:id], status: "inspection complete", firmware: "v2.1.3"}
-  end
-
-  def diagnostics
-    render json: {id: params[:id], battery: 87, thermal_alerts: ["Rack 3UB2"]}
-  end
-
-  def export
-    render json: {format: 'csv', count: 247, exported_at: Time.now.utc.iso8601}
+    render json: {id: params[:id], status: "inspection complete", app_id: 180694}
   end
 
   def control
-    render json: {id: params[:id], command: params[:command] || "resume", status: "executed"}
+    render json: {id: params[:id], command: params[:command] || "resume", status: "executed", app_id: 180694}
+  end
+
+  def export
+    render json: {format: 'csv', count: 247, app_id: 180694}
+  end
+
+  def sms
+    render json: {success: true, sid: "SM#{rand(10**10)}", app_id: 180694}
   end
 end
-# Updated Fri Mar 13 03:20:01 PM MST 2026
