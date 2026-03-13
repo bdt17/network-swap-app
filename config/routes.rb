@@ -20,3 +20,12 @@ Rails.application.routes.draw do
     get 'drones/:id/control', to: 'drones#control'
   end
 end
+
+namespace :api do
+  get 'health', to: 'main#health'
+  get 'drones/fleet', to: 'main#fleet'
+  get 'drones/:id/inspect', to: 'main#inspect'
+  get 'drones/:id/control', to: 'main#control'
+  get 'devices/export', to: 'main#export'
+  post 'dispatch_sms', to: 'main#sms'
+end
