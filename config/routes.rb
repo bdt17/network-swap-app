@@ -3,25 +3,26 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
     resources :devices, only: [:index]
+    
     resources :swaps do
       member do
         post :claim
       end
     end
     
-    # PHASE 13/14 DRONE APIs
+    # FIXED Phase 14 Drone APIs
     namespace :drones do
-      get :fleet
-      get ':id/inspect'
-      get ':id/diagnostics'
-      get 'swarm/status'
+      get 'fleet', to: 'drones#fleet'
+      get ':id/inspect', to: 'drones#inspect'
+      get ':id/diagnostics', to: 'drones#diagnostics'
+      get 'swarm/status', to: 'drones#swarm_status'
     end
     
     namespace :firmware do
-      get ':id/status'
+      get ':id/status', to: 'firmware#status'
     end
     
-    get :health, to: 'health#show'
+    get 'health', to: 'health#show'
     post '/notifications/sms', to: 'notifications#sms'
   end
 end
