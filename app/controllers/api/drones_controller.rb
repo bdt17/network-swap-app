@@ -7,7 +7,7 @@ class Api::DronesController < ApplicationController
   end
 
   def inspect
-    render json: {id: params[:id], battery: 87, status: "ok", motors: "ok"}
+    render json: {id: params[:id], battery: 87, motors: "ok", gps: "live"}
   end
 
   def diagnostics
