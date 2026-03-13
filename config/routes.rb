@@ -12,11 +12,11 @@ Rails.application.routes.draw do
         get :health
       end
       collection do
-        get :export, defaults: {format: 'csv'}
+        get :export  # Generates /api/devices/export.csv automatically
       end
     end
 
-    # Phase 8B: Twilio SMS Dispatch (FIXED)
+    # Phase 8B: Twilio SMS Dispatch (LIVE after deploy)
     post 'dispatch_sms', to: 'dispatch#sms'
 
     # Phase 14: DJI Drone Prep (Tomorrow)
