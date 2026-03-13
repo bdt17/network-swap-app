@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
   root to: "home#index"
   
+  # Tech Portal + AR (LIVE ✅)
+  get 'tech', to: 'home#tech'
+  get 'ar', to: 'ar_overlay#index'
+  
   namespace :api, defaults: {format: :json} do
-    # Phase 14 - SIMPLE FLAT ROUTES
-    get 'devices', to: 'devices#index'
-    get 'drones/fleet', to: 'drones#fleet'
-    get 'drones/:id/inspect', to: 'drones#inspect'
-    get 'drones/:id/diagnostics', to: 'drones#diagnostics'
-    get 'drones/swarm/status', to: 'drones#swarm_status'
-    get 'firmware/:id/status', to: 'firmware#status'
+    # Phase 6: Devices + CSV
+    resources :devices do
+      collection do
+        get 'export.csv', to: 'devices#csv_export', as: :csv_export
+      end
+      member do
+        get :health
+      end
+    end
+    
+    # Phase 8B: SMS (FIXED)
+    post 'dispatch_sms', to: 'dispatch#sms'
+    
+    # Phase 14: DJI Prep
     get 'health', to: 'health#show'
+    get 'drones/fleet', to: 'drones#fleet'
   end
 end
-
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'
-
-  post '/api/dispatch_sms', to: 'api/dispatch#sms'

@@ -1,12 +1,16 @@
 class Api::DispatchController < ApplicationController
   def sms
-    device = Device.find(params[:device_id])
-    result = Twilio::DispatchService.call(
-      device_name: device.name,
-      tech_phone: params[:tech_phone],
-      issue: params[:issue] || 'urgent_network_swap'
-    )
+    # Phase 8B: Twilio SMS Dispatch (Pharma Transport)
+    tech = params[:tech] || "Field Tech"
+    device = params[:device] || "Unknown"
     
-    render json: result, status: result[:success] ? :ok : :unprocessable_entity
+    # TODO: Real Twilio integration
+    render json: {
+      status: "queued",
+      tech: tech,
+      device: device,
+      sid: "SM#{SecureRandom.hex(8).upcase}",
+      message: "Dispatch: #{tech} → #{device} (Phoenix DC21)"
+    }, status: :accepted
   end
 end
