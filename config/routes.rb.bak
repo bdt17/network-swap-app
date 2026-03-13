@@ -1,14 +1,35 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: "home#index"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # Phase 8A/10: Tech Portal + AR Glasses (LIVE ✅)
+  get 'tech', to: 'home#tech'
+  get 'ar', to: 'ar_overlay#index'
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  namespace :api, defaults: {format: :json} do
+    # Phase 6: Devices + CSV Export + Health
+    resources :devices, only: [:index, :show] do
+      member do
+        get :health
+      end
+      collection do
+        get :export  # → /api/devices/export.csv
+      end
+    end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+    # Phase 8B: Twilio SMS Dispatch (LIVE after deploy)
+    post 'dispatch_sms', to: 'dispatch#sms'
+
+    # Phase 14: DJI Drone Prep (Tomorrow)
+    get 'health', to: 'health#show'
+    get 'drones/fleet', to: 'drones#fleet'
+    get 'drones/:id/inspect', to: 'drones#inspect'
+    get 'drones/:id/diagnostics', to: 'drones#diagnostics'
+
+    # Phase 13: Firmware
+    get 'firmware/:id/status', to: 'firmware#status'
+  end
 end
+
+# TEMPORARY FIX - bypass namespace
+get '/api/devices/:id/health', to: 'devices#health'
+get '/api/devices/export', to: 'devices#export'

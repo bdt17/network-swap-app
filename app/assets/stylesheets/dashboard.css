@@ -1,0 +1,24 @@
+/* Thomas IT Production Dashboard */
+.tech-dashboard {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+  min-height: 100vh;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.card { 
+  background: rgba(255,255,255,0.1); 
+  backdrop-filter: blur(20px); 
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s;
+}
+.card:hover { transform: scale(1.05); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.stats { font-size: 3rem; font-weight: 900; }
+.green { color: #10b981; }
+.blue { color: #3b82f6; }
+.orange { color: #f59e0b; }
+.purple { color: #8b5cf6; }
+.progress { background: rgba(0,0,0,0.3); border-radius: 9999px; overflow: hidden; }
+.progress-bar { height: 12px; background: #10b981; border-radius: 9999px; }

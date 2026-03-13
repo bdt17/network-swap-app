@@ -19,3 +19,4 @@ Rails.application.routes.draw do
     get 'health', to: 'main#show'
   end
 end
+  get 'drones/:id/control', to: 'drones#control'
