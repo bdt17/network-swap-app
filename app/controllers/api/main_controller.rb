@@ -1,16 +1,8 @@
 class Api::MainController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def index
-    render json: {devices: 247, drones: 2, sites: 14, swaps: 23}
-  end
-
-  def show
-    render json: {status: 'healthy', app_id: 180694, timestamp: Time.now.utc.iso8601}
-  end
-
   def health
-    render json: {status: 'healthy', app_id: 180694}
+    render json: {status: 'healthy', app_id: 180694, timestamp: Time.now.utc.iso8601}
   end
 
   def fleet

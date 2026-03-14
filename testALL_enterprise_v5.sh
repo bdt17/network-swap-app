@@ -27,10 +27,10 @@ test_feature "$BASE_URL/ar"                   "AR Glasses"                    "2
 
 echo ""
 echo "🚁 DJI CLOUD API OPERATIONS (App ID 180694)"
-test_feature "$BASE_URL/api/health"           "API Health"                    "200" 1 1
-test_feature "$BASE_URL/api/drones/fleet"     "DJI Fleet API 180694"          "200" 1 1
-test_feature "$BASE_URL/api/drones/1/inspect" "DJI Inspect #1"                "200" 1 1
-test_feature "$BASE_URL/api/drones/1/control" "DJI Control #1"                "200" 1 1
+test_feature "$BASE_URL/api/show"           "API Health"                    "200" 1 1
+test_feature "$BASE_URL/api/fleet"     "DJI Fleet API 180694"          "200" 1 1
+test_feature "$BASE_URL/api/inspect" "DJI Inspect #1"                "200" 1 1
+test_feature "$BASE_URL/api/control" "DJI Control #1"                "200" 1 1
 
 echo ""
 echo "📦 ENTERPRISE FEATURES (Healthcare PT)"
