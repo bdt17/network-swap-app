@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'home#dashboard'
   get 'ar', to: 'ar_overlay#index'
   
-  # API Routes - DJI Cloud 180694
   namespace :api do
     get 'health', to: 'main#health'
     get 'drones/fleet', to: 'main#fleet'
@@ -14,7 +13,6 @@ Rails.application.routes.draw do
     post 'dispatch_sms', to: 'main#sms'
   end
   
-  # Auth routes (mock for tests)
   get 'session/new', to: 'sessions#new'
   post 'session', to: 'sessions#create'
   delete 'session', to: 'sessions#destroy'
