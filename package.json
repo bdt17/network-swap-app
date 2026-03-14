@@ -1,7 +1,7 @@
 {
   "name": "network-swap-static",
   "version": "1.0.0",
-  "homepage": ".",
+  "homepage": "http://.",
   "private": true,
   "dependencies": {
     "chart.js": "^4.5.1",
@@ -16,7 +16,10 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1"
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^4.2.1"
   },
   "browserslist": {
     "production": [
@@ -29,5 +32,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdt17/network-swap-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bdt17/network-swap-app/issues"
   }
 }
