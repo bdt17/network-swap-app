@@ -1,5 +1,5 @@
-class Api::HealthController < Api::ApplicationController
-  def show
-    render json: { status: 'ok' }
+class Api::HealthController < ActionController::Metal
+  def index
+    render plain: "OK", status: 200
   end
 end
