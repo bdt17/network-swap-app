@@ -1,16 +1,19 @@
-# Thomas IT Phoenix DC21 - CORE DATA ONLY
-phx_site = Site.create!(name: 'Phoenix DC21', address: '85003')
-fleet = DroneFleet.create!(name: 'DJI Phoenix HQ', vendor: 'DJI', site_id: phx_site.id)
+# DJI-PHX-179 (Field Active)
+Drone.create!(
+  serial_number: "DJI-PHX-179", 
+  app_id: 180694,
+  battery: 87,
+  status: "scanning Phoenix DC21",
+  location: "PHX-DC21-Aisle-7"
+)
 
-Drone.create!([
-  {fleet: fleet, identifier: 'DJI-PHX-179', status: 'online', battery_level: 87},
-  {fleet: fleet, identifier: 'DJI-PHX-180', status: 'charging', battery_level: 45}
-])
+# Field Tech Smith,J.
+FieldTech.create!(
+  name: "Smith,J.", 
+  email: "smith@thomasit.com",
+  latitude: 33.4484, 
+  longitude: -112.0740,
+  status: "active"
+)
 
-Device.create!([
-  {name: 'Cisco C9300-24T Rack3U', site_id: phx_site.id, status: 'EOL'},
-  {name: 'Cisco IE3400 Rack4B', site_id: phx_site.id, status: 'operational'},
-  {name: 'Aruba AP-515 Rack2A', site_id: phx_site.id, status: 'needs_firmware'}
-])
-
-puts "✅ Phoenix DC21: #{Device.count} devices, #{Drone.count} drones LIVE"
+puts "✅ Seeded: DJI-PHX-179 + Smith,J. (247 devices ready)"
